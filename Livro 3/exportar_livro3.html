@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prazer Sem Culpa — Livro 3 SeniorHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --brand:           #c9518c;
+  --brand-dark:      #9e3068;
+  --brand-light:     #fdf0f6;
+  --text-dark:       #1a1020;
+  --text-muted:      #7a4060;
+  --border:          #f0d8e8;
+  --white:           #ffffff;
+  --bg:              #fdf7fb;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 17px;
+  color: var(--text-dark);
+  line-height: 1.65;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Print: uma receita = uma folha ─────────────────────────────── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm 18mm;
+  }
+
+  body {
+    background: #fff !important;
+    font-size: 12px !important;
+    color: #1a1a1a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print { display: none !important; }
+
+  .book-wrapper {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .recipe-card {
+    break-before: page !important;
+    page-break-before: always !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .capa,
+  .sumario-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .page-break {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+
+  .step-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .nossa-cozinha-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .recipe-header {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .final-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border-radius: 10px !important;
+  }
+
+  .recipe-title  { font-size: 18px !important; }
+  .capa-titulo   { font-size: 36px !important; }
+  .step-text     { font-size: 12px !important; }
+  .check-list li { font-size: 12px !important; }
+}
+
+/* ── Botão de Imprimir (só tela) ────────────────────────────────── */
+.print-bar {
+  position: fixed; top:0; left:0; width:100%; z-index:999;
+  background: var(--brand-dark);
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 12px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.print-bar span { color:#fff; font-weight:700; font-size:15px; }
+.print-btn {
+  background:#fff; color:var(--brand-dark);
+  border:none; border-radius:10px;
+  padding:10px 28px; font-weight:800; font-size:15px;
+  cursor:pointer; transition:all .2s;
+}
+.print-btn:hover { background:var(--brand-light); transform:translateY(-1px); }
+
+/* ── Wrapper ─────────────────────────────────────────────────────── */
+.book-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+/* ── CAPA ─────────────────────────────────────────────────────────── */
+.capa {
+  background: linear-gradient(160deg, #1a1020 0%, #9e3068 55%, #c9518c 100%);
+  border-radius: 28px;
+  padding: 80px 60px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 32px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.capa::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 30% 70%, rgba(201,81,140,.35) 0%, transparent 60%);
+}
+.capa-badge {
+  display:inline-block;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 99px;
+  padding: 6px 20px;
+  font-size: 12px; font-weight:800;
+  letter-spacing: 1.5px; text-transform:uppercase;
+  position:relative;
+}
+.capa-emoji { font-size: 64px; line-height:1; position:relative; }
+.capa-colecao {
+  font-size: 12px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; opacity:.75; position:relative;
+}
+.capa-titulo {
+  font-size: 48px; font-weight:900; line-height:1.15;
+  letter-spacing:-1px; position:relative;
+}
+.capa-subtitulo {
+  font-size: 20px; font-weight:400; opacity:.85;
+  max-width:480px; line-height:1.5; position:relative;
+}
+.capa-divider {
+  width:60px; height:3px;
+  background:rgba(255,255,255,.4); border-radius:2px; position:relative;
+}
+.capa-info {
+  font-size:14px; opacity:.7; position:relative;
+  display:flex; gap:24px; align-items:center;
+}
+.capa-info span { display:flex; align-items:center; gap:6px; }
+
+/* ── Sumário ─────────────────────────────────────────────────────── */
+.sumario-card {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.sumario-header {
+  text-align:center; margin-bottom:36px;
+}
+.sumario-header .label {
+  display:inline-block; background:var(--brand-light); color:var(--brand);
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  padding:4px 16px; border-radius:99px; margin-bottom:14px;
+}
+.sumario-header h2 {
+  font-size:26px; font-weight:900; color:var(--text-dark);
+}
+.sumario-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 2px solid var(--brand);
+}
+.sumario-item {
+  display:flex; align-items:baseline; gap:10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  transition: background .15s;
+}
+.sumario-item:nth-child(odd) { border-right:1px solid var(--border); }
+.sumario-item .num {
+  font-weight:800; font-size:11px; color:var(--brand);
+  min-width:26px; flex-shrink:0;
+}
+.sumario-item .title-text { color:var(--text-dark); font-weight:500; }
+.sumario-item.completa .title-text { color:var(--brand-dark); font-weight:700; }
+
+/* ── Receita Card ─────────────────────────────────────────────────── */
+.recipe-card {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.recipe-header {
+  text-align:center;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--brand-light);
+  margin-bottom: 36px;
+}
+.recipe-num {
+  display:inline-block; background:var(--brand-light); color:var(--brand);
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  padding:4px 16px; border-radius:99px; margin-bottom:14px;
+}
+.recipe-title {
+  font-size: 30px; font-weight:900; color:var(--text-dark);
+  line-height:1.2; margin-bottom:16px;
+}
+.recipe-time {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--brand-light); border:1px solid var(--brand);
+  border-radius:12px; padding:8px 20px;
+  font-size:14px; font-weight:700; color:var(--brand-dark);
+}
+
+/* ── Ingredientes + Utensílios ───────────────────────────────────── */
+.nossa-cozinha-box {
+  display:grid; grid-template-columns:1fr 1fr; gap:36px;
+  background:#fdf7fb; border:1px solid #f0d8e8;
+  border-radius:18px; padding:32px; margin-bottom:36px;
+}
+.section-label {
+  font-size:12px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.8px; color:var(--brand); margin-bottom:16px;
+}
+.check-list { list-style:none; }
+.check-list li {
+  display:flex; align-items:flex-start; gap:10px;
+  padding: 7px 0; font-size:16px; color:var(--text-dark);
+  border-bottom:1px solid #f5eef3;
+}
+.check-list li:last-child { border-bottom:none; }
+.icon { color:var(--brand); font-weight:900; flex-shrink:0; margin-top:2px; }
+
+/* ── Modo de Preparo ─────────────────────────────────────────────── */
+.preparo-section { margin-bottom:8px; }
+.preparo-title {
+  text-align:center; font-size:18px; font-weight:800;
+  color:var(--brand-dark); text-transform:uppercase;
+  letter-spacing:.6px; margin-bottom:24px;
+}
+.step-card {
+  display:flex; gap:18px; align-items:flex-start;
+  background:#fff; border:1px solid var(--border);
+  border-radius:14px; padding:18px 22px; margin-bottom:14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+.step-num {
+  background:var(--brand); color:#fff;
+  border-radius:50%; width:32px; height:32px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:900; flex-shrink:0;
+}
+.step-text { font-size:16px; color:#334155; line-height:1.7; padding-top:4px; }
+
+/* ── Rodapé da Receita ───────────────────────────────────────────── */
+.recipe-footer {
+  margin-top:32px; padding-top:24px;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+.recipe-footer p {
+  font-size:13px; color:var(--text-muted);
+}
+
+/* ── Página final ─────────────────────────────────────────────────── */
+.final-card {
+  background: linear-gradient(135deg, #1a1020 0%, #9e3068 100%);
+  border-radius: 28px; padding:60px 48px;
+  text-align:center; color:#fff;
+}
+.final-card h2 { font-size:28px; font-weight:900; margin-bottom:16px; }
+.final-card p  { font-size:16px; opacity:.85; max-width:480px; margin:0 auto 28px; line-height:1.7; }
+.final-badge {
+  display:inline-block; background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:14px; padding:14px 36px;
+  font-size:22px; font-weight:900;
+}
+
+/* ── Responsivo ──────────────────────────────────────────────────── */
+@media(max-width:640px){
+  .capa-titulo { font-size:32px; }
+  .nossa-cozinha-box { grid-template-columns:1fr; }
+  .sumario-grid { grid-template-columns:1fr; }
+  .sumario-item:nth-child(odd) { border-right:none; }
+  .book-wrapper { padding:80px 14px 40px; }
+  .recipe-card, .sumario-card { padding:28px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Barra de Impressão (some ao imprimir) -->
+<div class="print-bar no-print">
+  <span>🍫 Livro 3 — Prazer Sem Culpa &nbsp;|&nbsp; SeniorHub</span>
+  <button class="print-btn" onclick="window.print()">🖨️ Salvar como PDF</button>
+</div>
+
+<div class="book-wrapper">
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CAPA                                                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="capa page-break">
+    <div class="capa-badge">SeniorHub · Coleção Exclusiva</div>
+    <div class="capa-emoji">🍫</div>
+    <div class="capa-colecao">Livro 3 da Coleção</div>
+    <h1 class="capa-titulo">Prazer<br>Sem Culpa</h1>
+    <div class="capa-divider"></div>
+    <p class="capa-subtitulo">O Lado Doce da Vida — 50 receitas de sobremesas e doces com açúcares naturais, cacau e opções sem glúten ou lactose.</p>
+    <div class="capa-info">
+      <span>🍯 50 Receitas</span>
+      <span>·</span>
+      <span>🌿 Açúcares Naturais</span>
+      <span>·</span>
+      <span>🎂 Sabor e Equilíbrio</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SUMÁRIO                                                       -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="sumario-card page-break">
+    <div class="sumario-header">
+      <div class="label">Índice Completo</div>
+      <h2>As 50 Receitas do Livro</h2>
+    </div>
+    <div class="sumario-grid" id="sumario-grid">
+      <!-- Preenchido pelo script abaixo -->
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- RECEITAS (renderizadas pelo script)                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div id="receitas-container"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PÁGINA FINAL                                                  -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="final-card">
+    <h2>Bom Apetite! 🍫</h2>
+    <p>Que cada receita preparada com este livro traga sabor, leveza e alegria. Doçura sem culpa, prazer com equilíbrio — para todos que valorizam o melhor da vida.</p>
+    <div class="final-badge">SeniorHub 🧡</div>
+    <p style="margin-top:24px; font-size:13px; opacity:.6;">© 2025 SeniorHub — Todos os direitos reservados.<br>Este conteúdo é exclusivo para adquirentes do Livro 3.</p>
+  </div>
+
+</div><!-- /book-wrapper -->
+
+<script src="livro3_a.js"></script>
+<script src="livro3_b.js"></script>
+<script src="livro3_c.js"></script>
+<script src="livro3_d.js"></script>
+<script>
+// ── Combina as 50 receitas completas ─────────────────────────────────────────
+const TODOS = [
+  ...(window.LIVRO3_A || []),
+  ...(window.LIVRO3_B || []),
+  ...(window.LIVRO3_C || []),
+  ...(window.LIVRO3_D || [])
+];
+
+// ── Renderiza o Sumário ────────────────────────────────────────────
+function renderSumario() {
+  const grid = document.getElementById('sumario-grid');
+  TODOS.forEach(r => {
+    const item = document.createElement('div');
+    item.className = 'sumario-item completa';
+    item.innerHTML = `<span class="num">${String(r.id).padStart(2,'0')}.</span>
+                      <span class="title-text">✓ ${r.titulo}</span>`;
+    grid.appendChild(item);
+  });
+}
+
+// ── Renderiza cada Receita ────────────────────────────────────────
+function renderReceitas() {
+  const container = document.getElementById('receitas-container');
+  TODOS.forEach((r) => {
+    const div = document.createElement('div');
+    div.className = 'recipe-card';
+
+    div.innerHTML = `
+      <div class="recipe-header">
+        <div class="recipe-num">Receita ${r.id} de 50</div>
+        <h1 class="recipe-title">${r.titulo}</h1>
+        <div class="recipe-time">⏱️ Tempo de Preparo: ${r.tempo}</div>
+      </div>
+
+      <div class="nossa-cozinha-box">
+        <div>
+          <div class="section-label">🛒 Ingredientes</div>
+          <ul class="check-list">
+            ${r.ingredientes.map(i => `<li><span class="icon">✓</span> ${i}</li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">🍴 Utensílios</div>
+          <ul class="check-list">
+            ${r.utensilios.map(u => `<li><span class="icon">◍</span> ${u}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+
+      <div class="preparo-section">
+        <div class="preparo-title">Modo de Preparo</div>
+        ${r.passos.map((p, i) => `
+          <div class="step-card">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-text">${p}</div>
+          </div>`).join('')}
+      </div>
+
+      <div class="recipe-footer">
+        <p>Livro 3 — Prazer Sem Culpa &nbsp;·&nbsp; SeniorHub &nbsp;·&nbsp; Receita ${r.id} de 50</p>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// ── Inicializa ────────────────────────────────────────────────────
+renderSumario();
+renderReceitas();
+</script>
+</body>
+</html>

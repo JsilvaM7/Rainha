@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Login SeniorHub</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+        .card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .ok  { color: green; font-weight: bold; }
+        .err { color: red;   font-weight: bold; }
+        .warn{ color: orange;font-weight: bold; }
+        button { padding: 12px 24px; background: #C5A059; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; margin: 6px; }
+        pre { background: #f0f0f0; padding: 12px; border-radius: 8px; font-size: 13px; overflow-x: auto; }
+        #log { min-height: 100px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Diagnóstico SeniorHub Login</h1>
+
+    <div class="card">
+        <h2>1. Firebase carregado?</h2>
+        <p id="firebase-status">Verificando...</p>
+    </div>
+
+    <div class="card">
+        <h2>2. auth.js carregado?</h2>
+        <p id="auth-status">Verificando...</p>
+    </div>
+
+    <div class="card">
+        <h2>3. abrirSideBar disponível?</h2>
+        <p id="sidebar-status">Verificando...</p>
+    </div>
+
+    <div class="card">
+        <h2>4. Teste manual</h2>
+        <button onclick="testarSidebar()">Testar abrirSideBar()</button>
+        <button onclick="testarFirebase()">Testar Firebase Auth</button>
+    </div>
+
+    <div class="card">
+        <h2>5. Log de erros</h2>
+        <pre id="log">Aguardando...</pre>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="auth.js?v=6.0"></script>
+
+    <script>
+        var logs = [];
+        function log(msg, tipo) {
+            var t = new Date().toLocaleTimeString();
+            logs.push('[' + t + '] ' + msg);
+            document.getElementById('log').textContent = logs.join('\n');
+        }
+
+        // Captura erros globais
+        window.onerror = function(msg, src, line) {
+            log('ERRO JS: ' + msg + ' (linha ' + line + ')', 'err');
+        };
+
+        window.addEventListener('DOMContentLoaded', function() {
+            // 1. Firebase
+            if (typeof firebase !== 'undefined') {
+                document.getElementById('firebase-status').innerHTML = '<span class="ok">✅ Firebase carregado — apps: ' + firebase.apps.length + '</span>';
+                log('Firebase OK');
+            } else {
+                document.getElementById('firebase-status').innerHTML = '<span class="err">❌ Firebase NÃO carregado</span>';
+                log('ERRO: Firebase undefined');
+            }
+
+            // 2. auth.js (SeniorAuth)
+            if (typeof window.SeniorAuth !== 'undefined') {
+                document.getElementById('auth-status').innerHTML = '<span class="ok">✅ auth.js carregado — SeniorAuth disponível</span>';
+                log('SeniorAuth OK');
+            } else {
+                document.getElementById('auth-status').innerHTML = '<span class="err">❌ auth.js NÃO carregou — SeniorAuth undefined</span>';
+                log('ERRO: SeniorAuth undefined');
+            }
+
+            // 3. abrirSideBar
+            if (typeof window.abrirSideBar === 'function') {
+                document.getElementById('sidebar-status').innerHTML = '<span class="ok">✅ abrirSideBar() está disponível</span>';
+                log('abrirSideBar OK');
+            } else {
+                document.getElementById('sidebar-status').innerHTML = '<span class="err">❌ abrirSideBar NÃO está disponível — tipo: ' + typeof window.abrirSideBar + '</span>';
+                log('ERRO: abrirSideBar tipo=' + typeof window.abrirSideBar);
+            }
+        });
+
+        function testarSidebar() {
+            log('Tentando abrirSideBar...');
+            try {
+                if (typeof window.abrirSideBar === 'function') {
+                    window.abrirSideBar();
+                    log('abrirSideBar() chamado com sucesso!');
+                } else {
+                    log('ERRO: abrirSideBar não é função: ' + typeof window.abrirSideBar);
+                }
+            } catch(e) {
+                log('EXCEÇÃO: ' + e.message);
+            }
+        }
+
+        function testarFirebase() {
+            log('Testando Firebase...');
+            try {
+                if (typeof firebase === 'undefined') { log('ERRO: firebase undefined'); return; }
+                log('firebase.apps.length = ' + firebase.apps.length);
+                var auth = firebase.auth();
+                log('auth criado OK');
+                log('currentUser = ' + (auth.currentUser ? auth.currentUser.email : 'null'));
+            } catch(e) {
+                log('EXCEÇÃO Firebase: ' + e.message);
+            }
+        }
+    </script>
+</body>
+</html>

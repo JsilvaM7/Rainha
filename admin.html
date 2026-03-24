@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorHub — Painel Admin</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f1eb; min-height: 100vh; }
+
+        .admin-header {
+            background: #1a1a2e;
+            color: white;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-header h1 { font-size: 20px; font-weight: 700; }
+        .admin-header span { font-size: 12px; background: #C5A059; color: #fff;
+            padding: 3px 10px; border-radius: 20px; font-weight: 700; }
+
+        .container { max-width: 900px; margin: 32px auto; padding: 0 20px; }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+        }
+        .card h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 8px; }
+
+        label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 6px; }
+        input[type="email"], input[type="text"], select {
+            width: 100%; padding: 11px 14px; border: 1.5px solid #e2d9c8;
+            border-radius: 10px; font-size: 14px; background: #fafaf8;
+            transition: border .2s;
+        }
+        input:focus, select:focus { outline: none; border-color: #C5A059; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { margin-bottom: 16px; }
+
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 10px;
+            font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .2s;
+        }
+        .btn:hover { opacity: .85; }
+        .btn-primary { background: #C5A059; color: white; width: 100%; padding: 14px; font-size: 15px; }
+        .btn-danger  { background: #ef4444; color: white; }
+        .btn-sm      { padding: 7px 16px; font-size: 13px; }
+
+        /* Log / Resultado */
+        #activation-log {
+            margin-top: 16px; padding: 14px; border-radius: 10px;
+            font-size: 13px; line-height: 1.7; display: none;
+        }
+        .log-success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+        .log-error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+        .log-info    { background: #eff6ff; border: 1px solid #93c5fd; color: #1e40af; }
+        .log-warn    { background: #fffbeb; border: 1px solid #fcd34d; color: #92400e; }
+
+        /* Tabela assinantes */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { background: #f8f4ec; color: #555; font-weight: 700; padding: 10px 14px;
+            text-align: left; border-bottom: 2px solid #e2d9c8; }
+        td { padding: 10px 14px; border-bottom: 1px solid #f0eae0; vertical-align: middle; }
+        tr:hover td { background: #faf7f2; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 11px; font-weight: 700; }
+        .badge-ok  { background: #dcfce7; color: #166534; }
+        .badge-exp { background: #fee2e2; color: #991b1b; }
+        .badge-pen { background: #fef9c3; color: #92400e; }
+
+        #subscribers-table-wrap { min-height: 80px; }
+        .empty-msg { text-align: center; color: #aaa; padding: 32px; font-size: 14px; }
+        .loading-msg { text-align: center; color: #C5A059; padding: 20px; font-size: 14px; }
+
+        /* Login gate */
+        #login-gate { text-align: center; padding: 80px 20px; }
+        #login-gate h2 { color: #1a1a2e; margin-bottom: 12px; }
+        #login-gate p  { color: #777; margin-bottom: 24px; font-size: 14px; }
+        .google-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: white; border: 1.5px solid #ddd; border-radius: 10px;
+            padding: 12px 24px; font-size: 15px; font-weight: 600; cursor: pointer;
+            transition: box-shadow .2s;
+        }
+        .google-btn:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+
+        #admin-content { display: none; }
+
+        .uid-display { font-family: monospace; font-size: 11px; color: #888;
+            background: #f5f5f5; padding: 2px 6px; border-radius: 4px; }
+
+        .step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;
+            font-size: 13px; color: #555; }
+        .step-num { background: #C5A059; color: white; width: 20px; height: 20px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+<div class="admin-header">
+    <h1>SeniorHub</h1>
+    <span>ADMIN</span>
+    <div style="margin-left:auto;font-size:13px;color:#ccc;" id="admin-user-info"></div>
+    <button class="btn btn-sm" id="logout-btn" style="background:#444;color:white;display:none;"
+        onclick="adminLogout()">Sair</button>
+</div>
+
+<!-- Gate de login -->
+<div class="container" id="login-gate">
+    <div class="card" style="text-align:center;padding:48px;">
+        <div style="font-size:48px;margin-bottom:16px;">🔐</div>
+        <h2>Acesso Restrito</h2>
+        <p>Faça login com a conta de administrador para continuar.</p>
+        <button class="google-btn" onclick="adminLogin()">
+            <svg width="20" height="20" viewBox="0 0 48 48">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.8 6C12.4 13 17.8 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/>
+                <path fill="#FBBC05" d="M10.4 28.7A14.6 14.6 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6A23.9 23.9 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6z"/>
+                <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4.2-13.4-9.8l-7.8 6C6.6 42.6 14.6 48 24 48z"/>
+            </svg>
+            Entrar com Google
+        </button>
+        <p id="login-error" style="color:#ef4444;margin-top:14px;font-size:13px;display:none;"></p>
+    </div>
+</div>
+
+<!-- Conteúdo admin (após login) -->
+<div class="container" id="admin-content">
+
+    <!-- ── Ativar Assinatura ────────────────────────────────────────────── -->
+    <div class="card">
+        <h2>⚡ Ativar Assinatura Manual</h2>
+
+        <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;padding:14px;margin-bottom:20px;">
+            <p style="font-size:13px;font-weight:700;color:#1e40af;margin-bottom:8px;">Como funciona:</p>
+            <div class="step"><div class="step-num">1</div><span>Busca o UID real do usuário na coleção <code>userEmails</code> pelo e-mail informado.</span></div>
+            <div class="step"><div class="step-num">2</div><span><strong>Se encontrar o UID:</strong> salva em <code>subscribers/{uid}</code> — acesso liberado imediatamente.</span></div>
+            <div class="step"><div class="step-num">3</div><span><strong>Se não encontrar:</strong> salva em <code>pendingSubscribers/{email}</code> — será migrado automaticamente no primeiro login.</span></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>E-mail do assinante *</label>
+                <input type="email" id="sub-email" placeholder="usuario@gmail.com">
+            </div>
+            <div class="form-group">
+                <label>Duração</label>
+                <select id="sub-duracao">
+                    <option value="30">30 dias</option>
+                    <option value="180">6 meses</option>
+                    <option value="365" selected>1 ano</option>
+                    <option value="3650">Vitalício (10 anos)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Motivo / Observação</label>
+            <input type="text" id="sub-motivo" placeholder="Ex: Pagamento Hotmart, cortesia, teste..." value="ativação manual">
+        </div>
+
+        <button class="btn btn-primary" onclick="ativarAssinatura()">⚡ Ativar Assinatura</button>
+
+        <div id="activation-log"></div>
+    </div>
+
+    <!-- ── Buscar usuário ───────────────────────────────────────────────── -->
+    <div class="card">
+        <h2>🔍 Verificar Usuário</h2>
+        <div style="display:flex;gap:12px;">
+            <input type="email" id="lookup-email" placeholder="email@gmail.com" style="flex:1;">
+            <button class="btn btn-primary" style="width:auto;padding:11px 20px;" onclick="buscarUsuario()">Buscar</button>
+        </div>
+        <div id="lookup-result" style="margin-top:16px;"></div>
+    </div>
+
+    <!-- ── Lista de assinantes ─────────────────────────────────────────── -->
+    <div class="card">
+        <h2>📋 Assinantes Ativos</h2>
+        <div id="subscribers-table-wrap">
+            <div class="loading-msg">Carregando...</div>
+        </div>
+    </div>
+
+    <!-- ── Pendentes ───────────────────────────────────────────────────── -->
+    <div class="card">
+        <h2>⏳ Pendentes (sem UID)</h2>
+        <p style="font-size:13px;color:#777;margin-bottom:16px;">
+            Usuários ativados antes de fazer login. Serão migrados automaticamente para
+            <code>subscribers/{uid}</code> no primeiro acesso.
+        </p>
+        <div id="pending-table-wrap">
+            <div class="loading-msg">Carregando...</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   CONFIG FIREBASE
+   ══════════════════════════════════════════════════════════════════════ */
+var firebaseConfig = {
+    apiKey:            "AIzaSyBeSp64NCAhKXdXrPGSqrETYormepqWpiU",
+    authDomain:        "seniorhub-7c725.firebaseapp.com",
+    projectId:         "seniorhub-7c725",
+    storageBucket:     "seniorhub-7c725.firebasestorage.app",
+    messagingSenderId: "194444472555",
+    appId:             "1:194444472555:web:b43cb7d673153deaeeceae"
+};
+
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+var db   = firebase.firestore();
+var auth = firebase.auth();
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+
+/* ══════════════════════════════════════════════════════════════════════
+   E-MAILS DE ADMIN AUTORIZADOS
+   (adicione aqui os e-mails que podem acessar o painel)
+   ══════════════════════════════════════════════════════════════════════ */
+var ADMIN_EMAILS = [
+    'julioynvest@gmail.com'
+    // adicione outros e-mails admin aqui
+];
+
+/* ── Auth ──────────────────────────────────────────────────────────── */
+auth.onAuthStateChanged(function(user) {
+    if (!user) {
+        document.getElementById('login-gate').style.display = 'block';
+        document.getElementById('admin-content').style.display = 'none';
+        document.getElementById('logout-btn').style.display = 'none';
+        document.getElementById('admin-user-info').textContent = '';
+        return;
+    }
+
+    if (!ADMIN_EMAILS.includes(user.email)) {
+        auth.signOut();
+        showLoginError('❌ Acesso negado. Este e-mail não é administrador.');
+        return;
+    }
+
+    document.getElementById('login-gate').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    document.getElementById('logout-btn').style.display = 'inline-block';
+    document.getElementById('admin-user-info').textContent = '👤 ' + user.email;
+
+    loadSubscribersTable();
+    loadPendingTable();
+});
+
+function adminLogin() {
+    auth.signInWithPopup(provider).catch(function(e) {
+        if (e.code !== 'auth/popup-closed-by-user') showLoginError(e.message);
+    });
+}
+
+function adminLogout() {
+    auth.signOut();
+}
+
+function showLoginError(msg) {
+    var el = document.getElementById('login-error');
+    el.textContent = msg;
+    el.style.display = 'block';
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ⚡ ATIVAR ASSINATURA — LÓGICA CORRIGIDA
+   Fluxo:
+   1. Busca userEmails/{email} para obter o UID real
+   2. Se UID encontrado  → salva em subscribers/{uid}      (acesso imediato)
+   3. Se não encontrado  → salva em pendingSubscribers/{email}  (migra no login)
+   ══════════════════════════════════════════════════════════════════════ */
+function ativarAssinatura() {
+    var email   = document.getElementById('sub-email').value.trim().toLowerCase();
+    var dias    = parseInt(document.getElementById('sub-duracao').value);
+    var motivo  = document.getElementById('sub-motivo').value.trim() || 'ativação manual';
+
+    if (!email || !email.includes('@')) {
+        showLog('error', '❌ Informe um e-mail válido.');
+        return;
+    }
+
+    showLog('info', '🔍 Buscando UID para <strong>' + email + '</strong>...');
+
+    /* ── PASSO 1: buscar UID em userEmails ────────────────────────── */
+    db.collection('userEmails').doc(email).get()
+        .then(function(userDoc) {
+
+            var agora    = new Date();
+            var expira   = new Date(agora.getTime() + dias * 24 * 60 * 60 * 1000);
+            var adminUid = auth.currentUser ? auth.currentUser.uid : 'admin';
+
+            var dadosBase = {
+                email:         email,
+                isSubscriber:  true,
+                duracaoDias:   dias,
+                activatedAt:   firebase.firestore.FieldValue.serverTimestamp(),
+                expiresAt:     firebase.firestore.Timestamp.fromDate(expira),
+                motivo:        motivo,
+                source:        'admin_manual',
+                activatedBy:   adminUid
+            };
+
+            /* ── PASSO 2: UID encontrado → salva em subscribers/{uid} ─ */
+            if (userDoc.exists && userDoc.data().uid) {
+                var uid = userDoc.data().uid;
+                var dados = Object.assign({}, dadosBase, { uid: uid });
+
+                showLog('info',
+                    '✅ UID encontrado: <span class="uid-display">' + uid + '</span><br>' +
+                    '💾 Salvando em <code>subscribers/' + uid + '</code>...'
+                );
+
+                db.collection('subscribers').doc(uid).set(dados, { merge: true })
+                    .then(function() {
+                        showLog('success',
+                            '🎉 <strong>Assinatura ativada com sucesso!</strong><br><br>' +
+                            '📧 E-mail: <strong>' + email + '</strong><br>' +
+                            '🆔 UID: <span class="uid-display">' + uid + '</span><br>' +
+                            '📁 Documento: <code>subscribers/' + uid + '</code><br>' +
+                            '📅 Expira em: <strong>' + expira.toLocaleDateString('pt-BR') + '</strong><br><br>' +
+                            '✅ O acesso foi liberado imediatamente para este usuário.'
+                        );
+                        document.getElementById('sub-email').value = '';
+                        loadSubscribersTable();
+                    })
+                    .catch(function(e) {
+                        showLog('error', '❌ Erro ao salvar: ' + e.message);
+                    });
+
+            } else {
+                /* ── PASSO 3: UID não encontrado → pendingSubscribers ─ */
+                showLog('warn',
+                    '⚠️ Usuário <strong>' + email + '</strong> ainda não fez login no portal.<br>' +
+                    '💾 Salvando em <code>pendingSubscribers/' + email + '</code>...'
+                );
+
+                var dadosPending = Object.assign({}, dadosBase, {
+                    uid: null  // será preenchido no primeiro login
+                });
+
+                db.collection('pendingSubscribers').doc(email).set(dadosPending, { merge: true })
+                    .then(function() {
+                        showLog('warn',
+                            '⏳ <strong>Assinante salvo como pendente.</strong><br><br>' +
+                            '📧 E-mail: <strong>' + email + '</strong><br>' +
+                            '📁 Documento: <code>pendingSubscribers/' + email + '</code><br>' +
+                            '📅 Expira em: <strong>' + expira.toLocaleDateString('pt-BR') + '</strong><br><br>' +
+                            '💡 <strong>O que acontece agora:</strong> quando este usuário fizer login ' +
+                            'pelo Google pela primeira vez, o <code>auth.js</code> detectará o registro ' +
+                            'pendente, criará <code>subscribers/{uid}</code> automaticamente e ' +
+                            'liberará o acesso.'
+                        );
+                        document.getElementById('sub-email').value = '';
+                        loadPendingTable();
+                    })
+                    .catch(function(e) {
+                        showLog('error', '❌ Erro ao salvar pendente: ' + e.message);
+                    });
+            }
+        })
+        .catch(function(e) {
+            showLog('error', '❌ Erro ao buscar userEmails: ' + e.message);
+        });
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   🔍 VERIFICAR USUÁRIO
+   ══════════════════════════════════════════════════════════════════════ */
+function buscarUsuario() {
+    var email = document.getElementById('lookup-email').value.trim().toLowerCase();
+    if (!email) return;
+
+    var result = document.getElementById('lookup-result');
+    result.innerHTML = '<div class="loading-msg">Buscando...</div>';
+
+    Promise.all([
+        db.collection('userEmails').doc(email).get(),
+        db.collection('pendingSubscribers').doc(email).get()
+    ]).then(function(docs) {
+        var userDoc    = docs[0];
+        var pendingDoc = docs[1];
+        var html = '';
+
+        /* Dados do userEmails */
+        if (userDoc.exists) {
+            var u = userDoc.data();
+            html +=
+                '<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px;margin-bottom:12px;">' +
+                '<p style="font-weight:700;color:#166534;margin-bottom:8px;">✅ Encontrado em <code>userEmails</code></p>' +
+                '<p style="font-size:13px;color:#333;">🆔 UID: <span class="uid-display">' + (u.uid || 'N/A') + '</span></p>' +
+                '<p style="font-size:13px;color:#333;">📧 E-mail: ' + (u.email || email) + '</p>' +
+                '<p style="font-size:13px;color:#333;">👤 Nome: ' + (u.displayName || '—') + '</p>' +
+                '</div>';
+
+            /* Verificar também em subscribers/{uid} */
+            if (u.uid) {
+                db.collection('subscribers').doc(u.uid).get().then(function(subDoc) {
+                    var extra = document.getElementById('lookup-result').innerHTML;
+                    if (subDoc.exists && subDoc.data().isSubscriber) {
+                        var s = subDoc.data();
+                        var exp = s.expiresAt ? s.expiresAt.toDate().toLocaleDateString('pt-BR') : '—';
+                        document.getElementById('lookup-result').innerHTML = extra +
+                            '<div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:10px;padding:14px;">' +
+                            '<p style="font-weight:700;color:#1e40af;margin-bottom:8px;">⭐ Assinante Ativo em <code>subscribers/' + u.uid + '</code></p>' +
+                            '<p style="font-size:13px;">📅 Expira: <strong>' + exp + '</strong></p>' +
+                            '<p style="font-size:13px;">📝 Motivo: ' + (s.motivo || '—') + '</p>' +
+                            '</div>';
+                    } else {
+                        document.getElementById('lookup-result').innerHTML = extra +
+                            '<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px;">' +
+                            '<p style="font-size:13px;color:#991b1b;">❌ Sem assinatura ativa em <code>subscribers/' + u.uid + '</code></p>' +
+                            '</div>';
+                    }
+                });
+            }
+        } else {
+            html +=
+                '<div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px;margin-bottom:12px;">' +
+                '<p style="font-size:13px;color:#991b1b;">❌ Não encontrado em <code>userEmails</code> — ainda não fez login no portal.</p>' +
+                '</div>';
+        }
+
+        /* Pendentes */
+        if (pendingDoc.exists) {
+            var p = pendingDoc.data();
+            var exp2 = p.expiresAt ? p.expiresAt.toDate().toLocaleDateString('pt-BR') : '—';
+            html +=
+                '<div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:14px;">' +
+                '<p style="font-weight:700;color:#92400e;margin-bottom:8px;">⏳ Encontrado em <code>pendingSubscribers</code></p>' +
+                '<p style="font-size:13px;">📅 Expira: <strong>' + exp2 + '</strong></p>' +
+                '<p style="font-size:13px;">💡 Será migrado no próximo login.</p>' +
+                '</div>';
+        }
+
+        result.innerHTML = html || '<p style="color:#aaa;font-size:13px;">Nenhum registro encontrado.</p>';
+    }).catch(function(e) {
+        result.innerHTML = '<p style="color:#ef4444;font-size:13px;">Erro: ' + e.message + '</p>';
+    });
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   TABELAS
+   ══════════════════════════════════════════════════════════════════════ */
+function loadSubscribersTable() {
+    db.collection('subscribers').orderBy('activatedAt', 'desc').limit(50).get()
+        .then(function(snap) {
+            var wrap = document.getElementById('subscribers-table-wrap');
+            if (snap.empty) {
+                wrap.innerHTML = '<div class="empty-msg">Nenhum assinante encontrado.</div>';
+                return;
+            }
+            var rows = '';
+            snap.forEach(function(doc) {
+                var d   = doc.data();
+                var exp = d.expiresAt ? d.expiresAt.toDate() : null;
+                var ok  = exp && exp > new Date();
+                var expStr = exp ? exp.toLocaleDateString('pt-BR') : '—';
+                rows +=
+                    '<tr>' +
+                    '<td>' + (d.email || '—') + '</td>' +
+                    '<td><span class="uid-display">' + doc.id + '</span></td>' +
+                    '<td><span class="badge ' + (ok ? 'badge-ok' : 'badge-exp') + '">' +
+                        (ok ? '✅ Ativo' : '❌ Expirado') + '</span></td>' +
+                    '<td>' + expStr + '</td>' +
+                    '<td>' + (d.motivo || '—') + '</td>' +
+                    '<td><button class="btn btn-danger btn-sm" onclick="revogarAssinatura(\'' + doc.id + '\',\'' + (d.email || '') + '\')">Revogar</button></td>' +
+                    '</tr>';
+            });
+            wrap.innerHTML =
+                '<div class="table-wrap"><table>' +
+                '<thead><tr><th>E-mail</th><th>UID (doc ID)</th><th>Status</th><th>Expira</th><th>Motivo</th><th>Ação</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody>' +
+                '</table></div>';
+        })
+        .catch(function(e) {
+            document.getElementById('subscribers-table-wrap').innerHTML =
+                '<p style="color:#ef4444;padding:16px;">Erro: ' + e.message + '</p>';
+        });
+}
+
+function loadPendingTable() {
+    db.collection('pendingSubscribers').limit(30).get()
+        .then(function(snap) {
+            var wrap = document.getElementById('pending-table-wrap');
+            if (snap.empty) {
+                wrap.innerHTML = '<div class="empty-msg">Nenhum pendente.</div>';
+                return;
+            }
+            var rows = '';
+            snap.forEach(function(doc) {
+                var d = doc.data();
+                var exp = d.expiresAt ? d.expiresAt.toDate().toLocaleDateString('pt-BR') : '—';
+                rows +=
+                    '<tr>' +
+                    '<td>' + doc.id + '</td>' +
+                    '<td><span class="badge badge-pen">⏳ Aguardando login</span></td>' +
+                    '<td>' + exp + '</td>' +
+                    '<td>' + (d.motivo || '—') + '</td>' +
+                    '<td><button class="btn btn-danger btn-sm" onclick="deletarPendente(\'' + doc.id + '\')">Remover</button></td>' +
+                    '</tr>';
+            });
+            wrap.innerHTML =
+                '<div class="table-wrap"><table>' +
+                '<thead><tr><th>E-mail</th><th>Status</th><th>Expira</th><th>Motivo</th><th>Ação</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody>' +
+                '</table></div>';
+        })
+        .catch(function(e) {
+            document.getElementById('pending-table-wrap').innerHTML =
+                '<p style="color:#ef4444;padding:16px;">Erro: ' + e.message + '</p>';
+        });
+}
+
+function revogarAssinatura(uid, email) {
+    if (!confirm('Revogar assinatura de ' + (email || uid) + '?')) return;
+    db.collection('subscribers').doc(uid).update({ isSubscriber: false })
+        .then(function() { loadSubscribersTable(); })
+        .catch(function(e) { alert('Erro: ' + e.message); });
+}
+
+function deletarPendente(email) {
+    if (!confirm('Remover pendente ' + email + '?')) return;
+    db.collection('pendingSubscribers').doc(email).delete()
+        .then(function() { loadPendingTable(); })
+        .catch(function(e) { alert('Erro: ' + e.message); });
+}
+
+/* ── Utilitários ───────────────────────────────────────────────────── */
+function showLog(type, html) {
+    var el = document.getElementById('activation-log');
+    el.className = 'log-' + type;
+    el.innerHTML = html;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

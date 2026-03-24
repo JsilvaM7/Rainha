@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniorHub — Painel Admin</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background:#f5f7f9; color:#1a1a1a; }
+
+        .header {
+            background:#fff; border-bottom:1px solid #efefef;
+            padding:16px 32px; display:flex; align-items:center;
+            justify-content:space-between; position:sticky; top:0; z-index:100;
+        }
+        .header h1 { font-size:20px; font-weight:800; color:#C5A059; }
+        .header span { font-size:13px; color:#666; }
+
+        .container { max-width:900px; margin:32px auto; padding:0 24px; }
+
+        .card {
+            background:#fff; border-radius:16px; padding:28px;
+            margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,0.06);
+            border:1px solid #efefef;
+        }
+        .card h2 { font-size:16px; font-weight:700; color:#374151; margin-bottom:20px;
+                   padding-bottom:12px; border-bottom:1px solid #f0e8d4; }
+
+        label { display:block; font-size:13px; font-weight:600; color:#555; margin-bottom:6px; }
+
+        input, select {
+            width:100%; padding:11px 14px; border:1.5px solid #e5e7eb;
+            border-radius:10px; font-size:15px; outline:none;
+            transition:border-color .2s; margin-bottom:16px;
+        }
+        input:focus, select:focus { border-color:#C5A059; }
+
+        .btn {
+            padding:12px 28px; border-radius:10px; font-size:15px;
+            font-weight:700; cursor:pointer; border:none; transition:all .2s;
+        }
+        .btn-primary { background:#C5A059; color:#fff; }
+        .btn-primary:hover { background:#a8853e; }
+        .btn-danger { background:#fee2e2; color:#dc2626; }
+        .btn-danger:hover { background:#fecaca; }
+        .btn-sm { padding:7px 16px; font-size:13px; }
+
+        .result {
+            padding:14px 18px; border-radius:10px; font-size:14px;
+            font-weight:600; margin-top:16px; display:none;
+        }
+        .result.ok  { background:#f0fdf4; color:#166534; border:1px solid #86efac; }
+        .result.err { background:#fef2f2; color:#dc2626; border:1px solid #fca5a5; }
+        .result.info{ background:#fdf8f0; color:#92400e; border:1px solid #fcd34d; }
+
+        table { width:100%; border-collapse:collapse; font-size:14px; }
+        th { background:#fdf8f0; color:#92400e; font-weight:700; padding:10px 14px;
+             text-align:left; font-size:12px; text-transform:uppercase; letter-spacing:.5px; }
+        td { padding:12px 14px; border-bottom:1px solid #f5f5f5; vertical-align:middle; }
+        tr:hover td { background:#fafafa; }
+
+        .badge {
+            display:inline-block; padding:3px 10px; border-radius:20px;
+            font-size:11px; font-weight:700;
+        }
+        .badge-active { background:#dcfce7; color:#166534; }
+        .badge-expired { background:#fee2e2; color:#dc2626; }
+        .badge-manual { background:#fdf8f0; color:#92400e; }
+        .badge-hotmart { background:#ede9fe; color:#6d28d9; }
+
+        .loading { text-align:center; padding:32px; color:#999; }
+        #login-screen { text-align:center; padding:80px 24px; }
+        #login-screen h2 { font-size:22px; margin-bottom:12px; color:#374151; }
+        #login-screen p { color:#666; margin-bottom:24px; }
+        .google-btn {
+            display:inline-flex; align-items:center; gap:12px;
+            background:#fff; border:1.5px solid #e5e7eb; border-radius:12px;
+            padding:13px 28px; font-size:15px; font-weight:600; cursor:pointer;
+            transition:box-shadow .2s;
+        }
+        .google-btn:hover { box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+
+        .row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        @media(max-width:600px) { .row { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🛡️ SeniorHub Admin</h1>
+    <span id="admin-email">Não autenticado</span>
+</div>
+
+<!-- Tela de Login -->
+<div id="login-screen">
+    <h2>Acesso Restrito</h2>
+    <p>Faça login com a conta de administrador para continuar.</p>
+    <button class="google-btn" onclick="loginAdmin()">
+        <svg width="20" height="20" viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.8 6C12.4 13 17.8 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/>
+            <path fill="#FBBC05" d="M10.4 28.7A14.6 14.6 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6A23.9 23.9 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6z"/>
+            <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4.2-13.4-9.8l-7.8 6C6.6 42.6 14.6 48 24 48z"/>
+        </svg>
+        Entrar com Google
+    </button>
+</div>
+
+<!-- Painel Admin -->
+<div id="admin-panel" style="display:none;">
+<div class="container">
+
+    <!-- Ativar Assinatura Manual -->
+    <div class="card">
+        <h2>➕ Ativar Assinatura Manual</h2>
+        <div class="row">
+            <div>
+                <label>E-mail do cliente (Google)</label>
+                <input type="email" id="email-input" placeholder="cliente@gmail.com">
+            </div>
+            <div>
+                <label>Duração da assinatura</label>
+                <select id="duracao-select">
+                    <option value="30">30 dias (1 mês)</option>
+                    <option value="60">60 dias (2 meses)</option>
+                    <option value="90">90 dias (3 meses)</option>
+                    <option value="180">180 dias (6 meses)</option>
+                    <option value="365">365 dias (1 ano)</option>
+                    <option value="9999">Vitalício</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label>Motivo (opcional)</label>
+            <input type="text" id="motivo-input" placeholder="Ex: compra Hotmart manual, cortesia, etc.">
+        </div>
+        <button class="btn btn-primary" onclick="ativarAssinatura()">✅ Ativar Assinatura</button>
+        <div id="result-ativar" class="result"></div>
+    </div>
+
+    <!-- Cancelar Assinatura -->
+    <div class="card">
+        <h2>❌ Cancelar / Revogar Assinatura</h2>
+        <div>
+            <label>E-mail do cliente</label>
+            <input type="email" id="email-cancelar" placeholder="cliente@gmail.com">
+        </div>
+        <button class="btn btn-danger" onclick="cancelarAssinatura()">❌ Cancelar Assinatura</button>
+        <div id="result-cancelar" class="result"></div>
+    </div>
+
+    <!-- Consultar Assinante -->
+    <div class="card">
+        <h2>🔍 Consultar Assinante</h2>
+        <div>
+            <label>E-mail do cliente</label>
+            <input type="email" id="email-consultar" placeholder="cliente@gmail.com">
+        </div>
+        <button class="btn btn-primary" onclick="consultarAssinante()">🔍 Consultar</button>
+        <div id="result-consultar" class="result"></div>
+    </div>
+
+    <!-- Lista de Assinantes -->
+    <div class="card">
+        <h2>📋 Assinantes Ativos</h2>
+        <button class="btn btn-primary btn-sm" onclick="carregarAssinantes()" style="margin-bottom:16px;">
+            🔄 Atualizar Lista
+        </button>
+        <div id="tabela-assinantes">
+            <div class="loading">Clique em "Atualizar Lista" para carregar.</div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+<script>
+/* ── Config Firebase ─────────────────────────────────────────────────── */
+const firebaseConfig = {
+    apiKey:            "AIzaSyBeSp64NCAhKXdXrPGSqrETYormepqWpiU",
+    authDomain:        "seniorhub-7c725.firebaseapp.com",
+    projectId:         "seniorhub-7c725",
+    storageBucket:     "seniorhub-7c725.firebasestorage.app",
+    messagingSenderId: "194444472555",
+    appId:             "1:194444472555:web:b43cb7d673153deaeeceae"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db   = firebase.firestore();
+
+/* ── E-mail do admin (só você tem acesso) ────────────────────────────── */
+const ADMIN_EMAILS = ['julioynvest@gmail.com', 'Juliofs2011@gmail.com'];
+
+/* ── Auth ────────────────────────────────────────────────────────────── */
+auth.onAuthStateChanged(function(user) {
+    if (user && ADMIN_EMAILS.map(e=>e.toLowerCase()).includes(user.email.toLowerCase())) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-panel').style.display  = 'block';
+        document.getElementById('admin-email').textContent    = '👤 ' + user.email;
+    } else if (user) {
+        document.getElementById('login-screen').innerHTML =
+            '<h2 style="color:#dc2626">⛔ Acesso Negado</h2>' +
+            '<p>Este painel é restrito ao administrador.</p>' +
+            '<button class="google-btn" style="margin-top:16px;" onclick="auth.signOut()">Sair</button>';
+    } else {
+        document.getElementById('login-screen').style.display = 'block';
+        document.getElementById('admin-panel').style.display  = 'none';
+        document.getElementById('admin-email').textContent    = 'Não autenticado';
+    }
+});
+
+function loginAdmin() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+    auth.signInWithPopup(provider);
+}
+
+/* ── Helpers ─────────────────────────────────────────────────────────── */
+function mostrarResultado(id, msg, tipo) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className   = 'result ' + tipo;
+    el.style.display = 'block';
+}
+
+function calcularExpiracao(dias) {
+    if (parseInt(dias) === 9999) return null; // vitalício
+    const d = new Date();
+    d.setDate(d.getDate() + parseInt(dias));
+    return d;
+}
+
+function formatarData(ts) {
+    if (!ts) return 'Vitalício';
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString('pt-BR');
+}
+
+function isExpirado(ts) {
+    if (!ts) return false;
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    return d < new Date();
+}
+
+/* ── Ativar Assinatura ───────────────────────────────────────────────── */
+async function ativarAssinatura() {
+    const email  = document.getElementById('email-input').value.trim();
+    const dias   = document.getElementById('duracao-select').value;
+    const motivo = document.getElementById('motivo-input').value.trim() || 'ativação manual';
+
+    if (!email) { mostrarResultado('result-ativar', '⚠️ Informe o e-mail do cliente.', 'err'); return; }
+
+    mostrarResultado('result-ativar', '⏳ Buscando usuário...', 'info');
+
+    try {
+        // Busca o UID pelo e-mail via Firestore (index de emails)
+        const snap = await db.collection('userEmails').where('email', '==', email.toLowerCase()).limit(1).get();
+
+        let uid = null;
+
+        if (!snap.empty) {
+            uid = snap.docs[0].id;
+        } else {
+            // Tenta buscar direto na coleção subscribers por email
+            const subSnap = await db.collection('subscribers').where('email', '==', email).limit(1).get();
+            if (!subSnap.empty) uid = subSnap.docs[0].id;
+        }
+
+        const expiracao = calcularExpiracao(dias);
+        const dadosAssinante = {
+            email:        email,
+            isSubscriber: true,
+            activatedAt:  firebase.firestore.FieldValue.serverTimestamp(),
+            expiresAt:    expiracao ? firebase.firestore.Timestamp.fromDate(expiracao) : null,
+            source:       'admin_manual',
+            motivo:       motivo,
+            duracaoDias:  parseInt(dias) === 9999 ? 'vitalicio' : parseInt(dias)
+        };
+
+        if (uid) {
+            // Usuário encontrado → salva com UID
+            dadosAssinante.uid = uid;
+            await db.collection('subscribers').doc(uid).set(dadosAssinante, { merge: true });
+            mostrarResultado('result-ativar',
+                `✅ Assinatura ativada! UID: ${uid}\nExpira em: ${expiracao ? expiracao.toLocaleDateString('pt-BR') : 'Vitalício'}`,
+                'ok');
+        } else {
+            // Usuário ainda não fez login → salva como pendente por email
+            const emailKey = email.replace('@', '_at_').replace(/\./g, '_');
+            await db.collection('pendingSubscribers').doc(emailKey).set(dadosAssinante);
+            mostrarResultado('result-ativar',
+                `⚠️ Usuário não encontrado no Firebase Auth.\nSalvo como PENDENTE — será ativado quando ${email} fizer login no site.`,
+                'info');
+        }
+    } catch(e) {
+        mostrarResultado('result-ativar', '❌ Erro: ' + e.message, 'err');
+    }
+}
+
+/* ── Cancelar Assinatura ─────────────────────────────────────────────── */
+async function cancelarAssinatura() {
+    const email = document.getElementById('email-cancelar').value.trim();
+    if (!email) { mostrarResultado('result-cancelar', '⚠️ Informe o e-mail.', 'err'); return; }
+
+    mostrarResultado('result-cancelar', '⏳ Cancelando...', 'info');
+
+    try {
+        const snap = await db.collection('subscribers').where('email', '==', email).limit(1).get();
+        if (snap.empty) {
+            mostrarResultado('result-cancelar', '⚠️ Assinante não encontrado.', 'err');
+            return;
+        }
+        await snap.docs[0].ref.update({ isSubscriber: false, canceledAt: firebase.firestore.FieldValue.serverTimestamp() });
+        mostrarResultado('result-cancelar', `✅ Assinatura de ${email} cancelada com sucesso.`, 'ok');
+    } catch(e) {
+        mostrarResultado('result-cancelar', '❌ Erro: ' + e.message, 'err');
+    }
+}
+
+/* ── Consultar Assinante ─────────────────────────────────────────────── */
+async function consultarAssinante() {
+    const email = document.getElementById('email-consultar').value.trim();
+    if (!email) { mostrarResultado('result-consultar', '⚠️ Informe o e-mail.', 'err'); return; }
+
+    mostrarResultado('result-consultar', '⏳ Consultando...', 'info');
+
+    try {
+        const snap = await db.collection('subscribers').where('email', '==', email).limit(1).get();
+        if (snap.empty) {
+            // Verifica pendentes
+            const emailKey = email.replace('@', '_at_').replace(/\./g, '_');
+            const pending  = await db.collection('pendingSubscribers').doc(emailKey).get();
+            if (pending.exists) {
+                const d = pending.data();
+                mostrarResultado('result-consultar',
+                    `⏳ PENDENTE — ainda não fez login\nE-mail: ${d.email}\nExpira: ${formatarData(d.expiresAt)}\nMotivo: ${d.motivo || '-'}`,
+                    'info');
+            } else {
+                mostrarResultado('result-consultar', `❌ Nenhuma assinatura encontrada para ${email}.`, 'err');
+            }
+            return;
+        }
+
+        const d    = snap.docs[0].data();
+        const exp  = d.expiresAt;
+        const expirado = isExpirado(exp);
+        const status   = !d.isSubscriber ? 'CANCELADA' : expirado ? 'EXPIRADA' : 'ATIVA';
+        const emoji    = status === 'ATIVA' ? '✅' : '❌';
+
+        mostrarResultado('result-consultar',
+            `${emoji} Status: ${status}\nE-mail: ${d.email}\nUID: ${d.uid || 'N/A'}\nAtivado em: ${formatarData(d.activatedAt)}\nExpira: ${formatarData(exp)}\nOrigem: ${d.source || '-'}\nMotivo: ${d.motivo || '-'}`,
+            status === 'ATIVA' ? 'ok' : 'err');
+    } catch(e) {
+        mostrarResultado('result-consultar', '❌ Erro: ' + e.message, 'err');
+    }
+}
+
+/* ── Lista de Assinantes ─────────────────────────────────────────────── */
+async function carregarAssinantes() {
+    const div = document.getElementById('tabela-assinantes');
+    div.innerHTML = '<div class="loading">⏳ Carregando...</div>';
+
+    try {
+        const snap = await db.collection('subscribers').orderBy('activatedAt', 'desc').limit(50).get();
+
+        if (snap.empty) { div.innerHTML = '<div class="loading">Nenhum assinante encontrado.</div>'; return; }
+
+        let rows = '';
+        snap.forEach(doc => {
+            const d      = doc.data();
+            const exp    = d.expiresAt;
+            const expirado  = isExpirado(exp);
+            const ativo     = d.isSubscriber && !expirado;
+            const badgeStatus = ativo
+                ? '<span class="badge badge-active">✅ Ativo</span>'
+                : '<span class="badge badge-expired">❌ ' + (!d.isSubscriber ? 'Cancelado' : 'Expirado') + '</span>';
+            const badgeSource = d.source === 'hotmart_webhook'
+                ? '<span class="badge badge-hotmart">Hotmart</span>'
+                : '<span class="badge badge-manual">Manual</span>';
+
+            rows += `<tr>
+                <td>${d.email || '-'}</td>
+                <td>${badgeStatus}</td>
+                <td>${formatarData(d.activatedAt)}</td>
+                <td>${formatarData(exp)}</td>
+                <td>${badgeSource}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="cancelarPorUID('${doc.id}', '${d.email}')">
+                        Cancelar
+                    </button>
+                </td>
+            </tr>`;
+        });
+
+        div.innerHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Ativado em</th>
+                        <th>Expira em</th>
+                        <th>Origem</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>`;
+    } catch(e) {
+        div.innerHTML = '<div class="loading">❌ Erro: ' + e.message + '</div>';
+    }
+}
+
+async function cancelarPorUID(uid, email) {
+    if (!confirm(`Cancelar assinatura de ${email}?`)) return;
+    try {
+        await db.collection('subscribers').doc(uid).update({
+            isSubscriber: false,
+            canceledAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        alert('✅ Assinatura cancelada!');
+        carregarAssinantes();
+    } catch(e) {
+        alert('❌ Erro: ' + e.message);
+    }
+}
+</script>
+</body>
+</html>

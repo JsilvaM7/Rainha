@@ -1,11 +1,18 @@
+/* ── Link do Clube (espelho do auth.js para uso no app.js) ─────────────────── */
+window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/B105027530C';
+
+/* ── Links Google Drive — acesso exclusivo de assinantes ───────────────────── */
+const EBOOK_LINKS = {
+    1: 'https://drive.google.com/file/d/1gmM8fOlRrWDuptQwIaivytbQeriTOAuc/view?usp=sharing',
+    2: 'https://drive.google.com/file/d/1BgZxiOdUcnRAQVEanJJ3RRW3WVFY-Yin/view?usp=sharing',
+    3: 'https://drive.google.com/file/d/1_cFQQH7e0nZsg8JkD_6Bmbfh1R8C7p84/view?usp=sharing',
+    4: 'https://drive.google.com/file/d/1eAHSCB3E5dsO9ubi2s3_91ZpxJBlT95H/view?usp=sharing',
+    5: 'https://drive.google.com/file/d/1dMJHFfTVykmTXWQtToJUu8Pf2bEi1JXQ/view?usp=sharing'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     loadNewsFeed();
     initAdShowcase();
-
-    document.getElementById('clube-trigger').addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleModal();
-    });
 });
 
 /* ── Modal ──────────────────────────────────────────────────────────────────── */
@@ -14,7 +21,19 @@ function toggleModal() {
 }
 
 function submitVote(theme) {
-    alert(`Voto registrado para: ${theme}! Obrigado por participar.`);
+    const user = window.SeniorAuth ? window.SeniorAuth.getUser() : null;
+    if (!user) {
+        alert('Faça login para votar! Clique em "Entrar com Google" no cabeçalho.');
+        return;
+    }
+    const isSub = window.SeniorAuth && window.SeniorAuth.isSubscriber();
+    if (!isSub) {
+        // Logado mas não assinante → abre modal explicando
+        toggleModal();
+        return;
+    }
+    const primeiroNome = (user.displayName || user.nome || 'amigo').split(' ')[0];
+    alert(`✅ Voto registrado para: ${theme}! Obrigado, ${primeiroNome}!`);
     toggleModal();
 }
 /* ── State Tracking ─────────────────────────────────────────────────────────── */
@@ -22,11 +41,12 @@ let livroAtual = null; // Guarda a chave do livro aberto (ex: 'energia')
 
 /* ── Funnel helpers ─────────────────────────────────────────────────────────── */
 function isLocked(id) {
-    // 5 free recipes per book; check index position within the book (not raw ID)
+    // Assinante pago tem acesso completo a todas as receitas no site
+    if (window.SeniorAuth && window.SeniorAuth.isSubscriber()) return false;
     if (!livroAtual) return false;
     const bookArr = window.biblioteca[livroAtual] || [];
     const idx = bookArr.findIndex(r => r.id === id);
-    return idx >= 5; // index 5+ means it's the 6th recipe or beyond
+    return idx >= 5; // não-assinante: só 5 receitas grátis por livro
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────────── */
@@ -56,20 +76,50 @@ function loadBooksShowcase() {
     wrapper.className = 'recipe-card';
     wrapper.innerHTML = `
         <div style="text-align:center; margin-bottom:36px;">
-            <span style="display:inline-block; background:#f1f8f1; color:var(--sage-green); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; padding:4px 14px; border-radius:20px; margin-bottom:14px;">Biblioteca SeniorHub</span>
+            <span style="display:inline-block; background:#fdf8f0; color:var(--sage-green); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; padding:4px 14px; border-radius:20px; margin-bottom:14px;">Biblioteca SeniorHub</span>
             <h1 style="font-size:28px; font-weight:800; color:#374151; margin-bottom:8px;">Escolha o seu Livro de Receitas</h1>
             <p style="color:var(--text-muted); font-size:15px;">5 coleções exclusivas com receitas detalhadas</p>
         </div>
         <div class="books-showcase">
-            ${Object.entries(window.BOOKS).map(([num, book]) => `
-                <button class="book-showcase-btn" onclick="window.handleBookClick(${num})">
-                    <div class="book-info">
-                        <div class="book-num">Livro ${num}</div>
-                        <div class="book-title">${book.title}</div>
-                    </div>
-                    <i class="ph ph-caret-right" style="font-size:22px; color:var(--sage-green); flex-shrink:0;"></i>
-                </button>
-            `).join('')}
+            ${(() => {
+                const isSub = window.SeniorAuth && window.SeniorAuth.isSubscriber();
+                return Object.entries(window.BOOKS).map(([num, book]) => {
+                    if (isSub) {
+                        return `
+                        <div style="display:flex; align-items:center; gap:12px; width:100%;
+                                    background:#fff; border:1.5px solid var(--sage-green);
+                                    border-radius:16px; padding:16px 20px;
+                                    box-shadow:0 2px 10px rgba(197,160,89,0.12);">
+                            <div class="book-info" style="flex:1; min-width:0;">
+                                <div class="book-num">Livro ${num}
+                                    <span style="font-size:10px;background:var(--sage-green);color:#fff;
+                                                 padding:1px 7px;border-radius:20px;vertical-align:middle;">
+                                        ✅ Incluso
+                                    </span>
+                                </div>
+                                <div class="book-title">${book.title}</div>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+                                <button onclick="window.handleBookClick(${num})"
+                                        style="background:var(--sage-green);color:#fff;border:none;
+                                               border-radius:8px;padding:8px 16px;font-size:13px;
+                                               font-weight:700;cursor:pointer;white-space:nowrap;">
+                                    📖 Ler no Portal
+                                </button>
+                            </div>
+                        </div>`;
+                    } else {
+                        return `
+                        <button class="book-showcase-btn" onclick="window.handleBookClick(${num})">
+                            <div class="book-info">
+                                <div class="book-num">Livro ${num}</div>
+                                <div class="book-title">${book.title}</div>
+                            </div>
+                            <i class="ph ph-caret-right" style="font-size:22px;color:var(--sage-green);flex-shrink:0;"></i>
+                        </button>`;
+                    }
+                }).join('');
+            })()}
         </div>
     `;
     swapContent(viewer, wrapper);
@@ -128,13 +178,18 @@ function loadRecipe(id) {
     const bookArr = window.biblioteca[livroAtual] || [];
     const recipe = bookArr.find(r => r.id === id);
 
-    // Mostra paywall se (a) é a 6ª+ receita pela posição, OU (b) a receita é um stub bloqueado
-    if (isLocked(id) || (recipe && recipe.locked)) {
+    // Só assinante pago acessa receitas bloqueadas (logado ≠ assinante)
+    const isSubscriber = window.SeniorAuth && window.SeniorAuth.isSubscriber();
+
+    if (!recipe && !isSubscriber) {
+        wrapper.innerHTML = `<p style="padding:40px; text-align:center; color:var(--text-muted)">Receita não encontrada neste livro.</p>`;
+    } else if ((isLocked(id) || (recipe && recipe.locked)) && !isSubscriber) {
+        // Não assinante → paywall por livro (link individual Hotmart)
         wrapper.innerHTML = renderPaywallHTML(bookMeta);
     } else if (!recipe) {
         wrapper.innerHTML = `<p style="padding:40px; text-align:center; color:var(--text-muted)">Receita não encontrada neste livro.</p>`;
     } else {
-        wrapper.innerHTML = renderRecipeHTML(recipe, bookMeta);
+        wrapper.innerHTML = renderRecipeHTML(recipe, bookMeta, isSubscriber);
     }
 
     swapContent(viewer, wrapper);
@@ -156,7 +211,7 @@ function swapContent(viewer, newEl) {
 
 /* ── Recipe HTML renderer ───────────────────────────────────────────────────── */
 // bookMeta passados para montar os botões de navegação corretos.
-function renderRecipeHTML(recipe, bookMeta) {
+function renderRecipeHTML(recipe, bookMeta, isSubscriber) {
     // Suporte aos dois schemas de campo (Livro 1: prepTime/steps; Livro 2+: time/instructions)
     const tempo = recipe.prepTime || recipe.time || '—';
     const passos = recipe.steps || recipe.instructions || [];
@@ -169,6 +224,17 @@ function renderRecipeHTML(recipe, bookMeta) {
         ? ''  // já é a última receita do livro
         : `<button onclick="event.preventDefault(); handleRecipeClick(${nextId})" class="promo-btn next-recipe-btn"
                    style="margin:0; padding:12px 24px; font-size:15px;">Próxima Receita →</button>`;
+
+    // Assinante: troca "Adquirir Livro" por "Ler no Portal" (sem link de download)
+    const bookKey = bookMeta ? bookMeta.key : null;
+    const payLink = bookKey && BOOK_PAYMENT_LINKS[bookKey] ? BOOK_PAYMENT_LINKS[bookKey] : null;
+    const btnAquisicao = isSubscriber
+        ? `<span style="display:inline-flex; align-items:center; gap:6px; background:#f0fdf4;
+                        color:#166534; font-weight:700; font-size:13px; padding:6px 14px;
+                        border-radius:20px; border:1px solid #86efac;">
+               ✅ Acesso de Assinante
+           </span>`
+        : '';
 
     return `
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; gap:20px;">
@@ -189,7 +255,7 @@ function renderRecipeHTML(recipe, bookMeta) {
             </button>
         </div>
 
-        <div style="display:inline-flex; align-items:center; gap:10px; background:#f1f8f1;
+        <div style="display:inline-flex; align-items:center; gap:10px; background:#fdf8f0;
                     border:1px solid var(--sage-green); border-radius:12px;
                     padding:10px 22px; margin-bottom:36px;">
             <i class="ph ph-timer" style="font-size:22px; color:var(--sage-green);"></i>
@@ -226,10 +292,11 @@ function renderRecipeHTML(recipe, bookMeta) {
             </div>
         </div>
 
-        <div style="display:flex; gap:12px; margin-top:36px; justify-content:center; flex-wrap:wrap;">
+        <div style="display:flex; gap:12px; margin-top:36px; justify-content:center; flex-wrap:wrap; align-items:center;">
             <button onclick="event.preventDefault(); loadBooksShowcase()" class="promo-btn"
-                    style="margin:0; padding:12px 24px; font-size:15px; background:#e8f0ea; color:var(--sage-green-dark);">← Vitrine de Livros</button>
+                    style="margin:0; padding:12px 24px; font-size:15px; background:#fdf8f0; color:var(--sage-green-dark);">← Vitrine de Livros</button>
             ${nextBtn}
+            ${btnAquisicao}
         </div>
     `;
 }
@@ -244,7 +311,7 @@ function renderGlobalPaywallHTML() {
         </p>
         <div class="promo-banner" style="margin-top:0; padding:52px 40px;">
             <div style="font-size:48px; margin-bottom:16px;">📚</div>
-            <span style="display:inline-block; background:#f1f8f1; color:var(--sage-green); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:4px 14px; border-radius:20px; margin-bottom:20px;">Acesso Completo</span>
+            <span style="display:inline-block; background:#fdf8f0; color:var(--sage-green); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:4px 14px; border-radius:20px; margin-bottom:20px;">Acesso Completo</span>
             <h2 style="font-size:26px; margin-bottom:20px; line-height:1.35; color:var(--sage-green-dark);">
                 Você explorou suas 5 receitas gratuitas!
             </h2>
@@ -264,20 +331,38 @@ function renderGlobalPaywallHTML() {
     `;
 }
 
-/* ── Per-book Paywall banner (recipe #6+ in each book) ──────────────────────── */
+/* ── Per-book Paywall banner (recipe #6+ in each book) — só para NÃO-assinantes ── */
 function renderPaywallHTML(book) {
     const bookTitle = book ? book.title : 'nosso livro completo';
-    const payLink   = (book && book.key && BOOK_PAYMENT_LINKS[book.key])
+    // Link individual por livro (BOOK_PAYMENT_LINKS) — compra avulsa
+    const payLink = (book && book.key && BOOK_PAYMENT_LINKS[book.key])
         ? BOOK_PAYMENT_LINKS[book.key] : null;
-    const btnHtml   = payLink
+
+    const user = window.SeniorAuth ? window.SeniorAuth.getUser() : null;
+    const isLogged = !!user;
+
+    // Botão principal: compra avulsa do livro (sempre disponível)
+    const btnCompraAvulsa = payLink
         ? `<a href="${payLink}" target="_blank" rel="noopener noreferrer"
                class="promo-btn next-recipe-btn"
                style="font-size:17px; padding:16px 48px; display:inline-block; margin-top:0;">
-               📖 Adquirir este Livro em PDF →</a>`
+               📖 Adquirir este Livro em PDF — R$ 19,90</a>`
         : `<button disabled class="promo-btn"
                style="font-size:17px; padding:16px 48px; display:inline-block; margin-top:0;
                       opacity:.45; cursor:not-allowed; background:var(--sage-green); border:none; color:#fff;">
                Em Breve</button>`;
+
+    // Alternativa: assinar o clube para acessar todos os livros
+    const ctaClube = isLogged
+        ? `<a href="${window.CLUBE_CHECKOUT_URL}" target="_blank" rel="noopener noreferrer"
+               style="display:inline-block; margin-top:12px; font-size:14px; color:var(--sage-green-dark);
+                      font-weight:700; text-decoration:underline;">
+               ⭐ Ou assine o Clube e acesse todos os livros por R$ 20/mês →</a>`
+        : `<button onclick="window.SeniorAuth.loginComGoogle()"
+               style="display:inline-block; margin-top:12px; font-size:14px; color:var(--sage-green-dark);
+                      font-weight:700; background:none; border:none; cursor:pointer; text-decoration:underline;">
+               🔐 Entrar e assinar o Clube — acesse tudo por R$ 20/mês →</button>`;
+
     return `
         <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
                   color:var(--sage-green); margin-bottom:24px; cursor:pointer;"
@@ -296,8 +381,11 @@ function renderPaywallHTML(book) {
             </p>
             <div style="font-size:42px; font-weight:900; color:var(--sage-green); margin-bottom:6px; letter-spacing:-1px;">R$ 19,90</div>
             <div style="font-size:13px; color:var(--text-muted); margin-bottom:32px;">acesso imediato · PDF de alta qualidade · pronto para impressão</div>
-            ${btnHtml}
-            <p style="font-size:12px; color:var(--text-muted); margin-top:24px;">
+            ${btnCompraAvulsa}
+            <div style="margin-top:16px; padding-top:16px; border-top:1px dashed #e8d4a8;">
+                ${ctaClube}
+            </div>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:20px;">
                 ✓ Pagamento seguro &nbsp;·&nbsp; ✓ PDF enviado por e-mail &nbsp;·&nbsp; ✓ 50 receitas completas
             </p>
         </div>
@@ -633,11 +721,21 @@ function goToAd(index) {
 
 function renderAd() {
     const container = document.getElementById('ad-showcase-root');
+    if (!container) return;
     const ad = ads[currentAdIndex];
+    const isSubscriber = window.SeniorAuth && window.SeniorAuth.isSubscriber();
 
     const dotsHtml = ads.map((_, i) =>
         `<span class="ad-dot ${i === currentAdIndex ? 'active' : ''}" onclick="goToAd(${i})" title="Livro ${i + 1}"></span>`
     ).join('');
+
+    // Só assinante pago vê "Ler no Portal" — logado sem assinatura vê "Adquirir"
+    const adBtnHtml = isSubscriber
+        ? `<button onclick="window.handleBookClick(${ad.livro})" class="ad-btn"
+               style="border:none;cursor:pointer;width:100%;display:block;text-align:center;">
+               📖 Ler no Portal →
+           </button>`
+        : `<a href="${ad.link}" target="_blank" rel="noopener noreferrer" class="ad-btn">${ad.btnText}</a>`;
 
     container.innerHTML = `
         <div class="ad-showcase">
@@ -648,7 +746,7 @@ function renderAd() {
             <div class="ad-content">
                 <h4 class="ad-title">${ad.title}</h4>
                 <p class="ad-subtitle">${ad.subtitle}</p>
-                <a href="${ad.link}" target="_blank" rel="noopener noreferrer" class="ad-btn">${ad.btnText}</a>
+                ${adBtnHtml}
                 <div class="ad-dots">${dotsHtml}</div>
             </div>
         </div>
@@ -724,8 +822,8 @@ function renderLojaConforto() {
 
     const cards = window.LOJA_TOPICOS.map((t, i) => `
         <a href="${t.link}" target="_blank" rel="noopener noreferrer"
-           style="text-decoration:none; display:flex; flex-direction:column;
-                  background:#fff; border:1px solid #e4ede6; border-radius:18px;
+           style="text-decoration:none; display:flex; flex-direction:column; outline:none;
+                  background:#fff; border:1px solid #f0e8d4; border-radius:18px;
                   padding:28px 22px 24px; gap:14px;
                   box-shadow:0 2px 10px rgba(0,0,0,0.05);
                   transition:box-shadow .2s,transform .2s;"
@@ -741,18 +839,18 @@ function renderLojaConforto() {
                 TOP ${i + 1}
             </div>
 
-            <h3 style="font-size:20px; font-weight:900; color:#1a2e1a;
+            <h3 style="font-size:20px; font-weight:900; color:#2a1a06;
                        margin:0; line-height:1.25;">
                 ${t.titulo}
             </h3>
 
-            <p style="font-size:14px; color:#5a7060; line-height:1.65; margin:0; flex:1;">
+            <p style="font-size:14px; color:#7a5e32; line-height:1.65; margin:0; flex:1;">
                 ${t.beneficio}
             </p>
 
-            <div style="margin-top:4px; background:var(--sage-green); color:#fff;
-                        text-align:center; font-size:14px; font-weight:700;
-                        padding:13px 16px; border-radius:11px;
+            <div style="margin-top:4px; background:#ffffff; color:#000000;
+                        border:2px solid #C5A059; text-align:center; font-size:14px; font-weight:700;
+                        padding:13px 16px; border-radius:8px;
                         letter-spacing:.3px;">
                 Ver na Amazon →
             </div>
@@ -768,10 +866,10 @@ function renderLojaConforto() {
            onclick="loadNewsFeed()">← Início</p>
 
         <div style="margin-bottom:32px;">
-            <h1 style="font-size:28px; font-weight:900; color:#1a2e1a; margin:0 0 8px;">
+            <h1 style="font-size:28px; font-weight:900; color:#2a1a06; margin:0 0 8px;">
                 Conforto do Lar
             </h1>
-            <p style="font-size:15px; color:#5a7060; margin:0;">
+            <p style="font-size:15px; color:#7a5e32; margin:0;">
                 Os 10 itens que mais melhoram o conforto e a segurança em casa. Clique para ver na Amazon.
             </p>
         </div>
@@ -780,15 +878,10 @@ function renderLojaConforto() {
                   letter-spacing:.7px; color:var(--sage-green); margin-bottom:12px;">
             🏆 Top 10 Categorias
         </p>
-        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:18px;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
             ${cards}
         </div>
 
-        <p style="font-size:11px; color:#9ab09c; margin-top:32px; text-align:center;
-                  padding-top:18px; border-top:1px solid #e8eee9; line-height:1.7;">
-            ℹ️ Os links acima são de afiliado Amazon. Ao comprar por aqui, o SeniorHub recebe uma
-            pequena comissão — sem custo extra para você. Ajuda o portal a continuar gratuito! 💚
-        </p>
     `;
 
 
@@ -832,8 +925,8 @@ function renderExercicios() {
 
     const cards = EXERCICIOS_CARDS.map(c => `
         <a href="${c.link}" target="_blank" rel="noopener noreferrer"
-           style="text-decoration:none; display:flex; flex-direction:column;
-                  background:#fff; border:1px solid #e4ede6; border-radius:18px;
+           style="text-decoration:none; display:flex; flex-direction:column; outline:none;
+                  background:#fff; border:1px solid #f0e8d4; border-radius:18px;
                   padding:28px 22px 24px; gap:12px;
                   box-shadow:0 2px 10px rgba(0,0,0,0.05);
                   transition:box-shadow .2s,transform .2s;"
@@ -842,17 +935,17 @@ function renderExercicios() {
 
             <div style="font-size:44px; line-height:1;">${c.emoji}</div>
 
-            <h3 style="font-size:19px; font-weight:900; color:#1a2e1a; margin:0; line-height:1.25;">
+            <h3 style="font-size:19px; font-weight:900; color:#2a1a06; margin:0; line-height:1.25;">
                 ${c.titulo}
             </h3>
 
-            <p style="font-size:14px; color:#5a7060; line-height:1.65; margin:0; flex:1;">
+            <p style="font-size:14px; color:#7a5e32; line-height:1.65; margin:0; flex:1;">
                 ${c.descricao}
             </p>
 
-            <div style="margin-top:4px; background:var(--sage-green); color:#fff;
-                        text-align:center; font-size:14px; font-weight:700;
-                        padding:13px 16px; border-radius:11px; letter-spacing:.3px;">
+            <div style="margin-top:4px; background:#ffffff; color:#000000;
+                        border:2px solid #C5A059; text-align:center; font-size:14px; font-weight:700;
+                        padding:13px 16px; border-radius:8px; letter-spacing:.3px;">
                 ${c.btn} →
             </div>
         </a>
@@ -866,23 +959,18 @@ function renderExercicios() {
            onclick="loadNewsFeed()">← Início</p>
 
         <div style="margin-bottom:32px;">
-            <h1 style="font-size:28px; font-weight:900; color:#1a2e1a; margin:0 0 8px;">
+            <h1 style="font-size:28px; font-weight:900; color:#2a1a06; margin:0 0 8px;">
                 Exercícios em Casa
             </h1>
-            <p style="font-size:15px; color:#5a7060; margin:0;">
+            <p style="font-size:15px; color:#7a5e32; margin:0;">
                 Equipamentos e suplementos para manter o corpo ativo e forte sem sair de casa.
             </p>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:18px;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
             ${cards}
         </div>
 
-        <p style="font-size:11px; color:#9ab09c; margin-top:32px; text-align:center;
-                  padding-top:18px; border-top:1px solid #e8eee9; line-height:1.7;">
-            ℹ️ Links de afiliado Amazon. Ao comprar por aqui, o SeniorHub recebe uma pequena
-            comissão — sem custo extra para você. Obrigado pelo apoio! 💚
-        </p>
     `;
 
     swapContent(viewer, wrapper);
@@ -961,14 +1049,14 @@ function renderViagens() {
     const viewer = document.getElementById('content-viewer');
 
     const cards = VIAGENS_DESTINOS.map(d => `
-        <div style="background:#fff; border:1px solid #e4ede6; border-radius:20px;
+        <div style="background:#fff; border:1px solid #f0e8d4; border-radius:20px;
                     overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.05);
                     transition:box-shadow .2s, transform .2s; display:flex; flex-direction:column;"
              onmouseover="this.style.boxShadow='0 8px 28px rgba(0,0,0,0.12)'; this.style.transform='translateY(-4px)';"
              onmouseout="this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)'; this.style.transform='translateY(0)';">
 
             <!-- Card hero -->
-            <div style="background:linear-gradient(135deg,#1a2e1a 0%,#3a7d44 100%);
+            <div style="background:linear-gradient(135deg,#2a1a06 0%,#C5A059 100%);
                         padding:28px 24px 20px; display:flex; flex-direction:column; gap:10px;">
                 <div style="font-size:46px; line-height:1;">${d.emoji}</div>
                 <span style="display:inline-block; background:rgba(255,255,255,0.2); color:#fff;
@@ -982,15 +1070,16 @@ function renderViagens() {
 
             <!-- Card body -->
             <div style="padding:20px 24px 24px; display:flex; flex-direction:column; gap:14px; flex:1;">
-                <p style="font-size:14px; color:#5a7060; line-height:1.65; margin:0; flex:1;">
+                <p style="font-size:14px; color:#7a5e32; line-height:1.65; margin:0; flex:1;">
                     ${d.descricao}
                 </p>
                 <a href="${resolverLinkViagem(d)}" target="_blank" rel="noopener noreferrer"
-                   style="display:block; text-align:center; background:var(--sage-green); color:#fff;
-                          font-size:14px; font-weight:700; padding:13px 16px; border-radius:11px;
+                   style="display:block; text-align:center; background:#ffffff; color:#000000;
+                          border:2px solid #C5A059; font-size:14px; font-weight:700;
+                          padding:13px 16px; border-radius:8px;
                           text-decoration:none; letter-spacing:.3px;"
-                   onmouseover="this.style.background='#2d6a4f';"
-                   onmouseout="this.style.background='var(--sage-green)';">
+                   onmouseover="this.style.background='#fdf8f0';"
+                   onmouseout="this.style.background='#ffffff';">
                     ${resolverTextoViagem(d)}
                 </a>
             </div>
@@ -1005,25 +1094,27 @@ function renderViagens() {
            onclick="loadNewsFeed()">← Início</p>
 
         <div style="margin-bottom:32px;">
-            <h1 style="font-size:28px; font-weight:900; color:#1a2e1a; margin:0 0 8px;">
+            <h1 style="font-size:28px; font-weight:900; color:#2a1a06; margin:0 0 8px;">
                 Guia de Viagens
             </h1>
-            <p style="font-size:15px; color:#5a7060; margin:0;">
+            <p style="font-size:15px; color:#7a5e32; margin:0;">
                 Destinos selecionados para quem viaja com conforto, cultura e tranquilidade.
             </p>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:18px;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
             ${cards}
         </div>
 
-        <p style="font-size:11px; color:#9ab09c; margin-top:32px; text-align:center;
-                  padding-top:18px; border-top:1px solid #e8eee9; line-height:1.7;">
-            ℹ️ Alguns links são de afiliado (Decolar &amp; Booking). Ao reservar por aqui, o SeniorHub recebe uma pequena comissão — sem custo extra para você. 💚
-        </p>
     `;
 
     swapContent(viewer, wrapper);
+}
+
+/* ── handleNewsClick (fallback para cards estáticos do feed) ────────────── */
+function handleNewsClick(id) {
+    // Cards estáticos do feed não têm ação específica — vai para o início
+    loadNewsFeed();
 }
 
 /* ── Global exports (required for inline onclick attributes in HTML) ─────── */

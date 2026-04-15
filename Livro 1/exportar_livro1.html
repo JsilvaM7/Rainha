@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relíquias da Cozinha — Livro 1 SeniorHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --sage-green:      #84a98c;
+  --sage-green-dark: #52796f;
+  --sage-light:      #f1f8f1;
+  --text-dark:       #1a2e1a;
+  --text-muted:      #5a7060;
+  --border:          #e4ede6;
+  --white:           #ffffff;
+  --bg:              #f5f7f5;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 17px;
+  color: var(--text-dark);
+  line-height: 1.65;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Print: uma receita = uma folha ─────────────────────────────── */
+@media print {
+  /* Configuração geral de página A4 */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 18mm;
+  }
+
+  body {
+    background: #fff !important;
+    font-size: 12px !important;
+    color: #1a1a1a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Oculta tudo que é só de tela */
+  .no-print { display: none !important; }
+
+  /* Wrapper sem padding extra */
+  .book-wrapper {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Cada receita inicia em folha nova e nunca é cortada no meio */
+  .recipe-card {
+    break-before: page !important;
+    page-break-before: always !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    border-radius: 10px !important;
+    padding: 24px !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Capa e sumário: quebra depois */
+  .capa,
+  .sumario-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Forçar nova página após cada bloco marcado */
+  .page-break {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+
+  /* Step cards não quebram */
+  .step-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Box de ingredientes não quebra */
+  .nossa-cozinha-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Cabeçalho da receita não quebra */
+  .recipe-header {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Página final: não quebra */
+  .final-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border-radius: 10px !important;
+  }
+
+  /* Ajuste de fontes para A4 */
+  .recipe-title  { font-size: 18px !important; }
+  .capa-titulo   { font-size: 36px !important; }
+  .step-text     { font-size: 12px !important; }
+  .check-list li { font-size: 12px !important; }
+}
+
+/* ── Botão de Imprimir (só tela) ────────────────────────────────── */
+.print-bar {
+  position: fixed; top:0; left:0; width:100%; z-index:999;
+  background: var(--sage-green-dark);
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 12px 32px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.print-bar span { color:#fff; font-weight:700; font-size:15px; }
+.print-btn {
+  background:#fff; color:var(--sage-green-dark);
+  border:none; border-radius:10px;
+  padding:10px 28px; font-weight:800; font-size:15px;
+  cursor:pointer; transition:all .2s;
+}
+.print-btn:hover { background:var(--sage-light); transform:translateY(-1px); }
+
+/* ── Wrapper ─────────────────────────────────────────────────────── */
+.book-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+}
+
+/* ── CAPA ─────────────────────────────────────────────────────────── */
+.capa {
+  background: linear-gradient(160deg, #1a2e1a 0%, #2d6a4f 55%, #84a98c 100%);
+  border-radius: 28px;
+  padding: 80px 60px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 32px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.capa::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 30% 70%, rgba(132,169,140,.3) 0%, transparent 60%);
+}
+.capa-badge {
+  display:inline-block;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 99px;
+  padding: 6px 20px;
+  font-size: 12px; font-weight:800;
+  letter-spacing: 1.5px; text-transform:uppercase;
+  position:relative;
+}
+.capa-emoji { font-size: 64px; line-height:1; position:relative; }
+.capa-colecao {
+  font-size: 12px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; opacity:.75; position:relative;
+}
+.capa-titulo {
+  font-size: 48px; font-weight:900; line-height:1.15;
+  letter-spacing:-1px; position:relative;
+}
+.capa-subtitulo {
+  font-size: 20px; font-weight:400; opacity:.85;
+  max-width:480px; line-height:1.5; position:relative;
+}
+.capa-divider {
+  width:60px; height:3px;
+  background:rgba(255,255,255,.4); border-radius:2px; position:relative;
+}
+.capa-info {
+  font-size:14px; opacity:.7; position:relative;
+  display:flex; gap:24px; align-items:center;
+}
+.capa-info span { display:flex; align-items:center; gap:6px; }
+
+/* ── Sumário ─────────────────────────────────────────────────────── */
+.sumario-card {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.sumario-header {
+  text-align:center; margin-bottom:36px;
+}
+.sumario-header .label {
+  display:inline-block; background:var(--sage-light); color:var(--sage-green);
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  padding:4px 16px; border-radius:99px; margin-bottom:14px;
+}
+.sumario-header h2 {
+  font-size:26px; font-weight:900; color:var(--text-dark);
+}
+.sumario-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 2px solid var(--sage-green);
+}
+.sumario-item {
+  display:flex; align-items:baseline; gap:10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  transition: background .15s;
+}
+.sumario-item:nth-child(odd) { border-right:1px solid var(--border); }
+.sumario-item .num {
+  font-weight:800; font-size:11px; color:var(--sage-green);
+  min-width:26px; flex-shrink:0;
+}
+.sumario-item .title-text { color:var(--text-dark); font-weight:500; }
+.sumario-item.completa .title-text { color:var(--sage-green-dark); font-weight:700; }
+
+/* ── Receita Card ─────────────────────────────────────────────────── */
+.recipe-card {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 48px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  /* Evitar corte na tela também (scroll longo) */
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.recipe-header {
+  text-align:center;
+  padding-bottom: 32px;
+  border-bottom: 2px solid var(--sage-light);
+  margin-bottom: 36px;
+}
+.recipe-num {
+  display:inline-block; background:var(--sage-light); color:var(--sage-green);
+  font-size:11px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
+  padding:4px 16px; border-radius:99px; margin-bottom:14px;
+}
+.recipe-title {
+  font-size: 30px; font-weight:900; color:var(--text-dark);
+  line-height:1.2; margin-bottom:16px;
+}
+.recipe-time {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--sage-light); border:1px solid var(--sage-green);
+  border-radius:12px; padding:8px 20px;
+  font-size:14px; font-weight:700; color:var(--sage-green-dark);
+}
+
+/* ── Ingredientes + Utensílios ───────────────────────────────────── */
+.nossa-cozinha-box {
+  display:grid; grid-template-columns:1fr 1fr; gap:36px;
+  background:#fdfdfd; border:1px solid #f0f0f0;
+  border-radius:18px; padding:32px; margin-bottom:36px;
+}
+.section-label {
+  font-size:12px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.8px; color:var(--sage-green); margin-bottom:16px;
+}
+.check-list { list-style:none; }
+.check-list li {
+  display:flex; align-items:flex-start; gap:10px;
+  padding: 7px 0; font-size:16px; color:var(--text-dark);
+  border-bottom:1px solid #f5f5f5;
+}
+.check-list li:last-child { border-bottom:none; }
+.icon { color:var(--sage-green); font-weight:900; flex-shrink:0; margin-top:2px; }
+
+/* ── Modo de Preparo ─────────────────────────────────────────────── */
+.preparo-section { margin-bottom:8px; }
+.preparo-title {
+  text-align:center; font-size:18px; font-weight:800;
+  color:var(--sage-green-dark); text-transform:uppercase;
+  letter-spacing:.6px; margin-bottom:24px;
+}
+.step-card {
+  display:flex; gap:18px; align-items:flex-start;
+  background:#fff; border:1px solid var(--border);
+  border-radius:14px; padding:18px 22px; margin-bottom:14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+.step-num {
+  background:var(--sage-green); color:#fff;
+  border-radius:50%; width:32px; height:32px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:900; flex-shrink:0;
+}
+.step-text { font-size:16px; color:#334155; line-height:1.7; padding-top:4px; }
+
+/* ── Rodapé da Receita ───────────────────────────────────────────── */
+.recipe-footer {
+  margin-top:32px; padding-top:24px;
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+.recipe-footer p {
+  font-size:13px; color:var(--text-muted);
+}
+
+/* ── Página final ─────────────────────────────────────────────────── */
+.final-card {
+  background: linear-gradient(135deg, #1a2e1a 0%, #3a7d44 100%);
+  border-radius: 28px; padding:60px 48px;
+  text-align:center; color:#fff;
+}
+.final-card h2 { font-size:28px; font-weight:900; margin-bottom:16px; }
+.final-card p  { font-size:16px; opacity:.85; max-width:480px; margin:0 auto 28px; line-height:1.7; }
+.final-badge {
+  display:inline-block; background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:14px; padding:14px 36px;
+  font-size:22px; font-weight:900;
+}
+
+/* ── Responsivo ──────────────────────────────────────────────────── */
+@media(max-width:640px){
+  .capa-titulo { font-size:32px; }
+  .nossa-cozinha-box { grid-template-columns:1fr; }
+  .sumario-grid { grid-template-columns:1fr; }
+  .sumario-item:nth-child(odd) { border-right:none; }
+  .book-wrapper { padding:80px 14px 40px; }
+  .recipe-card, .sumario-card { padding:28px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Barra de Impressão (some ao imprimir) -->
+<div class="print-bar no-print">
+  <span>📖 Livro 1 — Relíquias da Cozinha &nbsp;|&nbsp; SeniorHub</span>
+  <button class="print-btn" onclick="window.print()">🖨️ Salvar como PDF</button>
+</div>
+
+<div class="book-wrapper">
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CAPA                                                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="capa page-break">
+    <div class="capa-badge">SeniorHub · Coleção Exclusiva</div>
+    <div class="capa-emoji">🍲</div>
+    <div class="capa-colecao">Livro 1 da Coleção</div>
+    <h1 class="capa-titulo">Relíquias<br>da Cozinha</h1>
+    <div class="capa-divider"></div>
+    <p class="capa-subtitulo">Sabores que Atravessam Gerações — 50 receitas práticas, nutritivas e afetivas para o seu dia a dia.</p>
+    <div class="capa-info">
+      <span>🍽️ 50 Receitas</span>
+      <span>·</span>
+      <span>👩‍🍳 Fácil de Fazer</span>
+      <span>·</span>
+      <span>🌿 Culinária Afetiva</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SUMÁRIO                                                       -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="sumario-card page-break">
+    <div class="sumario-header">
+      <div class="label">Índice Completo</div>
+      <h2>As 50 Receitas do Livro</h2>
+    </div>
+    <div class="sumario-grid" id="sumario-grid">
+      <!-- Preenchido pelo script abaixo -->
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- RECEITAS (renderizadas pelo script)                          -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div id="receitas-container"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- PÁGINA FINAL                                                  -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <div class="final-card">
+    <h2>Bom Apetite! 🌿</h2>
+    <p>Que cada refeição preparada com este livro traga saúde, alegria e afeto para a sua mesa e para quem você ama.</p>
+    <div class="final-badge">SeniorHub 💚</div>
+    <p style="margin-top:24px; font-size:13px; opacity:.6;">© 2025 SeniorHub — Todos os direitos reservados.<br>Este conteúdo é exclusivo para adquirentes do Livro 1.</p>
+  </div>
+
+</div><!-- /book-wrapper -->
+
+<script src="livro1_a.js"></script>
+<script src="livro1_b.js"></script>
+<script src="livro1_c.js"></script>
+<script>
+// ── Banco de dados completo do Livro 1 ────────────────────────────────────────
+const LIVRO1 = [
+  {
+    id: 1, titulo: "Sopa Nutritiva de Abóbora com Gengibre", tempo: "25 minutos",
+    ingredientes: ["500g de abóbora cabotiá","1 pedaço pequeno de gengibre","1 cebola média","2 dentes de alho","Sal e azeite a gosto"],
+    utensilios: ["Panela grande","Liquidificador ou mixer","Colher de pau","Faca afiada"],
+    passos: [
+      "Descasque a abóbora com cuidado e corte em cubos médios de aproximadamente 3 cm.",
+      "Pique a cebola e o alho bem miudinhos para que soltem todo o sabor durante o refogado.",
+      "Em uma panela grande, aqueça um fio de azeite em fogo médio e refogue a cebola e o alho até ficarem transparentes e levemente dourados.",
+      "Adicione os cubos de abóbora e o gengibre ralado na panela, mexendo bem para incorporar os sabores.",
+      "Cubra tudo com água quente — apenas o suficiente para cobrir a abóbora — e tempere com sal a gosto.",
+      "Deixe cozinhar com a panela semi-tampada em fogo médio por cerca de 20 minutos, até que a abóbora esteja completamente macia.",
+      "Com muito cuidado para não se queimar, transfira tudo para o liquidificador e bata até obter um creme liso e aveludado.",
+      "Volte o creme para a panela e ajuste o sal. Se necessário, adicione um pouco mais de água quente para a consistência desejada.",
+      "Aqueça em fogo baixo por mais 3 minutos, mexendo delicadamente para não grudar.",
+      "Prove e ajuste os temperos a gosto, acrescentando mais gengibre se preferir um sabor mais intenso.",
+      "Sirva bem quentinho em tigelas fundas, finalizando com um fio de azeite extra virgem.",
+      "Aproveite cada colherada dessa sopa que aquece o coração e fortalece o corpo."
+    ]
+  },
+  {
+    id: 2, titulo: "Peixe Assado com Ervas da Horta", tempo: "30 minutos",
+    ingredientes: ["2 filés de tilápia ou pescada","Suco de 1 limão","Alecrim e tomilho frescos","Rodelas de tomate","Azeite extra virgem"],
+    utensilios: ["Assadeira média","Papel manteiga","Pincel de silicone","Travessa para servir"],
+    passos: [
+      "Pré-aqueça o forno a 180°C por pelo menos 10 minutos antes de começar.",
+      "Lave bem os filés de peixe em água corrente e seque delicadamente com papel toalha.",
+      "Tempere os filés com o suco de limão, sal e uma pitada de pimenta branca dos dois lados.",
+      "Deixe o peixe descansar no tempero por 10 minutos para absorver bem os sabores.",
+      "Forre a assadeira com papel manteiga, evitando que o peixe grude e facilite a limpeza.",
+      "Acomode os filés delicadamente na assadeira, deixando um pequeno espaço entre eles.",
+      "Distribua as rodelas de tomate por cima de cada filé como uma cobertura protetora.",
+      "Espalhe os ramos de alecrim e as folhinhas de tomilho por cima, pressionando levemente.",
+      "Regue com um fio generoso de azeite extra virgem para manter a suculência durante o forno.",
+      "Leve ao forno por 20 a 25 minutos — o filé estará pronto quando ficar branquinho e soltar lascas facilmente.",
+      "Retire com cuidado usando luvas de forno e transfira para uma travessa bonita.",
+      "Este prato leve e perfumado é perfeito para um almoço tranquilo em família."
+    ]
+  },
+  {
+    id: 3, titulo: "Arroz Integral com Vegetais Coloridos", tempo: "40 minutos",
+    ingredientes: ["1 xícara de arroz integral","1 cenoura ralada","1/2 xícara de ervilhas frescas","Salsinha picada","1 dente de alho amassado"],
+    utensilios: ["Panela de arroz ou comum","Ralador de legumes","Escorredor","Colher de servir"],
+    passos: [
+      "Lave o arroz integral em água corrente, esfregando levemente com as mãos, e escorra bem.",
+      "Em uma panela, aqueça um fio de azeite e refogue o alho amassado por 1 minuto, até perfumar.",
+      "Adicione o arroz escorrido e mexa por 2 minutos para que cada grão absorva o sabor do azeite.",
+      "Acrescente 2,5 xícaras de água quente, uma pitada de sal e misture bem.",
+      "Tampe a panela, reduza o fogo ao mínimo e cozinhe por 30 minutos sem abrir.",
+      "Enquanto isso, rale a cenoura na parte grossa do ralador e reserve junto com as ervilhas.",
+      "Passados os 30 minutos, abra rapidamente a tampa e disponha a cenoura e as ervilhas por cima sem mexer.",
+      "Tampe novamente e deixe no fogo baixo por mais 5 minutos para cozinhar os legumes no vapor.",
+      "Desligue o fogo e deixe descansar tampado por 5 minutos — isso deixa o arroz bem soltinho.",
+      "Solte os grãos com um garfo, fazendo movimentos leves de baixo para cima.",
+      "Misture a salsinha picada fresca para dar cor e frescor ao prato.",
+      "Uma refeição completa e cheia de fibras que cuida da nossa saúde com muito sabor."
+    ]
+  },
+  {
+    id: 4, titulo: "Salada Tropical com Molho de Iogurte", tempo: "15 minutos",
+    ingredientes: ["Folhas de alface variadas","1 manga madura cortada em cubos","1 pote de iogurte natural","Hortelã fresca","Mel e suco de limão"],
+    utensilios: ["Saladeira grande","Tigela pequena para o molho","Batedor de arame (fouet)","Pinça de salada"],
+    passos: [
+      "Lave todas as folhas de alface em água corrente, uma por uma, removendo qualquer sujeira.",
+      "Seque as folhas delicadamente usando um pano limpo ou centrifugador de salada para não murcharem.",
+      "Rasgue as folhas com as mãos em pedaços médios, mantendo um visual rústico e natural.",
+      "Corte a manga madura em cubinhos de aproximadamente 1,5 cm, escolhendo uma bem docinha e firme.",
+      "Em uma tigela separada, despeje o iogurte natural e adicione o suco de meio limão.",
+      "Acrescente uma colher de sopa de mel ao molho e bata bem com o fouet até ficar homogêneo.",
+      "Pique a hortelã fresca bem fininha e misture ao molho, reservando algumas folhinhas para decorar.",
+      "Arrume as folhas na saladeira de forma espaçosa, criando uma base bonita e volumosa.",
+      "Distribua os cubinhos de manga por cima das folhas, criando um contraste tropical de cores.",
+      "Regue a salada com o molho de iogurte apenas na hora de servir para não murchar as folhas.",
+      "Use a pinça para misturar levemente, garantindo que tudo fique bem temperado.",
+      "Decore com as folhinhas de hortelã reservadas e sirva imediatamente para aproveitar o frescor."
+    ]
+  },
+  {
+    id: 5, titulo: "Mousse de Abacate e Cacau", tempo: "10 min + 1h gelando",
+    ingredientes: ["1 abacate maduro médio","3 colheres de cacau em pó","2 colheres de mel","Gotas de extrato de baunilha","Nozes picadas para finalizar"],
+    utensilios: ["Processador ou liquidificador","Espátula de silicone","Taças individuais","Geladeira"],
+    passos: [
+      "Escolha um abacate bem maduro — ele deve ceder levemente à pressão dos dedos, garantindo cremosidade máxima.",
+      "Corte o abacate ao meio, retire o caroço e extraia toda a polpa com uma colher grande.",
+      "Coloque a polpa no processador junto com o cacau em pó peneirado para evitar grumos.",
+      "Adicione o mel e as gotinhas de extrato de baunilha para perfumar e adoçar naturalmente.",
+      "Bata em velocidade alta por 2 minutos, raspando as bordas com a espátula a cada 30 segundos.",
+      "A textura deve ficar extremamente lisa e aveludada, sem nenhum pedacinho de abacate.",
+      "Prove e ajuste a doçura com mais mel se necessário — respeite o seu paladar!",
+      "Distribua o mousse em taças individuais com uma colher ou saco de confeiteiro para ficar elegante.",
+      "Leve à geladeira por no mínimo 1 hora para firmar e desenvolver os sabores.",
+      "Na hora de servir, retire da geladeira e deixe descansar 5 minutos em temperatura ambiente.",
+      "Finalize cada taça com nozes picadas por cima — o crocante contrasta lindamente com a cremosidade.",
+      "Uma sobremesa saudável e surpreendente que prova que comer bem pode ser um prazer!"
+    ]
+  }
+];
+
+// ── Combina as 50 receitas completas ─────────────────────────────────────────
+const TODOS = [
+  ...LIVRO1,
+  ...(window.LIVRO1_A || []),
+  ...(window.LIVRO1_B || []),
+  ...(window.LIVRO1_C || [])
+];
+
+// ── Renderiza o Sumário ────────────────────────────────────────────
+function renderSumario() {
+  const grid = document.getElementById('sumario-grid');
+  TODOS.forEach(r => {
+    const item = document.createElement('div');
+    item.className = 'sumario-item completa';
+    item.innerHTML = `<span class="num">${String(r.id).padStart(2,'0')}.</span>
+                      <span class="title-text">✓ ${r.titulo}</span>`;
+    grid.appendChild(item);
+  });
+}
+
+// ── Renderiza cada Receita ────────────────────────────────────────
+function renderReceitas() {
+  const container = document.getElementById('receitas-container');
+  TODOS.forEach((r, idx) => {
+    const isLast = idx === TODOS.length - 1;
+    const div = document.createElement('div');
+    // break-before: page definido no CSS — nenhuma classe extra necessária
+    div.className = 'recipe-card';
+
+    div.innerHTML = `
+      <div class="recipe-header">
+        <div class="recipe-num">Receita ${r.id} de 50</div>
+        <h1 class="recipe-title">${r.titulo}</h1>
+        <div class="recipe-time">⏱️ Tempo de Preparo: ${r.tempo}</div>
+      </div>
+
+      <div class="nossa-cozinha-box">
+        <div>
+          <div class="section-label">🛒 Ingredientes</div>
+          <ul class="check-list">
+            ${r.ingredientes.map(i => `<li><span class="icon">✓</span> ${i}</li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <div class="section-label">🍴 Utensílios</div>
+          <ul class="check-list">
+            ${r.utensilios.map(u => `<li><span class="icon">◍</span> ${u}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+
+      <div class="preparo-section">
+        <div class="preparo-title">Modo de Preparo</div>
+        ${r.passos.map((p, i) => `
+          <div class="step-card">
+            <div class="step-num">${i + 1}</div>
+            <div class="step-text">${p}</div>
+          </div>`).join('')}
+      </div>
+
+      <div class="recipe-footer">
+        <p>Livro 1 — Relíquias da Cozinha &nbsp;·&nbsp; SeniorHub &nbsp;·&nbsp; Receita ${r.id} de 50</p>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// ── Inicializa ────────────────────────────────────────────────────
+renderSumario();
+renderReceitas();
+</script>
+</body>
+</html>

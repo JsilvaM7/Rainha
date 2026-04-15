@@ -69,12 +69,7 @@
     // Receitas individuais de todos os livros disponíveis
     function getReceitasIndex() {
         const resultados = [];
-
-        // Livro 2 Portal A e B
-        const fontes = [
-            { arr: window.LIVRO2_PORTAL_A, bookNum: 2 },
-            { arr: window.LIVRO2_PORTAL_B, bookNum: 2 },
-        ];
+        const fontes = [];
 
         // Receitas da biblioteca (livro 1 e outros)
         if (window.biblioteca) {

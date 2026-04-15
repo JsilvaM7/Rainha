@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Firebase cache
+.firebase/
+**/.firebase/
+
+# Zip files
+*.zip
+
+# Debug/temp files
+debug_result.json
+test_result.json
+output.txt
+
+# OS files
+.DS_Store
+Thumbs.db

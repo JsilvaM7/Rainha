@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+window.SeniorAuth = { isSubscriber: () => true, getUser: () => ({nome: 'Tester'}) };
+</script>
+<script src="Livro 1/livro1_a.js"></script>
+<script src="Livro 1/livro1_b.js"></script>
+<script src="Livro 1/livro1_c.js"></script>
+<script src="recipes.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    try {
+        console.log("Books loaded:", Object.keys(window.biblioteca));
+        console.log("Reliquias length:", window.biblioteca.reliquias.length);
+        livroAtual = 'reliquias';
+        loadRecipe(6);
+        console.log("Passed loadRecipe(6)!");
+        console.log("Viewer content:", document.getElementById('content-viewer').innerHTML.substring(0, 150));
+    } catch(e) {
+        console.error(e);
+    }
+});
+</script>
+</head>
+<body>
+<div id="content-viewer"></div>
+</body>
+</html>

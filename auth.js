@@ -137,7 +137,7 @@ function _renderSideBarBody() {
             '<div class="lsb-divider"><span>ou</span></div>' +
             '<div class="lsb-section">' +
                 '<p class="lsb-label">⭐ Assinar o Clube SeniorHub</p>' +
-                '<p class="lsb-desc">Acesse todos os 5 livros, vote nas receitas e ganhe descontos exclusivos.</p>' +
+                '<p class="lsb-desc">Acesse todos os livros, vote nos tópicos de notícias a serem postadas e ganhe descontos exclusivos.</p>' +
                 '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 20/mês</a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>';

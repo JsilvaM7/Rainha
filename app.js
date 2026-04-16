@@ -655,7 +655,7 @@ function renderPaywallHTML(book) {
 
 /* ── News Feed ──────────────────────────────────────────────────────────────── */
 
-const SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRNQGosj4jv-wq-YtxUvxvLYRsn31B7zmPDNmUtVJtHLK27Zlj6u078v73fmKQlhwO8dO904kKjt0y-/pub?output=csv';
+const SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQH9IkZJYRa8I9J_YlV6FfQ95u0vrpbDyY_n7hr0RdsYl8Ov1u0pgoWUYizINZOLRK24VIb5ePl-f5h/pub?output=csv';
 
 /* Robust RFC-4180 CSV parser — handles quoted fields, commas inside quotes,
    and double-quote escaping. Fetch returns UTF-8 text natively, so accented

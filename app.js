@@ -1810,6 +1810,159 @@ const GUIAS_DATA = [
         get conteudo() { return this.paginas[0].conteudo; },
         categoria: 'Manipulação',
         gratis: true
+    },
+
+    {
+        id: 'triangulacao',
+        titulo: 'Triangulação',
+        descricao: 'A terceira sombra e a insegurança como ferramenta de governo. Cinco cap&#237;tulos para reconhecer, desarmar e sair do ringue invis&#237;vel onde o manipulador se torna o árbitro da sua vida.',
+        paginas: [
+            {
+                num: 1,
+                titulo: 'O Terceiro Elemento',
+                gratis: true,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Governo pela Insegurança</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">A <em>triangulação</em> é uma manobra psicológica onde o manipulador introduz uma terceira pessoa na dinâmica do relacionamento para criar um ambiente de competição, ciúmes e instabilidade. Essa &#8220;terceira ponta&#8221; pode ser uma ex-namorada que &#8220;ainda o procura&#8221;, uma amiga &#8220;muito próxima&#8221; ou até um flerte platônico que ele faz questão de mencionar.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O objetivo não é necessariamente a traição física, mas sim o controle emocional. Ao fazer você sentir que a sua posição no coração e na vida dele é frágil e disputada, ele garante que você se esforce o dobro para agradá-lo, tentando &#8220;vencer&#8221; uma concorrência que ele mesmo criou.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Enquanto você se ocupa em monitorar a &#8220;rival&#8221;, ele se torna o juiz supremo da disputa, colhendo os frutos da sua atenção redobrada e do seu medo de perdê-lo.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">A Infiltração Sutil</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 20px;">A tática de infiltração é sutil: ele faz comparações &#8220;inocentes&#8221; ou elogia virtudes da outra pessoa que, por entrelinhas, sugerem que faltam em você. Ele utiliza a sua necessidade natural de ser única e especial para coloçá-la em um ringue invisível.</p>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A escassez de afeto como moeda</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">É uma forma de governo baseada na escassez: ele distribui migalhas de atenção apenas para quem &#8220;vencer&#8221; o desafio do dia. O afeto se torna prêmio de consolation, não direito natural de um relacionamento saudável.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A soberana reconhece o ringue</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A triangulação prospera no silêncio e na dúvida; ela morre quando você se recusa a competir por um lugar que já deveria ser seu por direito e respeito.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais do Triângulo</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ele menciona espontaneamente outras mulheres que o admiram ou o desejam, sem que você tenha perguntado.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Compara suas atitudes com as de uma ex ou amiga, sempre de forma que você sai em desvantagem.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Deixa conversas ou encontros ambiguamente indefinidos, criando espaço para que você tema a &#8220;concorrente&#8221;.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Fica mais atencioso e carinhoso exatamente após mencionar outra mulher &#8212; reforço condicionado deliberado.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">O Trono É Individual</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">Retomar a soberania significa entender que o amor real oferece segurança, não uma corda bamba. Se o ambiente exige disputa para garantir afeto, o problema não está na sua &#8220;concorrente&#8221;, mas na mão que segura o chicote da insegurança.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;No seu domínio, o trono é individual e inegociável. Não há vaga para competição.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 2,
+                titulo: 'Os Fantasmas do Passado e do Presente',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Identificando as Pontas do Triângulo</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">O manipulador escolhe com cuidado quem coloca como &#8220;terceira ponta&#8221;. Cada tipo de fantasma tem uma função específica na sua estratégia de controle. Identificar o perfil é o primeiro passo para desfazer o triângulo.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Os Três Fantasmas Mais Comuns</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A Ex Imortalizad</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Usada para criar uma referência de &#8220;passado ideal&#8221;. Frases como &#8220;ela entendia meu trabalho&#8221; ou &#8220;ela nunca reclamava&#8221; estabelecem um padrão que você é constantemente comparada &#8212; e que provavelmente nunca existiu da forma que ele descreve.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A Admiradroa Misteriosa</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Uma mulher no trabalho, academia ou redes sociais que &#8220;manda mensagens o tempo todo&#8221;. A vagueza é intencional: dúhbia o suficiente para ativar o ciúmes, mas nunca concreta o suficiente para que você possa confrontar.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A Amiga Especial</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Apresentada como &#8220;só amiga&#8221;, mas com uma intimidade que é exibida seletivamente. O objetivo é fazer você questionar seus limites e parecer &#8220;ciumenta&#8221; se reagir &#8212; enquanto ele colhe o prazer do seu desconforto.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;O fantasma só tem poder na escuridão da dúvida. Quando você acende a luz da consciência, ele desaparece.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 3,
+                titulo: 'A Psicologia do Árbitro',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Por Que Ele Sente Prazer no Triângulo</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Entender a psicologia por trás da triangulação é um ato de emancipação. Quando você compreende o que move o árbitro, o jogo perde o sentido &#8212; e você para de jogar.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Os Três Pilares da Necessidade do Árbitro</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Validação Narcisista</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ver mulheres competindo por sua atenção preenche uma necessidade profunda de validação. Não é sobre você &#8212; é sobre a imagem que ele tem de si mesmo como homem &#8220;de alto valor&#8221;.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Controle pelo Medo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Uma mulher com medo de perder diminui a assertividade, torna-se mais maleável e menos propensa a estabelecer limites. O triângulo é a ferramenta mais eficiente para manter o controle sem conflito direto.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Fuga da Intimidade Real</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A presença de uma &#8220;terceira ponta&#8221; cria uma distância emocional que ele gere. Enquanto houver um &#8220;rival&#8221;, nunca há necessidade de uma intimidade genuinamente vulneravel &#8212; o que ele teme mais do que qualquer coisa.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Quem precisa de um placar de admirã para se sentir valioso ainda não encontrou o próprio valor. Não é sua função preencher esse vazio.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 4,
+                titulo: 'Saído do Ringue',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Técnicas para Desarmar a Triangulação</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Sair do ringue não é uma ato de resignação &#8212; é um ato de soberania. A seguir estão as técnicas de comunicação assertiva que desarmam a triangulação sem drama e sem perder a classe.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Arsenal da Recusa ao Ringue</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Nomeação Serena</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Com calma e olhar direto: &#8220;Percebo que você menciona outras mulheres com frequência. Isso é intencion? Prefiro não ter esse tipo de referência no nosso espaço.&#8221; Sem acusação, sem ciúmes exposto &#8212; apenas clareza.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Desengajamento Elegante</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Quando ele mencionar a &#8220;concorrente&#8221;, não reaja com ansiedade nem com frieza hostil. Simplesmente mude de assunto com naturalidade. Sua indiferença estratégica remove o prazer que ele busca.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Decreto de Exclusividade</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Em conversa franca: &#8220;Eu não me relaciono em ambientes de competição. Se você não tem certeza sobre o que quer, eu entendo &#8212; mas não vou ficar aguardando enquanto você decide.&#8221; Isso reequilibra o poder.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Foco no Seu Próprio Elo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Invista energia em seus próprios projetos, amizades e práticas de auto desenvolvimento. Quando sua vida está plena, a sombra da &#8220;concorrente&#8221; perde a dimensão que ele projetou para ela.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;A Rainha não entra no ringue. Ela observa de cima e decide se o campo vale o seu tempo.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 5,
+                titulo: 'A Exclusividade da Coroa',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Padrões de Relacionamento Fundados na Segurança</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Depois de sair do ringue, o trabalho mais profundo começa: construção de padrões de relacionamento onde a segurança é o pilar central &#8212; não a exceção, mas a regra inegociável.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Os Quatro Pilares da Exclusividade Real</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Pilar da Segurança Basica</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Em um relacionamento saudável, sua posição não é debatida, testada ou submetida a aprovação periódica. Defina internamente: &#8220;Eu apenas me relaciono com quem me oferece segurança emocional como padrão mínimo, não como recompensa.&#8221;</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Pilar da Convers Inicial</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">No início de relacionamentos, nomeie o que é inaceitável para você antes que seja testado. Não como ameaça &#8212; como autoapresentação. Quem se afastar fez um favor; quem ficar sabe os termos.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Pilar da Vida Própria</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Mantenha projetos, amizades e ambições que existem independentemente de qualquer relacionamento. Uma mulher com uma vida plena não precisa ganhar o &#8220;concurso&#8221; &#8212; ela simplesmente é insubstituível.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Pilar da Saída Digna</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Se após o decreto o triângulo persiste, a saída com dignidade é o ato mais soberano possível. Proteger o seu reino significa também reconhecer quando um intrúso não tem intenção de sair &#8212; e fechar as portas com serença.</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Decreto de Inviolabilidade</h3></div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sente-se em silêncio. Respire fundo três vezes.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;Meu lugar único não é conquistado em dispute. Ele é reconhecido ou não existe.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva o padrão que você estabelece para relacionamentos a partir de hoje.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;Protéjo o meu reino de invasores. A paz é o meu padrão inegociável.&#8221;</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">A Coroa É Sua</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">Sua paz não é um prêmio para ser disputado. Vocêé a única autoridade sobre o seu próprio valor &#8212; e o amor que merece é aquele que nunca exigiu que você provasse esse valor.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:16px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;No seu domínio, o trono é individual e inegociável. Cuide-o.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            }
+        ],
+        get conteudo() { return this.paginas[0].conteudo; },
+        categoria: 'Manipulação',
+        gratis: true
     }
 ];
 
@@ -1841,33 +1994,24 @@ function toggleGuia(id) {
 
 /* ── Guias — renderização com paywall ───────────────────────────────────────── */
 
-/* Troca de capítulo no livro Gaslighting */
-function switchGasChapter(num) {
-    document.querySelectorAll('.gas-chapter').forEach(function (el) { el.style.display = 'none'; });
-    document.querySelectorAll('.gas-tab-btn').forEach(function (el) {
+/* Função genérica de troca de capítulo – suporta todos os guias livro */
+function switchBookChapter(guiaId, num) {
+    document.querySelectorAll('.' + guiaId + '-chapter').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.' + guiaId + '-tab-btn').forEach(function (el) {
         el.style.background = 'transparent';
         el.style.color = 'var(--gold-dark)';
     });
-    var cont = document.getElementById('gas-content-' + num);
-    var tab = document.getElementById('gas-tab-' + num);
+    var cont = document.getElementById(guiaId + '-content-' + num);
+    var tab  = document.getElementById(guiaId + '-tab-' + num);
     if (cont) cont.style.display = 'block';
-    if (tab) { tab.style.background = 'var(--gold)'; tab.style.color = '#fff'; }
+    if (tab)  { tab.style.background = 'var(--gold)'; tab.style.color = '#fff'; }
 }
-window.switchGasChapter = switchGasChapter;
-
-/* Troca de capítulo no livro Negging */
-function switchNegChapter(num) {
-    document.querySelectorAll('.neg-chapter').forEach(function (el) { el.style.display = 'none'; });
-    document.querySelectorAll('.neg-tab-btn').forEach(function (el) {
-        el.style.background = 'transparent';
-        el.style.color = 'var(--gold-dark)';
-    });
-    var cont = document.getElementById('neg-content-' + num);
-    var tab = document.getElementById('neg-tab-' + num);
-    if (cont) cont.style.display = 'block';
-    if (tab) { tab.style.background = 'var(--gold)'; tab.style.color = '#fff'; }
-}
-window.switchNegChapter = switchNegChapter;
+window.switchBookChapter = switchBookChapter;
+GUIAS_DATA.forEach(function (g) {
+    if (g.paginas && g.paginas.length) {
+        window['switchBookChapter_' + g.id] = function (num) { switchBookChapter(g.id, num); };
+    }
+});
 
 function renderGuias() {
     setActiveLink('sidebar-link-guias');
@@ -1877,13 +2021,13 @@ function renderGuias() {
 
     var cardsHTML = GUIAS_DATA.map(function (g, idx) {
 
-        /* ── Guia Gaslighting: livro digital unificado ─── */
+        /* ── Guias com formato livro (capítulos) ─── */
         if (g.paginas && g.paginas.length) {
             var total = g.paginas.length;
-            var pfx = g.id === 'negging' ? 'neg' : 'gas';
-            var switchFn = g.id === 'negging' ? 'switchNegChapter' : 'switchGasChapter';
-            var chapterClass = g.id === 'negging' ? 'neg-chapter' : 'gas-chapter';
-            var tabClass = g.id === 'negging' ? 'neg-tab-btn' : 'gas-tab-btn';
+            var pfx = g.id;                                  /* prefixo dinâmico por id */
+            var switchFn = 'switchBookChapter_' + g.id;
+            var chapterClass = pfx + '-chapter';
+            var tabClass = pfx + '-tab-btn';
 
             /* Tabs de capítulo */
             var tabs = g.paginas.map(function (pag) {
@@ -1965,7 +2109,7 @@ function renderGuias() {
                         + 'text-decoration:none;box-shadow:0 4px 20px rgba(42,26,6,.25);"'
                         + ' onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(42,26,6,.35)\'"'
                         + ' onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 20px rgba(42,26,6,.25)\'">'
-                        + '&#128081; Reivindicar minha Soberania</a>'
+                        + '&#128081; Garantir meu Lugar Único</a>'
                         + '<p style="font-size:12px;color:#9ca3af;margin:0;">Acesso imediato a todos os 5 capítulos + biblioteca completa</p>'
                         + '</div>';
                     return '<div id="' + pfx + '-content-' + pag.num + '" class="' + chapterClass + '" style="display:' + show + ';">'
@@ -2094,4 +2238,3 @@ window.renderExercicios = renderExercicios;
 window.renderViagens = renderViagens;
 window.renderGuias = renderGuias;
 window.toggleGuia = toggleGuia;
-window.switchNegChapter = switchNegChapter;

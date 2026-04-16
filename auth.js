@@ -356,12 +356,12 @@ function _migrarPendente(db, user, pendingDoc, docIdParaDeletar) {
 try {
     if (typeof firebase !== 'undefined') {
         var cfg = {
-            apiKey:            "AIzaSyCBz9R_hIX0WtIQ401SQml5UyJrYhhFlV8",
+            apiKey:            "AIzaSyCBz9R_hIX0WtIQ4O1SQml5UyJrYhhFlV8",
             authDomain:        "rainha-aa80a.firebaseapp.com",
             projectId:         "rainha-aa80a",
             storageBucket:     "rainha-aa80a.firebasestorage.app",
             messagingSenderId: "733791452283",
-            appId:             "1:733791452283:web:9a8db5e4bce45758c636de",
+            appId:             "1:733791452283:web:9a8dbce4bce45758c636de",
             measurementId:     "G-444SSPGWKL"
         };
         if (!firebase.apps.length) firebase.initializeApp(cfg);

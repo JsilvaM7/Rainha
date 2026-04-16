@@ -1845,95 +1845,219 @@ function toggleGuia(id) {
     }
 }
 
-/* ── Guias — renderização com paywall ───────────────────────────────────── */
+/* ── Guias — renderização com paywall ───────────────────────────────────────── */
 
-/* Renderiza um card de página do guia multi-página (Gaslighting) */
-function renderPaginaGuia(g, pag, pagIdx, totalPags, isSubscriber) {
-    const isFree = pag.gratis || isSubscriber;
-    const cardId = g.id + '-p' + pag.num;
-    const lockBadge = !isFree ? '<span style="display:inline-flex;align-items:center;gap:5px;background:#2a1a06;color:#e8c97a;font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 12px;border-radius:99px;margin-left:8px;"><i class=\"ph ph-lock\" style=\"font-size:11px;\"></i>Bloqueada</span>' : '';
-    const prevCardId = pagIdx > 0 ? g.id + '-p' + g.paginas[pagIdx-1].num : null;
-    const nextCardId = pagIdx < totalPags-1 ? g.id + '-p' + g.paginas[pagIdx+1].num : null;
-    const navBtn = (id, label, icon) => '<button onclick="toggleGuia(\''+cardId+'\');toggleGuia(\''+id+'\');" style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;padding:10px 18px;border-radius:8px;cursor:pointer;" onmouseover="this.style.background=\'#fdf8f0\';" onmouseout="this.style.background=\'#fff\';">'+label+'</button>';
-    const navButtons = '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid #f0e8d4;gap:12px;">'
-        + (prevCardId ? navBtn(prevCardId, '<i class="ph ph-arrow-left" style="font-size:15px;"></i> P&#225;gina anterior', 'left') : '<span></span>')
-        + (nextCardId ? navBtn(nextCardId, 'Pr&#243;xima p&#225;gina <i class="ph ph-arrow-right" style="font-size:15px;"></i>', 'right') : '<span></span>')
-        + '</div>';
-    const btnLabel = isFree ? 'Ler Agora <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i>' : 'Desbloquear <i class="ph ph-lock" style="font-size:14px;vertical-align:middle;"></i>';
-    const toggleBtn = '<button id="guia-btn-'+cardId+'" onclick="toggleGuia(\''+cardId+'\')" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;padding:9px 18px;border-radius:8px;cursor:pointer;margin-top:8px;transition:background .2s;" onmouseover="this.style.background=\'#fdf8f0\';" onmouseout="this.style.background=\'#fff\';">'+btnLabel+'</button>';
-    if (isFree) {
-        return '<div class="guia-card" id="guia-card-'+cardId+'">'
-            + '<div class="guia-card__header" onclick="toggleGuia(\''+cardId+'\')" style="cursor:pointer;">'
-            + '<span class="guia-badge">P&#225;gina '+pag.num+' de '+totalPags+' &mdash; Acesso Livre</span>'
-            + '<h2 class="guia-card__title">'+pag.titulo+'</h2>'+toggleBtn+'</div>'
-            + '<div id="guia-body-'+cardId+'" class="guia-card__body" style="display:none;">'+pag.conteudo+navButtons+'</div>'
-            + '</div>';
-    } else {
-        return '<div class="guia-card guia-card--locked" id="guia-card-'+cardId+'">'
-            + '<div class="guia-card__header" onclick="toggleGuia(\''+cardId+'\')" style="cursor:pointer;">'
-            + '<span class="guia-badge" style="display:inline-flex;align-items:center;">P&#225;gina '+pag.num+' de '+totalPags+lockBadge+'</span>'
-            + '<h2 class="guia-card__title">'+pag.titulo+'</h2>'+toggleBtn+'</div>'
-            + '<div id="guia-body-'+cardId+'" style="display:none;position:relative;">'
-            + '<div class="guia-card__body guia-card__body--blurred" aria-hidden="true">'+pag.conteudo+'</div>'
-            + '<div class="guia-lock-overlay" style="position:relative;height:auto;background:none;display:flex;flex-direction:column;align-items:center;padding:36px 28px;text-align:center;gap:14px;">'
-            + '<div class="guia-lock-icon"><i class="ph ph-lock" style="font-size:32px;color:var(--sage-green);"></i></div>'
-            + '<p class="guia-lock-msg">Acesso exclusivo para assinantes do C&#237;rculo Rainha</p>'
-            + '<a href="https://pay.hotmart.com/E105391945G" target="_blank" rel="noopener noreferrer" class="guia-lock-btn">&#128081; Desbloquear Acesso Completo</a>'
-            + '</div>'+navButtons+'</div></div>';
-    }
+/* Troca de capítulo no livro Gaslighting */
+function switchGasChapter(num) {
+    document.querySelectorAll('.gas-chapter').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.gas-tab-btn').forEach(function (el) {
+        el.style.background = 'transparent';
+        el.style.color = 'var(--gold-dark)';
+    });
+    var cont = document.getElementById('gas-content-' + num);
+    var tab = document.getElementById('gas-tab-' + num);
+    if (cont) cont.style.display = 'block';
+    if (tab) { tab.style.background = 'var(--gold)'; tab.style.color = '#fff'; }
 }
+window.switchGasChapter = switchGasChapter;
 
 function renderGuias() {
     setActiveLink('sidebar-link-guias');
-    const viewer = document.getElementById('content-viewer');
-    const isSubscriber = window.SeniorAuth && window.SeniorAuth.isSubscriber();
-    const ids = GUIAS_DATA.map(g => g.id);
+    var viewer = document.getElementById('content-viewer');
+    var isSubscriber = window.SeniorAuth && window.SeniorAuth.isSubscriber();
+    var ids = GUIAS_DATA.map(function (g) { return g.id; });
 
-    const cardsHTML = GUIAS_DATA.map((g, idx) => {
-        // Multi-page guide (Gaslighting)
+    var cardsHTML = GUIAS_DATA.map(function (g, idx) {
+
+        /* ── Guia Gaslighting: livro digital unificado ─── */
         if (g.paginas && g.paginas.length) {
-            const guideHeader = '<div style="margin:0 0 12px;padding:18px 22px 14px;background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;">'
-                + '<span style="display:inline-block;background:rgba(197,160,89,0.25);color:#e8c97a;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;margin-bottom:10px;">Guia Maestro</span>'
-                + '<h2 style="font-size:24px;font-weight:900;color:#fff;margin:0 0 6px;">'+g.titulo+'</h2>'
-                + '<p style="font-size:14px;color:#e8d4a8;margin:0;line-height:1.6;">'+g.descricao+'</p>'
-                + '</div>';
-            return guideHeader + g.paginas.map((pag, pi) => renderPaginaGuia(g, pag, pi, g.paginas.length, isSubscriber)).join('');
+            var total = g.paginas.length;
+
+            /* Tabs de capítulo */
+            var tabs = g.paginas.map(function (pag) {
+                var free = pag.gratis || isSubscriber;
+                var lock = free ? '' : ' &#128274;';
+                var isFirst = pag.num === 1;
+                var tabId = 'gas-tab-' + pag.num;
+                var bg = isFirst ? 'background:var(--gold);color:#fff;' : 'background:transparent;color:var(--gold-dark);';
+                return '<button id="' + tabId + '" class="gas-tab-btn"'
+                    + ' onclick="switchGasChapter(' + pag.num + ')"'
+                    + ' style="' + bg + 'border:1.5px solid var(--gold);border-radius:99px;'
+                    + 'padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;'
+                    + 'white-space:nowrap;transition:background .2s,color .2s;">'
+                    + pag.num + '.&nbsp;' + pag.titulo + lock
+                    + '</button>';
+            }).join('');
+
+            /* Conteúdo de cada capítulo */
+            var chapters = g.paginas.map(function (pag) {
+                var free = pag.gratis || isSubscriber;
+                var show = pag.num === 1 ? 'block' : 'none';
+                var prev = pag.num > 1 ? pag.num - 1 : null;
+                var next = pag.num < total ? pag.num + 1 : null;
+
+                /* Botões de navegação de capítulo */
+                var navPrev = prev
+                    ? '<button onclick="switchGasChapter(' + prev + ')"'
+                    + ' style="display:flex;align-items:center;gap:8px;background:#fff;'
+                    + 'border:1.5px solid var(--gold);color:var(--gold-dark);'
+                    + 'font-size:13px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;"'
+                    + ' onmouseover="this.style.background=\'#fdf8f0\'"'
+                    + ' onmouseout="this.style.background=\'#fff\'">'
+                    + '<i class="ph ph-arrow-left" style="font-size:15px;"></i> Capítulo anterior</button>'
+                    : '<span></span>';
+                var navNext = next
+                    ? '<button onclick="switchGasChapter(' + next + ')"'
+                    + ' style="display:flex;align-items:center;gap:8px;background:var(--gold);'
+                    + 'border:none;color:#fff;font-size:13px;font-weight:800;'
+                    + 'padding:10px 20px;border-radius:10px;cursor:pointer;"'
+                    + ' onmouseover="this.style.opacity=\'.85\'"'
+                    + ' onmouseout="this.style.opacity=\'1\'">'
+                    + 'Próximo capítulo <i class="ph ph-arrow-right" style="font-size:15px;"></i></button>'
+                    : '<span style="font-size:13px;font-weight:700;color:var(--gold-dark);">&#10003; Fim do guia</span>';
+                var nav = '<div style="display:flex;justify-content:space-between;align-items:center;'
+                    + 'margin-top:36px;padding-top:24px;border-top:2px solid #f0e8d4;gap:12px;">'
+                    + navPrev + navNext + '</div>';
+
+                /* Cabeçalho do capítulo */
+                var statusBadge = free
+                    ? '<span style="background:#d1fae5;color:#065f46;font-size:11px;font-weight:800;padding:3px 12px;border-radius:99px;">Acesso Livre</span>'
+                    : '<span style="background:#1f2937;color:#e8c97a;font-size:11px;font-weight:800;padding:3px 12px;border-radius:99px;">&#128274; Bloqueado</span>';
+                var chapHeader = '<div style="margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #f0e8d4;display:flex;align-items:center;gap:12px;">'
+                    + '<span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);'
+                    + 'font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;'
+                    + 'padding:3px 14px;border-radius:99px;">Capítulo ' + pag.num + ' de ' + total + '</span>'
+                    + statusBadge + '</div>';
+
+                if (free) {
+                    return '<div id="gas-content-' + pag.num + '" class="gas-chapter" style="display:' + show + ';">'
+                        + chapHeader + pag.conteudo + nav + '</div>';
+                } else {
+                    /* Paywall elegante com preview borrado */
+                    var blurred = '<div style="position:relative;overflow:hidden;max-height:200px;border-radius:12px;" aria-hidden="true">'
+                        + '<div style="filter:blur(5px);opacity:.5;pointer-events:none;">' + pag.conteudo + '</div>'
+                        + '<div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,#fff 90%);"></div>'
+                        + '</div>';
+                    var paywall = '<div style="text-align:center;padding:36px 24px 28px;display:flex;flex-direction:column;align-items:center;gap:16px;">'
+                        + '<div style="width:56px;height:56px;background:linear-gradient(135deg,#2a1a06,#5a3a10);'
+                        + 'border-radius:50%;display:flex;align-items:center;justify-content:center;">'
+                        + '<i class="ph ph-lock" style="font-size:26px;color:#e8c97a;"></i></div>'
+                        + '<h3 style="font-size:20px;font-weight:900;color:#2a1a06;margin:0;">Capítulo ' + pag.num + ': ' + pag.titulo + '</h3>'
+                        + '<p style="font-size:15px;color:#6b7280;line-height:1.7;margin:0;max-width:400px;">'
+                        + 'Este capítulo é exclusivo para membros do <strong style="color:#2a1a06;">Círculo Rainha</strong>. '
+                        + 'Desbloqueie e continue sua jornada de clareza e soberania.</p>'
+                        + '<a href="https://pay.hotmart.com/E105391945G" target="_blank" rel="noopener noreferrer"'
+                        + ' style="display:inline-flex;align-items:center;gap:10px;'
+                        + 'background:linear-gradient(135deg,#2a1a06,#5a3a10);color:#e8c97a;'
+                        + 'font-size:15px;font-weight:800;padding:14px 32px;border-radius:12px;'
+                        + 'text-decoration:none;box-shadow:0 4px 20px rgba(42,26,6,.25);"'
+                        + ' onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(42,26,6,.35)\'"'
+                        + ' onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 20px rgba(42,26,6,.25)\'">'
+                        + '&#128081; Desbloquear Acesso Completo</a>'
+                        + '<p style="font-size:12px;color:#9ca3af;margin:0;">Acesso imediato a todos os 5 capítulos + biblioteca completa</p>'
+                        + '</div>';
+                    return '<div id="gas-content-' + pag.num + '" class="gas-chapter" style="display:' + show + ';">'
+                        + chapHeader + blurred + paywall + nav + '</div>';
+                }
+            }).join('');
+
+            /* Card livro unificado */
+            return '<div class="guia-card" id="guia-card-gaslighting" style="overflow:hidden;">'
+                + '<div class="guia-card__header" onclick="toggleGuia(\'gaslighting\')"'
+                + ' style="cursor:pointer;background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);'
+                + 'border-radius:12px 12px 0 0;padding:24px 28px;">'
+                + '<span style="display:inline-block;background:rgba(197,160,89,.28);color:#e8c97a;'
+                + 'font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;'
+                + 'padding:3px 14px;border-radius:99px;margin-bottom:10px;">Guia Maestro &#8212; 5 Capítulos</span>'
+                + '<h2 style="font-size:26px;font-weight:900;color:#fff;margin:0 0 8px;">' + g.titulo + '</h2>'
+                + '<p style="font-size:14px;color:#e8d4a8;margin:0 0 16px;line-height:1.6;">' + g.descricao + '</p>'
+                + '<button id="guia-btn-gaslighting"'
+                + ' style="display:inline-flex;align-items:center;gap:8px;background:#e8c97a;'
+                + 'border:none;color:#2a1a06;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;"'
+                + ' onmouseover="this.style.background=\'#f0d98a\'"'
+                + ' onmouseout="this.style.background=\'#e8c97a\'">'
+                + '<i class="ph ph-book-open" style="font-size:15px;"></i> Abrir Livro</button>'
+                + '</div>'
+                /* Body */
+                + '<div id="guia-body-gaslighting" class="guia-card__body" style="display:none;padding:0;">'
+                /* Chapter tabs */
+                + '<div style="padding:16px 20px 12px;border-bottom:1px solid #f0e8d4;background:#fafaf8;">'
+                + '<p style="font-size:11px;font-weight:800;color:#9ca3af;text-transform:uppercase;letter-spacing:.6px;margin:0 0 10px;">Capítulos</p>'
+                + '<div style="display:flex;flex-wrap:wrap;gap:8px;">' + tabs + '</div>'
+                + '</div>'
+                /* Chapter content area */
+                + '<div style="padding:28px;">' + chapters + '</div>'
+                + '</div></div>';
         }
-        // Standard single-page guide
-        const isFree = g.gratis || isSubscriber;
-        const guiaBadge = '<span class="guia-badge">Guia</span>';
-        const prevId = idx > 0 ? ids[idx - 1] : null;
-        const nextId = idx < ids.length - 1 ? ids[idx + 1] : null;
-        const navButtons = '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid #f0e8d4;gap:12px;">'
-            + (prevId ? '<button onclick="toggleGuia(\''+g.id+'\');toggleGuia(\''+prevId+'\')" style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;padding:10px 18px;border-radius:8px;cursor:pointer;transition:background .2s;" onmouseover="this.style.background=\'#fdf8f0\';" onmouseout="this.style.background=\'#fff\';"><i class=\"ph ph-arrow-left\" style=\"font-size:15px;\"></i> Guia anterior</button>' : '<span></span>')
-            + (nextId ? '<button onclick="toggleGuia(\''+g.id+'\');toggleGuia(\''+nextId+'\')" style="display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;padding:10px 18px;border-radius:8px;cursor:pointer;transition:background .2s;" onmouseover="this.style.background=\'#fdf8f0\';" onmouseout="this.style.background=\'#fff\';">Pr&#243;ximo guia <i class=\"ph ph-arrow-right\" style=\"font-size:15px;\"></i></button>' : '<span></span>')
+
+        /* ── Guias simples (formato padrão) ── */
+        var isFree = g.gratis || isSubscriber;
+        var guiaBadge = '<span class="guia-badge">Guia</span>';
+        var prevId = idx > 0 ? ids[idx - 1] : null;
+        var nextId = idx < ids.length - 1 ? ids[idx + 1] : null;
+        var navButtons = '<div style="display:flex;justify-content:space-between;align-items:center;'
+            + 'margin-top:28px;padding-top:20px;border-top:1px solid #f0e8d4;gap:12px;">'
+            + (prevId ? '<button onclick="toggleGuia(\'' + g.id + '\');toggleGuia(\'' + prevId + '\');"'
+                + ' style="display:flex;align-items:center;gap:6px;background:#fff;'
+                + 'border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;'
+                + 'padding:10px 18px;border-radius:8px;cursor:pointer;"'
+                + ' onmouseover="this.style.background=\'#fdf8f0\'"'
+                + ' onmouseout="this.style.background=\'#fff\'">'
+                + '<i class="ph ph-arrow-left" style="font-size:15px;"></i> Guia anterior</button>' : '<span></span>')
+            + (nextId ? '<button onclick="toggleGuia(\'' + g.id + '\');toggleGuia(\'' + nextId + '\');"'
+                + ' style="display:flex;align-items:center;gap:6px;background:#fff;'
+                + 'border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;'
+                + 'padding:10px 18px;border-radius:8px;cursor:pointer;transition:background .2s;"'
+                + ' onmouseover="this.style.background=\'#fdf8f0\'"'
+                + ' onmouseout="this.style.background=\'#fff\'">'
+                + 'Próximo guia <i class="ph ph-arrow-right" style="font-size:15px;"></i></button>' : '<span></span>')
             + '</div>';
-        const toggleBtn = '<button id="guia-btn-'+g.id+'" onclick="toggleGuia(\''+g.id+'\')" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;padding:9px 18px;border-radius:8px;cursor:pointer;margin-top:8px;transition:background .2s;" onmouseover="this.style.background=\'#fdf8f0\';" onmouseout="this.style.background=\'#fff\';">Ver Guia <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i></button>';
+        var toggleBtn = '<button id="guia-btn-' + g.id + '"'
+            + ' onclick="toggleGuia(\'' + g.id + '\')"'
+            + ' style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:#fff;'
+            + 'border:1.5px solid var(--gold);color:var(--gold-dark);font-size:13px;font-weight:700;'
+            + 'padding:9px 18px;border-radius:8px;cursor:pointer;margin-top:8px;transition:background .2s;"'
+            + ' onmouseover="this.style.background=\'#fdf8f0\'"'
+            + ' onmouseout="this.style.background=\'#fff\'">'
+            + 'Ver Guia <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i></button>';
         if (isFree) {
-            return '<div class="guia-card" id="guia-card-'+g.id+'"><div class="guia-card__header" onclick="toggleGuia(\''+g.id+'\')" style="cursor:pointer;">'+guiaBadge+'<h2 class="guia-card__title">'+g.titulo+'</h2><p class="guia-card__desc">'+g.descricao+'</p>'+toggleBtn+'</div>'
-                + '<div id="guia-body-'+g.id+'" class="guia-card__body" style="display:none;">'+g.conteudo+navButtons+'</div></div>';
+            return '<div class="guia-card" id="guia-card-' + g.id + '">'
+                + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')" style="cursor:pointer;">'
+                + guiaBadge + '<h2 class="guia-card__title">' + g.titulo + '</h2>'
+                + '<p class="guia-card__desc">' + g.descricao + '</p>' + toggleBtn + '</div>'
+                + '<div id="guia-body-' + g.id + '" class="guia-card__body" style="display:none;">'
+                + g.conteudo + navButtons + '</div></div>';
         } else {
-            return '<div class="guia-card guia-card--locked" id="guia-card-'+g.id+'"><div class="guia-card__header" onclick="toggleGuia(\''+g.id+'\')" style="cursor:pointer;">'+guiaBadge+'<h2 class="guia-card__title">'+g.titulo+'</h2><p class="guia-card__desc">'+g.descricao+'</p>'+toggleBtn+'</div>'
-                + '<div id="guia-body-'+g.id+'" style="display:none;position:relative;"><div class="guia-card__body guia-card__body--blurred" aria-hidden="true">'+g.conteudo+'</div>'
-                + '<div class="guia-lock-overlay" style="position:relative;height:auto;background:none;display:flex;flex-direction:column;align-items:center;padding:36px 28px;text-align:center;gap:14px;">'
+            return '<div class="guia-card guia-card--locked" id="guia-card-' + g.id + '">'
+                + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')" style="cursor:pointer;">'
+                + guiaBadge + '<h2 class="guia-card__title">' + g.titulo + '</h2>'
+                + '<p class="guia-card__desc">' + g.descricao + '</p>' + toggleBtn + '</div>'
+                + '<div id="guia-body-' + g.id + '" style="display:none;position:relative;">'
+                + '<div class="guia-card__body guia-card__body--blurred" aria-hidden="true">' + g.conteudo + '</div>'
+                + '<div class="guia-lock-overlay" style="position:relative;height:auto;background:none;'
+                + 'display:flex;flex-direction:column;align-items:center;padding:36px 28px;text-align:center;gap:14px;">'
                 + '<div class="guia-lock-icon"><i class="ph ph-lock" style="font-size:32px;color:var(--sage-green);"></i></div>'
-                + '<p class="guia-lock-msg">Acesso exclusivo para assinantes do C&#237;rculo Rainha</p>'
-                + '<a href="https://pay.hotmart.com/E105391945G" target="_blank" rel="noopener noreferrer" class="guia-lock-btn">&#128081; Desbloquear Acesso Completo</a>'
-                + '</div>'+navButtons+'</div></div>';
+                + '<p class="guia-lock-msg">Acesso exclusivo para assinantes do Círculo Rainha</p>'
+                + '<a href="__HOTMART__" target="_blank" rel="noopener noreferrer" class="guia-lock-btn">&#128081; Desbloquear Acesso Completo</a>'
+                + '</div>' + navButtons + '</div></div>';
         }
     }).join('');
 
-    const wrapper = document.createElement('div');
+    var wrapper = document.createElement('div');
     wrapper.className = 'recipe-card slide-in-right';
-    wrapper.innerHTML = '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--sage-green);margin-bottom:20px;cursor:pointer;" onclick="loadNewsFeed()">&#8592; In&#237;cio</p>'
-        + '<div style="margin-bottom:36px;"><span style="display:inline-block;background:#fdf8f0;color:var(--sage-green);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:4px 14px;border-radius:20px;margin-bottom:14px;">Biblioteca de Guias</span>'
-        + '<h1 style="font-size:28px;font-weight:900;color:#2a1a06;margin:0 0 8px;">Guias Pr&#225;ticos para o seu Dia a Dia</h1>'
+    wrapper.innerHTML = '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;'
+        + 'color:var(--sage-green);margin-bottom:20px;cursor:pointer;" onclick="loadNewsFeed()">&#8592; Início</p>'
+        + '<div style="margin-bottom:36px;">'
+        + '<span style="display:inline-block;background:#fdf8f0;color:var(--sage-green);font-size:12px;'
+        + 'font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:4px 14px;border-radius:20px;margin-bottom:14px;">Biblioteca de Guias</span>'
+        + '<h1 style="font-size:28px;font-weight:900;color:#2a1a06;margin:0 0 8px;">Guias Práticos para o seu Dia a Dia</h1>'
         + '<p style="font-size:15px;color:var(--text-muted);margin:0;">'
-        + (isSubscriber ? 'Acesso completo &#8212; todos os guias est&#227;o liberados para voc&#234;.' : 'Assine o C&#237;rculo Rainha para desbloquear os guias')
+        + (isSubscriber ? 'Acesso completo &#8212; todos os guias estão liberados para você.' : 'Assine o Círculo Rainha para desbloquear os guias')
         + '</p></div>'
-        + '<div class="guias-grid">'+cardsHTML+'</div>';
+        + '<div class="guias-grid">' + cardsHTML + '</div>';
     swapContent(viewer, wrapper);
 }
+
 
 /* ── handleNewsClick (fallback para cards estáticos do feed) ────────────── */
 function handleNewsClick(id) {

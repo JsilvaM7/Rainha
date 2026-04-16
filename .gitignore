@@ -14,6 +14,12 @@ debug_result.json
 test_result.json
 output.txt
 
+# Scripts de manutenção temporários
+_add_*.js
+_fix_*.js
+_update_*.js
+_check.js
+
 # OS files
 .DS_Store
 Thumbs.db

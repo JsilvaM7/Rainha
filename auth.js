@@ -356,7 +356,7 @@ function _migrarPendente(db, user, pendingDoc, docIdParaDeletar) {
 try {
     if (typeof firebase !== 'undefined') {
         var cfg = {
-            apiKey:            "AIzaSyCBz9R_HIX0WtIQ401SQml5UyJrYhhFlV8",
+            apiKey:            "AIzaSyCBz9R_hIX0WtIQ401SQml5UyJrYhhFlV8",
             authDomain:        "rainha-aa80a.firebaseapp.com",
             projectId:         "rainha-aa80a",
             storageBucket:     "rainha-aa80a.firebasestorage.app",

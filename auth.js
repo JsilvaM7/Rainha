@@ -136,9 +136,9 @@ function _renderSideBarBody() {
             '</div>' +
             '<div class="lsb-divider"><span>ou</span></div>' +
             '<div class="lsb-section">' +
-                '<p class="lsb-label">⭐ Assinar o Clube SeniorHub</p>' +
+                '<p class="lsb-label">⭐ Assinar o Círculo Rainha</p>' +
                 '<p class="lsb-desc">Acesse todos os livros, vote nos tópicos de notícias a serem postadas e ganhe descontos exclusivos.</p>' +
-                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 20/mês</a>' +
+                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 28/mês</a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>';
         return;
@@ -165,8 +165,8 @@ function _renderSideBarBody() {
             '<div style="height:1px;background:#f0e8d4;margin:0 20px;"></div>' +
             '<div class="lsb-section">' +
                 '<p class="lsb-label">⭐ Torne-se Assinante</p>' +
-                '<p class="lsb-desc">Assine o Clube SeniorHub e acesse todos os 5 livros, vote nas receitas e ganhe descontos exclusivos.</p>' +
-                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 20/mês</a>' +
+                '<p class="lsb-desc">Assine o Círculo Rainha e acesse todos os guias exclusivos.</p>' +
+                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 28/mês</a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>' +
             '<div style="height:1px;background:#f0e8d4;margin:0 20px;"></div>' +
@@ -228,7 +228,7 @@ window.renderModalConteudo = function() {
                 '<button class="lsb-google-btn" style="width:100%;justify-content:center;box-sizing:border-box;" ' +
                     'onclick="if(window.toggleModal)toggleModal();setTimeout(window.abrirSideBar,300);">Entrar com Google</button>' +
                 '<div style="margin-top:16px;padding-top:16px;border-top:1px solid #f0e8d4;">' +
-                    '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn">⭐ Assinar Clube — R$ 20/mês</a>' +
+                    '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn">⭐ Assinar Clube — R$ 28/mês</a>' +
                 '</div>' +
             '</div>';
         return;
@@ -242,7 +242,7 @@ window.renderModalConteudo = function() {
                 '<p style="font-size:15px;font-weight:700;color:var(--text-dark);margin-bottom:6px;">Olá, ' + primeiroNome + '!</p>' +
                 '<p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Você está logado, mas a votação e os benefícios exclusivos são para assinantes do Clube.</p>' +
             '</div>' +
-            '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" style="display:block;text-align:center;">⭐ Assinar Clube — R$ 20/mês</a>' +
+            '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" style="display:block;text-align:center;">⭐ Assinar Clube — R$ 28/mês</a>' +
             '<p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>';
         return;
     }
@@ -356,13 +356,13 @@ function _migrarPendente(db, user, pendingDoc, docIdParaDeletar) {
 try {
     if (typeof firebase !== 'undefined') {
         var cfg = {
-            apiKey:            "AIzaSyBeSp64NCAhKXdXrPGSqrETYormepqWpiU",
-            authDomain:        "seniorhub-7c725.firebaseapp.com",
-            projectId:         "seniorhub-7c725",
-            storageBucket:     "seniorhub-7c725.firebasestorage.app",
-            messagingSenderId: "194444472555",
-            appId:             "1:194444472555:web:b43cb7d673153deaeeceae",
-            measurementId:     "G-6T1NEWXBD8"
+            apiKey:            "AIzaSyCBz9R_HIX0WtIQ401SQml5UyJrYhhFlV8",
+            authDomain:        "rainha-aa80a.firebaseapp.com",
+            projectId:         "rainha-aa80a",
+            storageBucket:     "rainha-aa80a.firebasestorage.app",
+            messagingSenderId: "733791452283",
+            appId:             "1:733791452283:web:9a8db5e4bce45758c636de",
+            measurementId:     "G-444SSPGWKL"
         };
         if (!firebase.apps.length) firebase.initializeApp(cfg);
         fbAuth     = firebase.auth();
@@ -453,7 +453,7 @@ try {
         });
     }
 } catch(e) {
-    console.warn('[SeniorHub Auth]', e.message);
+    console.warn('[Rainha Auth]', e.message);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════

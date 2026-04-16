@@ -617,11 +617,11 @@ function renderPaywallHTML(book) {
         ? `<a href="${window.CLUBE_CHECKOUT_URL}" target="_blank" rel="noopener noreferrer"
                style="display:inline-block; margin-top:12px; font-size:14px; color:var(--sage-green-dark);
                       font-weight:700; text-decoration:underline;">
-               ⭐ Ou assine o Clube e acesse todos os livros por R$ 20/mês →</a>`
+               ⭐ Ou assine o Clube e acesse todos os livros por R$ 28/mês →</a>`
         : `<button onclick="window.SeniorAuth.loginComGoogle()"
                style="display:inline-block; margin-top:12px; font-size:14px; color:var(--sage-green-dark);
                       font-weight:700; background:none; border:none; cursor:pointer; text-decoration:underline;">
-               🔐 Entrar e assinar o Clube — acesse tudo por R$ 20/mês →</button>`;
+               🔐 Entrar e assinar o Clube — acesse tudo por R$ 28/mês →</button>`;
 
     return `
         <p style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;

@@ -2118,6 +2118,171 @@ const GUIAS_DATA = [
         categoria: 'Manipulação',
         gratis: true
     }
+,
+
+    {
+        id: 'hoovering',
+        titulo: 'Hoovering',
+        descricao: 'O aspirador emocional e a armadilha do resgate. Cinco capítulos para reconhecer o retorno manipulador, desativar as iscas de empatia e manter seu reino inviolável.',
+        paginas: [
+            {
+                num: 1,
+                titulo: 'O Chamado das Sombras',
+                gratis: true,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Retorno que Não É Retorno</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O <em>hoovering</em> é a manobra de resgate executada pelo manipulador no momento em que ele sente que perdeu o controle sobre você ou que você finalmente decidiu seguir em frente. O nome deriva da marca de aspiradores de pó, pois o objetivo é exatamente esse: &#8220;sugar&#8221; você de volta para dentro da dinâmica de abuso.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Esta tática se manifesta através de contatos inesperados, declarações dramáticas de mudança ou crises repentinas de saúde e tristeza que visam ativar a sua empatia. O manipulador não volta porque mudou, ele volta porque não suporta a ideia de que o suprimento de atenção e controle que você fornecia foi interrompido.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Assim que você é sugada de volta e as coisas se estabilizam, o ciclo de desvalorização recomeça exatamente de onde parou.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">A Infiltração pela Nostalgia</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 20px;">A infiltração ocorre através da nostalgia e da esperança. A mensagem &#8220;lembrei de você ao ouvir essa música&#8221; ou o pedido de desculpas tardio que você esperou por meses. É como se uma ferida quase fechada fosse reaberta com um toque macio.</p>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A isca do <em>closure</em></p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ele utiliza o seu desejo de encerramento para manter a porta aberta. Ao demonstrar uma vulnerabilidade súbita, faz com que você se sinta responsável pelo bem-estar dele, invertendo os papéis: o agressor se torna uma vítima que precisa do seu &#8220;amor salvador&#8221;.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A verdade da mudança</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A verdadeira mudança não acontece no desespero da perda, mas na consistência do tempo. O hoovering é um espetáculo de curta duração; assim que você retorna, o show acaba e o ciclo reinicia.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais Clássicos do Hoovering</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Mensagens sentimentais enviadas exatamente quando você está se sentindo bem e seguindo em frente.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Crises de saúde, depressão ou tragédias familiares que surgem no momento do seu distanciamento.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Promessas de mudança radical acompanhadas de gestos grandiosos &#8212; flores, viagens, declarações públicas.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Contato através de terceiros &#8212; amigos ou familiares que &#8220;sem querer&#8221; mencionam o quanto ele está sofrendo.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">O Portal do Passado Permanece Fechado</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">Retomar a soberania é ter a coragem de ser &#8220;cruel&#8221; com a própria esperança para proteger a sua paz futura. O seu reino não é uma oficina de consertos para homens que se recusam a crescer.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Não se resgata quem usa a própria dor como isca para te prender.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 2,
+                titulo: 'A Falsa Redenção',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Por Que as Promessas de Mudança Não se Sustentam</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">A promessa de mudança após o retorno é o componente mais sedutor do hoovering &#8212; e o mais previsível. Entender a estrutura dessa promessa é desarmar a armadilha antes que ela se feche.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Ciclo da Redenção Falsa</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Lua de Mel do Retorno</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">As primeiras semanas são genuinamente diferentes. O esforço é real porque o medo de perdê-la ainda é vivo. Isso faz com que você acredite que a mudança é definitiva.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Estabilização do Controle</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Conforme você se sente segura novamente, o controle dele sobre o suprimento de atenção se restabelece. O esforço começa a diminuir gradualmente, quase de forma imperceptível.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Retorno do Padrão Original</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sem trabalho terapêutico real e consistente, os mecanismos de defesa e manipulação retornam. O ciclo de desvalorização reinicia, geralmente com mais intensidade.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 14px;">A Pergunta que Desvela Tudo</h3>
+                            <p style="font-size:15px;color:#374151;line-height:1.8;margin:0 0 16px;">Antes de qualquer decisão, pergunte-se: <strong>&#8220;O que mudou concretamente &#8212; além das palavras?&#8221;</strong></p>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ele está em terapia há quanto tempo?</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Quais comportamentos específicos já mudaram antes de você retornar?</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Pessoas próximas a ele notaram mudanças reais, independente de você?</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Mudança real é silenciosa e consistente. Promessa de mudança é barulhenta e temporária.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 3,
+                titulo: 'Iscas de Empatia',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Identificando Emergências Falsas</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">A empatia é um dom. O hoovering a sequestra. Aprender a identificar quando a sua empatia está sendo usada como alavanca de controle não é cinismo &#8212; é discernimento soberano.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">As Cinco Iscas Mais Comuns</h3>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Crise de Saúde</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Doença repentina, acidente ou problema de saúde que aparece logo após o distanciamento. Ativa o instinto de cuidado e faz você se sentir culpada por se afastar nesse momento.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Tragédia Familiar</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Morte ou problema grave na família que o deixa &#8220;sem rede de apoio&#8221; e convenientemente precisando de você especificamente. Dificulta a recusa por parecer insensibível.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Ameaça Velada</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Insinuações sobre &#8220;não ver sentido em nada&#8221; ou &#8220;não saber o que vai fazer consigo mesmo&#8221;. Transfere a responsabilidade pela saúde mental dele para os seus ombros.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Favor Inofensivo</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">&#8220;Preciso só de um minuto para buscar um objeto&#8221; ou &#8220;é só uma pergunta rápida&#8221;. Parece pequeno, mas reabre o canal de contato que você fechou.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Conquista Espiritual</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">&#8220;Comecei a fazer terapia&#8221; / &#8220;Encontrei espiritualidade&#8221; / &#8220;O pastor me falou de você&#8221;. Usa linguagem de transformação que é difícil de questionar sem parecer cetíca.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Sua empatia é sagrada demais para ser sequestrada. Discernimento não é crueldade &#8212; é autopreservação.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 4,
+                titulo: 'O Contato Zero Absoluto',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Tornando Seu Reino Invisível ao Aspirador</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O contato zero não é punição &#8212; é protocolo de proteção. Cada canal aberto é uma porta por onde o aspirador pode operar. Fechar todos eles é o ato mais soberano que existe.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Protocolo de Invisibilidade Total</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Bloqueio Digital Completo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Telefone, WhatsApp, Instagram, Facebook, e-mail, LinkedIn &#8212; todos. Não deixar janelas abertas &#8220;só para ver&#8221;. Meio bloqueio é acesso parcial, que ele sabe explorar.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Fechamento do Canal de Terceiros</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Informe amigos e familiares que você não deseja receber mensagens, notícias ou atualizações sobre ele. Quem respeitar seus limites é alinhado. Quem não respeitar, é um canal a ser gerenciado.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Regra do Não-Monitoramento</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Não verificar o perfil dele mesmo &#8220;só para ver&#8221;. O monitoramento inverte a proteção: você abre uma janela emocional que o mantém presente na sua mente mesmo sem contato físico.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Script de Não-Resposta</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Se o contato chegar por um canal que você não pode bloquear (trabalho, condomínio, filhos), limite-se a respostas curtas, funcionais e sem abertura emocional. Sem explicações, sem julgamentos.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Invisibilidade não é fraqueza. É a forma mais elegante de dizer que o espetáculo encerrou.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 5,
+                titulo: 'A Liberdade Definitiva',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Cortando os Fios Invisíveis</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O contato zero externo é o primeiro passo. O segundo &#8212; e mais profundo &#8212; é o corte dos fios emocionais que ainda ligam a sua mente ao passado, mesmo sem contato físico.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Rituais de Libertação</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Inventário da Realidade</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva em duas colunas: &#8220;O que eu idealizei&#8221; e &#8220;O que foi real&#8221;. A nostalgia ama o ideal, não o real. Quando você confronta as duas colunas, o aspirador perde a eletricidade.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Arquivo Fechado</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Fotos, presentes, conversas salvas &#8212; coloque em lugar que exija esforço para acessar, ou descarte. O acesso fácil à memória é o combustivel do loop mental.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Construção do Novo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A melhor forma de ocupar o espaço mental que ele habitava é construír algo novo: um projeto, uma prática, uma conexão. Vazio é convidativo; construção é blindagem.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Decreto de Encerramento</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva uma carta para ele &#8212; que você nunca envia. Diga tudo. Depois, queime-a, rasge-a ou apague-a. É o seu ritual de encerramento soberano, feito para você, não para ele.</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Decreto da Liberdade</h3></div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sente-se. Respire fundo. Afirme: &#8220;O passado está encerrado. Ele não tem acesso ao meu futuro.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;A minha empatia pertence a quem a honra. Não sou oficial de resgate de quem me abandonou.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Liste três coisas que estão sendo construídas na sua vida neste momento.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;O meu reino não admite visitas de quem só sabe destruir.&#8221;</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">A Liberdade É Sua</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">A lucidez é o seu escudo mais forte. Use-a para enxergar através do drama e mantenha seus pés firmes no caminho da liberdade.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:16px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;O trono que você conquistou não admite visitas de quem só sabe destruir o palácio.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            }
+        ],
+        get conteudo() { return this.paginas[0].conteudo; },
+        categoria: 'Manipulação',
+        gratis: true
+    }
 ];
 
 /* ── Sidebar: marca o link ativo ────────────────────────────────────────── */

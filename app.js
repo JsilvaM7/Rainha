@@ -1646,6 +1646,170 @@ const GUIAS_DATA = [
         get conteudo() { return this.paginas[0].conteudo; },
         categoria: 'Manipulação',
         gratis: true
+    },
+
+    {
+        id: 'negging',
+        titulo: 'Negging',
+        descricao: 'O veneno disfarçado de elogio. Cinco cap&#237;tulos para identificar, neutralizar e se blindar da deprecia&#231;&#227;o sutil que corrói a autoestima de mulheres de alto valor.',
+        paginas: [
+            {
+                num: 1,
+                titulo: 'A Adaga de Vidro',
+                gratis: true,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Golpe que N&#227;o Deixa Marca Vis&#237;vel</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O <em>negging</em> &#233; uma t&#225;tica de deprecia&#231;&#227;o sutil, desenhada para desestabilizar a confian&#231;a de uma mulher atrav&#233;s de insultos disfarçados de feedback, preocupa&#231;&#227;o ou &#8220;honestidade brutal&#8221;. Diferente de uma ofensa direta, que geraria uma rea&#231;&#227;o imediata de defesa, o negging opera abaixo do radar.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Ele &#233; projetado para fazer voc&#234; se questionar, gerando uma pequena ferida na sua autoimagem que, com o tempo, se torna uma cicatriz de inseguran&#231;a. O objetivo &#233; simples: diminuir o seu valor percebido para que o manipulador pare&#231;a estar &#8220;acima&#8221; de voc&#234;, fazendo com que voc&#234; busque desesperadamente a aprova&#231;&#227;o dele para se sentir adequada novamente.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">A din&#226;mica come&#231;a de forma quase imperceptível &#8212; &#233; aquele coment&#225;rio sobre como seu vestido &#233; &#8220;corajoso&#8221; para o seu tipo de corpo, ou como voc&#234; &#233; &#8220;surpreendentemente inteligente para algu&#233;m t&#227;o bonita&#8221;.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Curto-Circuito Emocional</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 20px;">O c&#233;rebro recebe um est&#237;mulo positivo (um elogio) e um negativo (uma cr&#237;tica) ao mesmo tempo, criando uma confus&#227;o emocional. Esse &#233; o elemento de infiltra&#231;&#227;o: ele te desarma com uma m&#227;o enquanto te golpeia com a outra, deixando voc&#234; em um estado de busca constante por um elogio que seja, finalmente, puro e sem espinhos.</p>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Como ele destr&#243;i a confian&#231;a</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Com o passar do tempo, essa t&#225;tica cria um cen&#225;rio onde a soberana come&#231;a a duvidar de sua pr&#243;pria luz. O manipulador utiliza o negging para manth&#234;-la em um estado de &#8220;eterna aprendiz&#8221; ou de &#8220;imperfeição aceit&#225;vel&#8221;.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">O espelho distorcido</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#201; uma forma de controle que n&#227;o usa correntes, mas sim o espelho distorcido que ele coloca na sua frente todos os dias. Se voc&#234; alcan&#231;a um sucesso profissional, ele pontua a sorte que voc&#234; teve; se voc&#234; se sente poderosa, ele menciona uma pequena falha est&#233;tica.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Cavalos de Troia Verbais</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Voc&#234; &#233; t&#227;o bonita para uma mulher da sua idade.&#8221; &#8212; O que soa como elogio esconde a redu&#231;&#227;o.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Sua apresenta&#231;&#227;o foi boa, considerando o tempo que voc&#234; teve.&#8221; &#8212; A ressalva apaga a conquista.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Voc&#234; &#233; corajosa de usar isso.&#8221; &#8212; Elogio que embrulha uma cr&#237;tica ao seu corpo.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Sorte que voc&#234; &#233; bonita!&#8221; &#8212; Anula a intelig&#234;ncia ou compet&#234;ncia com ironia disfar&#231;ada.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">A Retomada da Soberania</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">A retomada da soberania exige o reconhecimento imediato desses cavalos de Troia verbais. Uma Rainha sabe que a verdadeira admira&#231;&#227;o n&#227;o vem acompanhada de ressalvas que visam diminu&#237;-la. Identificar o negging &#233; restaurar a integridade do seu pr&#243;prio espelho.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;O seu valor &#233; um territ&#243;rio inegoci&#225;vel onde apenas o respeito absoluto tem permiss&#227;o para habitar.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 2,
+                titulo: 'A Tradu&#231;&#227;o do Desprezo',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Decifrando as Frases Comuns</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Por tr&#225;s de cada frase de negging existe uma inten&#231;&#227;o precisa. Quando voc&#234; aprende a traduzir o que est&#225; sendo dito, a frase perde seu veneno. Aqui est&#227;o os c&#243;digos mais usados e o que eles realmente significam.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Dicion&#225;rio do Negging</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Voc&#234; seria perfeita se...&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Voc&#234; n&#227;o &#233; suficiente como &#233;. Existe uma condi&#231;&#227;o para o seu valor. Essa frase ancora sua autoestima a uma aprova&#231;&#227;o que nunca vir&#225;.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Estou falando isso porque me importo.&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Disfarce de cuidado para que voc&#234; receba a cr&#237;tica sem resist&#234;ncia e, mais grave, se sinta grata por ela.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;N&#227;o leva a s&#233;rio, &#233; s&#243; uma brincadeira.&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Nega o seu direito de se sentir atingida. Faz com que qualquer reação seja exagero, transferindo a culpa para voc&#234;.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Voc&#234; tem sorte de ter algu&#233;m honesto.&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Posiciona o depreciador como aliado raro, criando uma depend&#234;ncia de aprovação de quem é exatamente a fonte do dano.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Para a sua idade, voc&#234; se manteve muito bem.&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Elogio condicional que embute a ideia de que o tempo diminuiu seu valor &#8212; e que ele est&#225; sendo generoso ao reconhec&#234;-la assim mesmo.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Quando voc&#234; entende o c&#243;digo, o c&#243;digo perde o poder.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 3,
+                titulo: 'O Alvo Escolhido',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Por Que Mulheres de Alto Valor S&#227;o o Alvo</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">O negging n&#227;o &#233; usado aleatoriamente. Ele &#233; uma t&#225;tica que homens inseguros reservam especificamente para mulheres que percebem como superiores a eles &#8212; mulheres confiantes, bem-sucedidas, belas e independentes. Entender isso muda tudo.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">A Psicologia por Tr&#225;s do Alvo</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Ele a percebe como inacess&#237;vel</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A mulher de alto valor gera uma sensa&#231;&#227;o de amea&#231;a em homens com autoestima fr&#225;gil. O negging &#233; a tentativa de reduzir esse &#8220;diferencial de poder&#8221; &#8212; de baixar voc&#234; ao n&#237;vel onde ele se sente confort&#225;vel.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Ela n&#227;o precisa dele &#8212; e isso o aterroriza</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Uma mulher que n&#227;o precisa de aprova&#231;&#227;o &#233; incontrol&#225;vel. O negging &#233; a estrat&#233;gia para criar essa necessidade artificialmente &#8212; fazer com que ela busque exatamente o que ele reteve.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">O paradoxo da admira&#231;&#227;o t&#243;xica</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ironicamente, o negging &#233; uma forma distorcida de admira&#231;&#227;o. Ele a escolhe como alvo porque a v&#234; como superior. A deprecia&#231;&#227;o &#233; o &#250;nico mecanismo que ele conhece para se aproximar do que o faz sentir inferior.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Perfis do Depreciador</h3></div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>O Cr&#237;tico Disfar&#231;ado de Mentor:</strong> usa a autoridade de &#8220;quem quer o seu bem&#8221; para entregar ofensas embaladas em sabedoria.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>O Humor&#237;sta T&#243;xico:</strong> usa piadas e &#8220;brincadeiras&#8221; como ve&#237;culo, sabendo que qualquer reação sua ser&#225; retratada como excesso.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>O Observador Sutil:</strong> inserido na rotina &#8212; na família, no trabalho &#8212; usa coment&#225;rios pontuais mas frequentes, calculados para n&#227;o parecerem padr&#227;o.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Ser alvo do negging n&#227;o &#233; fraqueza &#8212; &#233; o sinal de que o seu valor foi notado. A fraqueza seria n&#227;o reconhec&#234;-lo.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 4,
+                titulo: 'O Escudo de Diamante',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Como Responder com Elegância e Autoridade</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">A resposta ao negging n&#227;o &#233; a explosão emocional nem o sil&#234;ncio submisso. &#201; a neutraliza&#231;&#227;o soberana &#8212; uma resposta que exibe o n&#237;vel de consci&#234;ncia que o manipulador esperava nunca encontrar.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Arsenal da Soberana</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Espelho de Volta</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Repita a frase de volta em forma de pergunta com curiosidade genuína: &#8220;Curioso. O que exatamente voc&#234; quis dizer com isso?&#8221; Obriga o depreciador a verbalizar o que disse sub-repticiamente &#8212; o que soa muito pior em voz alta.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Pausa Soberana</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">N&#227;o reaja imediatamente. Um silêncio de dois segundos seguido de um olhar calmo comunica: &#8220;Eu ouvi, processei e decidi que n&#227;o merece mais do que isso.&#8221; &#201; a resposta mais poderosa porque rouba o palco.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Nomenação Direta</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Com voz serena e olhar direto: &#8220;Isso foi um elogio com uma cr&#237;tica embutida, e eu prefiro n&#227;o receber desse jeito.&#8221; Sem raiva, sem drama. Apenas o fato &#8212; dito com a autoridade de quem conhece as regras do jogo.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Redirecionamento Elegante</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Agradeça a parte positiva e ignore completamente a parte negativa: &#8220;Obrigada!&#8221; &#8212; e mude de assunto. Voc&#234; honra apenas o que merece ser honrado. O resto morre de indiferença.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;A Rainha n&#227;o defende o trono. Ela simplesmente vive nele &#8212; e isso &#233; suficiente para tornar qualquer ataque irrelevante.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 5,
+                titulo: 'A Consagra&#231;&#227;o do Valor',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Rituais de Afirma&#231;&#227;o da Soberania</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Reconhecer e neutralizar o negging &#233; o primeiro passo. O segundo &#233; limpar o espa&#231;o interno onde as cr&#237;ticas deixaram res&#237;duos. Estes rituais foram desenhados para restaurar a integridade do seu espelho interno.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Pr&#225;ticas Di&#225;rias de Consagra&#231;&#227;o</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Invent&#225;rio do Valor (matinal)</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Antes de qualquer contato com o mundo externo, escreva tr&#234;s qualidades que voc&#234; possui que n&#227;o dependem da opini&#227;o de ningu&#233;m. Com o tempo, essa lista se torna o seu escudo prim&#225;rio.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Filtro da Fonte</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Antes de internalizar qualquer cr&#237;tica, pergunte: &#8220;Quem est&#225; dizendo isso? Essa pessoa me conhece profundamente? Ela tem interesse genuíno no meu crescimento?&#8221; Se a resposta for n&#227;o, a cr&#237;tica n&#227;o entra.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Limpeza Verbal (noturna)</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ao final do dia, revise qualquer coment&#225;rio que criou desconforto. Pergunte: &#8220;Isso era sobre mim ou sobre ele?&#8221; Devolva mentalmente o que n&#227;o &#233; seu. Limpe o espelho.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Decreto de Inviolabilidade (semanal)</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Reserve um momento para declarar em voz alta: &#8220;Meu valor n&#227;o &#233; negoci&#225;vel. Minha confian&#231;a n&#227;o &#233; editada por vozes externas. Eu escolho o que entra.&#8221;</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Decreto Final da Soberana</h3></div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sente-se em silêncio. Respire fundo três vezes.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;N&#227;o permito que ningu&#233;m edite a minha confian&#231;a. Esse poder &#233; meu.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Nomeie &#8212; sem raiva &#8212; cada coment&#225;rio que internalizou indevidamente esta semana.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;Devolvo o que n&#227;o &#233; meu. Fico com o que constru&#237;.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva uma qualidade sua que nenhuma cr&#237;tica ext&#237;nguir&#225;. Guarde-a como seu decreto.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">O Trono Permanece</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">Esta &#233; a &#250;ltima p&#225;gina &#8212; mas n&#227;o o fim da sua soberania. &#201; o come&#231;o de uma vida onde voc&#234; &#233; a &#250;nica editora do seu valor. O seu trono n&#227;o admite cr&#237;ticas que n&#227;o visem a sua constru&#231;&#227;o.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:16px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;N&#227;o permita que ningu&#233;m edite a sua confian&#231;a. O seu valor &#233; um territ&#243;rio inegoci&#225;vel.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            }
+        ],
+        get conteudo() { return this.paginas[0].conteudo; },
+        categoria: 'Manipulação',
+        gratis: true
     }
 ];
 
@@ -1691,6 +1855,20 @@ function switchGasChapter(num) {
 }
 window.switchGasChapter = switchGasChapter;
 
+/* Troca de capítulo no livro Negging */
+function switchNegChapter(num) {
+    document.querySelectorAll('.neg-chapter').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.neg-tab-btn').forEach(function (el) {
+        el.style.background = 'transparent';
+        el.style.color = 'var(--gold-dark)';
+    });
+    var cont = document.getElementById('neg-content-' + num);
+    var tab = document.getElementById('neg-tab-' + num);
+    if (cont) cont.style.display = 'block';
+    if (tab) { tab.style.background = 'var(--gold)'; tab.style.color = '#fff'; }
+}
+window.switchNegChapter = switchNegChapter;
+
 function renderGuias() {
     setActiveLink('sidebar-link-guias');
     var viewer = document.getElementById('content-viewer');
@@ -1702,16 +1880,20 @@ function renderGuias() {
         /* ── Guia Gaslighting: livro digital unificado ─── */
         if (g.paginas && g.paginas.length) {
             var total = g.paginas.length;
+            var pfx = g.id === 'negging' ? 'neg' : 'gas';
+            var switchFn = g.id === 'negging' ? 'switchNegChapter' : 'switchGasChapter';
+            var chapterClass = g.id === 'negging' ? 'neg-chapter' : 'gas-chapter';
+            var tabClass = g.id === 'negging' ? 'neg-tab-btn' : 'gas-tab-btn';
 
             /* Tabs de capítulo */
             var tabs = g.paginas.map(function (pag) {
                 var free = pag.gratis || isSubscriber;
                 var lock = free ? '' : ' &#128274;';
                 var isFirst = pag.num === 1;
-                var tabId = 'gas-tab-' + pag.num;
+                var tabId = pfx + '-tab-' + pag.num;
                 var bg = isFirst ? 'background:var(--gold);color:#fff;' : 'background:transparent;color:var(--gold-dark);';
-                return '<button id="' + tabId + '" class="gas-tab-btn"'
-                    + ' onclick="switchGasChapter(' + pag.num + ')"'
+                return '<button id="' + tabId + '" class="' + tabClass + '"'
+                    + ' onclick="' + switchFn + '(' + pag.num + ')"'
                     + ' style="' + bg + 'border:1.5px solid var(--gold);border-radius:99px;'
                     + 'padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;'
                     + 'white-space:nowrap;transition:background .2s,color .2s;">'
@@ -1728,7 +1910,7 @@ function renderGuias() {
 
                 /* Botões de navegação de capítulo */
                 var navPrev = prev
-                    ? '<button onclick="switchGasChapter(' + prev + ')"'
+                    ? '<button onclick="' + switchFn + '(' + prev + ')"'
                     + ' style="display:flex;align-items:center;gap:8px;background:#fff;'
                     + 'border:1.5px solid var(--gold);color:var(--gold-dark);'
                     + 'font-size:13px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;"'
@@ -1737,7 +1919,7 @@ function renderGuias() {
                     + '<i class="ph ph-arrow-left" style="font-size:15px;"></i> Capítulo anterior</button>'
                     : '<span></span>';
                 var navNext = next
-                    ? '<button onclick="switchGasChapter(' + next + ')"'
+                    ? '<button onclick="' + switchFn + '(' + next + ')"'
                     + ' style="display:flex;align-items:center;gap:8px;background:var(--gold);'
                     + 'border:none;color:#fff;font-size:13px;font-weight:800;'
                     + 'padding:10px 20px;border-radius:10px;cursor:pointer;"'
@@ -1760,7 +1942,7 @@ function renderGuias() {
                     + statusBadge + '</div>';
 
                 if (free) {
-                    return '<div id="gas-content-' + pag.num + '" class="gas-chapter" style="display:' + show + ';">'
+                    return '<div id="' + pfx + '-content-' + pag.num + '" class="' + chapterClass + '" style="display:' + show + ';">'
                         + chapHeader + pag.conteudo + nav + '</div>';
                 } else {
                     /* Paywall elegante com preview borrado */
@@ -1783,17 +1965,17 @@ function renderGuias() {
                         + 'text-decoration:none;box-shadow:0 4px 20px rgba(42,26,6,.25);"'
                         + ' onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(42,26,6,.35)\'"'
                         + ' onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 20px rgba(42,26,6,.25)\'">'
-                        + '&#128081; Desbloquear Acesso Completo</a>'
+                        + '&#128081; Reivindicar minha Soberania</a>'
                         + '<p style="font-size:12px;color:#9ca3af;margin:0;">Acesso imediato a todos os 5 capítulos + biblioteca completa</p>'
                         + '</div>';
-                    return '<div id="gas-content-' + pag.num + '" class="gas-chapter" style="display:' + show + ';">'
+                    return '<div id="' + pfx + '-content-' + pag.num + '" class="' + chapterClass + '" style="display:' + show + ';">'
                         + chapHeader + blurred + paywall + nav + '</div>';
                 }
             }).join('');
 
             /* Card livro unificado */
-            return '<div class="guia-card" id="guia-card-gaslighting" style="overflow:hidden;">'
-                + '<div class="guia-card__header" onclick="toggleGuia(\'gaslighting\')"'
+            return '<div class="guia-card" id="guia-card-' + g.id + '" style="overflow:hidden;">'
+                + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')"'
                 + ' style="cursor:pointer;background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);'
                 + 'border-radius:12px 12px 0 0;padding:24px 28px;">'
                 + '<span style="display:inline-block;background:rgba(197,160,89,.28);color:#e8c97a;'
@@ -1801,7 +1983,7 @@ function renderGuias() {
                 + 'padding:3px 14px;border-radius:99px;margin-bottom:10px;">Guia Maestro &#8212; 5 Capítulos</span>'
                 + '<h2 style="font-size:26px;font-weight:900;color:#fff;margin:0 0 8px;">' + g.titulo + '</h2>'
                 + '<p style="font-size:14px;color:#e8d4a8;margin:0 0 16px;line-height:1.6;">' + g.descricao + '</p>'
-                + '<button id="guia-btn-gaslighting"'
+                + '<button id="guia-btn-' + g.id + '"'
                 + ' style="display:inline-flex;align-items:center;gap:8px;background:#e8c97a;'
                 + 'border:none;color:#2a1a06;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;"'
                 + ' onmouseover="this.style.background=\'#f0d98a\'"'
@@ -1809,7 +1991,7 @@ function renderGuias() {
                 + '<i class="ph ph-book-open" style="font-size:15px;"></i> Abrir Livro</button>'
                 + '</div>'
                 /* Body */
-                + '<div id="guia-body-gaslighting" class="guia-card__body" style="display:none;padding:0;">'
+                + '<div id="guia-body-' + g.id + '" class="guia-card__body" style="display:none;padding:0;">'
                 /* Chapter tabs */
                 + '<div style="padding:16px 20px 12px;border-bottom:1px solid #f0e8d4;background:#fafaf8;">'
                 + '<p style="font-size:11px;font-weight:800;color:#9ca3af;text-transform:uppercase;letter-spacing:.6px;margin:0 0 10px;">Capítulos</p>'
@@ -1912,3 +2094,4 @@ window.renderExercicios = renderExercicios;
 window.renderViagens = renderViagens;
 window.renderGuias = renderGuias;
 window.toggleGuia = toggleGuia;
+window.switchNegChapter = switchNegChapter;

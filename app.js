@@ -1964,6 +1964,160 @@ const GUIAS_DATA = [
         categoria: 'Manipulação',
         gratis: true
     }
+,
+
+    {
+        id: 'stonewalling',
+        titulo: 'Stonewalling',
+        descricao: 'O muro de silêncio e a prisão da indiferença. Cinco capítulos para entender, resistir e governar sua própria paz quando o manipulador elege o gelo como arma.',
+        paginas: [
+            {
+                num: 1,
+                titulo: 'A Barreira Invisível',
+                gratis: true,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Silêncio Como Punição</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O <em>stonewalling</em>, ou &#8220;tratamento de silêncio&#8221;, é uma das táticas de manipulação mais frias e paralisantes que existem. Ocorre quando, diante de um conflito ou de uma simples tentativa de diálogo, o homem se retira emocionalmente, erguendo um muro intransponível de mudez e desdém.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Não é um tempo para &#8220;esfriar a cabeça&#8221; &#8212; é uma punição deliberada. Ao se recusar a responder, ele retira de você o direito básico à comunicação, deixando-a em um vácuo de ansiedade onde você se vê obrigada a mendigar por uma palavra ou a pedir desculpas por algo que não cometeu.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Cada tentativa sua de quebrar o muro reforça o poder dele. É uma forma de governo baseada no abandono temporário, onde ele te expulsa do reino emocional dele até que você se &#8220;comporte&#8221; da maneira que ele deseja.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">A Infiltração pelo Desejo de Conexão</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 20px;">Ele utiliza o seu desejo natural de conexão e harmonia contra você mesma. Ao ver você se esforçando, chorando ou tentando explicar seu ponto de vista repetidamente, o manipulador se sente no controle total da situação.</p>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">O muro que você não deve bater</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">A soberana entende que o silêncio de quem não quer ouvir é um território que não vale a pena ser invadido. Quando o manipulador ergue o muro, a reação da Rainha não é bater na porta, mas dar as costas e cuidar do seu próprio jardim.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">O silêncio como presente</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">O stonewalling só funciona se você estiver do outro lado esperando a porta abrir. No momento em que você redireciona sua atenção para si mesma e aceita o silêncio dele como um presente de solitude, o muro perde a utilidade estratégica e desaba.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais do Stonewalling</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Responde com monossilabos ou simplesmente não responde, mesmo quando você está claramente angustiada.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sai da sala, coloca fone de ouvido ou finge dormir no meio de uma discussão importante.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Volta ao normal sem nenhuma resolução, esperando que você aja como se nada tivesse acontecido.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Usa o silêncio seletivamente &#8212; conversa normalmente com outros, mas te ignora especificamente.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">O Governo É Inabalável</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">O seu valor não diminui porque alguém se recusa a validá-lo com palavras. Se ele escolheu o silêncio, deixe-o habitar nele sozinho. A sua voz é um tesouro, e a sua paz é um território sagrado que nenhuma barreira de gelo tem o poder de congelar.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;A comunicação é um privilégio concedido a quem tem maturidade para caminhar nela.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 2,
+                titulo: 'A Psicologia do Gelo',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Por Que Ele Usa o Silêncio Para Punir</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Entender a psicologia por trás do stonewalling transforma o que parece uma parede impenetrável em algo previsível e neutralizável. O manipulador não age por impulso &#8212; ele age por medo disfarçado de poder.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Os Três Motores do Stonewalling</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Evitação da Vulnerabilidade</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">O conflito exige expressão emocional. Para alguém que teme a própria vulnerabilidade, o silêncio é a armadura mais fácil. Ao calar-se, ele evita ter de admitir erros, sentimentos ou responsabilidades.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Controle da Narrativa</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Quem não fala não pode ser responsabilizado. O silêncio é a forma mais eficiente de escapar de qualquer conversa difícil enquanto ainda mantém o controle emocional do ambiente.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Recompensa Condicionada</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Se no passado o silêncio fez você ceder, pedir desculpas ou se dobrar, ele aprendeu que essa é a ferramenta que funciona. O comportamento é reforçado toda vez que produz o resultado desejado.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;O silêncio é um ato de covardia disfarçado de força. Reconhecer isso é a primeira vitória.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 3,
+                titulo: 'A Armadilha da Ansiedade',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Protegendo Seu Sistema Nervoso</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">O stonewalling produz uma resposta fisiológica real: o sistema nervoso entra em estado de alerta, o cortisol sobe e a mente entra em loop tentando resolver o que o outro se recusa a discutir. Proteger-se biologicamente é tão importante quanto proteger-se emocionalmente.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Protocolo de Proteção Durante o Isolamento</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Regra das 24 Horas</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Permita-se uma única tentativa de diálogo por dia durante o período de silêncio. Após isso, redirecione sua energia. Múltiplas tentativas aumentam sua ansiedade e o prazer dele.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Ancoramento no Corpo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Caminhe, beba água, respire fundo. O sistema nervoso não distingue entre ameaça real e silêncio emocional &#8212; processar fisicamente o estresse interrompe o loop mental.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Diário do Fato</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva o que aconteceu, o que você sente e o que você sabe ser verdade. Externalizar o loop mental para o papel libera o córtex pré-frontal do ciclo de ruminação.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Investimento Soberano</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Use o período de silêncio dele para algo que nutre você: um livro, uma aula, um encontro com amigas. Isso transforma o tempo de abandono em tempo de crescimento.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;Quem protege a própria paz durante a tempestade é a governante, não a vítima.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 4,
+                titulo: 'O Contra-Silêncio',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Indiferença Soberana vs. Punição</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Existe uma diferença crucial entre a indiferença soberana e devolver o tratamento de silêncio como punição. A primeira é um ato de autorrespeito; a segunda é entrar no mesmo jogo &#8212; e abdicando do seu próprio padrão de comunicação.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">A Linha Que Separa os Dois</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Silêncio Punitivo (não é o seu caminho)</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Motivado pela intenção de machucar, de fazer ele sentir o que você sentiu. Perpetua o ciclo de manipulação mútua e rebaixa seu padrão de relacionamento.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid var(--gold);"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">Indiferença Soberana (o seu caminho)</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Motivada pela decisão de não desperdiçar energia em quem não está disponível. Você não se cala para punir &#8212; você simplesmente redireciona sua atenção para o que merece ela.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A Frase da Soberana</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Estou disponível para uma conversa quando você estiver pronto para dialogar com respeito. Até lá, vou continuar com a minha vida.&#8221; &#8212; e de fato continuar. Sem esperar, sem verificar.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;A Rainha não grita para ser ouvida. Ela simplesmente para de justificar sua presença a quem não merece.&rdquo;</strong></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 5,
+                titulo: 'Fronteiras Verbais',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Regras de Diálogo Que Não Admitem Abandono</h3></div>
+                        <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Estabelecer fronteiras verbais claras define como o diálogo vai funcionar no seu relacionamento &#8212; sem aceitar o abandono emocional como opção válida.</p></div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">As Quatro Fronteiras do Diálogo Soberano</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Fronteira do Tempo Mínimo</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Se você precisar de espaço, diga-me por quanto tempo. Silêncio indefinido não é aceito aqui.&#8221;</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Fronteira da Dignidade</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Posso discutir com respeito. Não posso aceitar ser ignorada. Se não há diálogo, cada um decide o que fazer com isso.&#8221;</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Fronteira da Não Normalização</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Após cada episódio, nomeie o que aconteceu: &#8220;O que aconteceu nesses dias não foi saudável. Preciso saber que isso não vai se repetir.&#8221;</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Fronteira da Saída Digna</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Se o stonewalling se repete após o decreto, a saída digna é optar por um ambiente onde sua voz é honrada &#8212; mesmo que esse ambiente seja a própria solitude.</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Decreto da Paz Interior</h3></div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sente-se em silêncio. Respire fundo três vezes &#8212; este silêncio é seu.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;O silêncio dele não dita a minha paz. Eu sou minha própria resposta.&#8221;</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Escreva a fronteira de diálogo que você detém a partir de hoje.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Diga: &#8220;A minha voz é um tesouro. Compartilho apenas com quem sabe honorá-la.&#8221;</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">A Paz É Sua</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">O silêncio dele não deve ditar a sua paz. O seu governo é inabalável, mesmo diante da mudez mais profunda.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:16px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&ldquo;A sua paz é um território sagrado que nenhuma barreira de gelo tem o poder de congelar.&rdquo;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            }
+        ],
+        get conteudo() { return this.paginas[0].conteudo; },
+        categoria: 'Manipulação',
+        gratis: true
+    }
 ];
 
 /* ── Sidebar: marca o link ativo ────────────────────────────────────────── */

@@ -195,7 +195,7 @@ function _renderSideBarBody() {
         '<div class="lsb-section">' +
             '<p class="lsb-label">🏆 Seus Benefícios</p>' +
             '<div class="lsb-beneficios">' +
-                '<div class="lsb-beneficio">📖 Acesso a todos os 5 livros</div>' +
+                '<div class="lsb-beneficio">📖 Acesso a todos os guias</div>' +
                 '<div class="lsb-beneficio">🗳️ Votação exclusiva de tópicos de notícias</div>' +
                 '<div class="lsb-beneficio">🏷️ Descontos em lojas parceiras</div>' +
             '</div>' +
@@ -450,6 +450,26 @@ try {
                 _isSubscriber = false;
                 _atualizarUI(user);
             });
+
+            /* ── Listener em Tempo Real (Limpeza de Cache) ── */
+            if (window._unsubscribeUserSnap) window._unsubscribeUserSnap();
+            window._unsubscribeUserSnap = db.collection('users').doc(user.uid)
+                .onSnapshot(function(doc) {
+                    if (doc.exists && doc.data().statusAssinatura === 'Ativo') {
+                        if (!_isSubscriber) {
+                            console.log('[Auth] Status ativo detectado no Firestore. Atualizando cache da sessão...');
+                            user.getIdToken(true).then(function() {
+                                _isSubscriber = true;
+                                _atualizarUI(user);
+                                // Força o refresh visual da tela se a pessoa estiver na vitrine
+                                if (window.location.reload) window.location.reload();
+                            });
+                        }
+                    }
+                }, function(error) {
+                    console.warn('[Auth] Erro ao ouvir usuário:', error);
+                });
+
         });
     }
 } catch(e) {

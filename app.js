@@ -334,6 +334,7 @@ function renderVeuConteudo(tipo) {
         </div>
 
         <!-- Prévia das páginas bloqueadas (2-11) -->
+        ${!isSub ? `
         <div style="display:flex; flex-direction:column; gap:10px;">
             ${Array.from({length:10}, (_, i) => `
                 <button onclick="openVelvetModal()"
@@ -375,6 +376,12 @@ function renderVeuConteudo(tipo) {
                 Reivindique sua face oculta →
             </button>
         </div>
+        ` : `
+        <div style="margin-top:20px; padding:30px; text-align:center; background:#faf0f0; border:1px solid rgba(139,0,0,0.2); border-radius:12px;">
+            <p style="color:#8B0000; font-family:'Playfair Display',serif; font-size:18px; font-weight:bold;">Guia Completo em Avaliação</p>
+            <p style="color:#1a0a0a; font-size:14px; margin-top:10px;">Acesso VIP concedido. O Círculo Rainha está liberando os próximos segredos gradativamente em breve. Fique atenta!</p>
+        </div>
+        `}
     `;
 
     swapContent(viewer, wrapper);

@@ -125,7 +125,7 @@ function loadBooksShowcase() {
     wrapper.className = 'recipe-card';
     wrapper.innerHTML = `
         <!-- Dois botões Véu acima dos livros -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:36px;">
+        <div class="veu-cards-grid">
             <!-- Botão 1: O Véu da Juventude -->
             <button onclick="renderVeuConteudo('veu-juventude')" style="
                 background: linear-gradient(135deg, #4A0404 0%, #8B0000 60%, #c62828 100%);

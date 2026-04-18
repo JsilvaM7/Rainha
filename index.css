@@ -1097,6 +1097,14 @@ a:focus-visible {
     gap: 14px;
 }
 
+/* ── Véu da Beleza — grid de 2 cards (desktop: 2 colunas) ─────────────────── */
+.veu-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
 .book-showcase-btn {
     display: flex;
     align-items: center;
@@ -1428,6 +1436,22 @@ img {
     .step-card {
         padding: 16px 18px;
     }
+
+    /* ── 24. Véu cards grid — coluna única em mobile (≤768px) ───────────── */
+    .veu-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Botões internos: largura total + respeitam borda tela */
+    .veu-cards-grid > button {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 100px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
@@ -1460,6 +1484,11 @@ img {
 
     .nossa-cozinha-box {
         padding: 16px;
+    }
+
+    /* Padding interno dos cards Véu reduzido em telas muito pequenas */
+    .veu-cards-grid > button {
+        padding: 18px 14px !important;
     }
 }
 /* ══════════════════════════════════════════════════════════════════════════════

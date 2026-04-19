@@ -32,9 +32,22 @@ function submitVote(theme) {
         toggleModal();
         return;
     }
-    const primeiroNome = (user.displayName || user.nome || 'amigo').split(' ')[0];
-    alert(`✅ Voto registrado para: ${theme}! Obrigado, ${primeiroNome}!`);
-    toggleModal();
+    
+    firebase.firestore().collection('votos').doc(user.uid).set({
+        uid: user.uid,
+        email: user.email,
+        nome: user.displayName || user.email,
+        pilar: theme,
+        data: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true })
+    .then(() => {
+        const primeiroNome = (user.displayName || user.nome || 'amigo').split(' ')[0];
+        alert(`✅ Voto registrado com sucesso! Obrigado, ${primeiroNome}!`);
+    })
+    .catch(err => {
+        console.error("Erro ao registrar voto", err);
+        alert('Ocorreu um erro ao registrar seu voto. Tente novamente.');
+    });
 }
 /* ── State Tracking ─────────────────────────────────────────────────────────── */
 let livroAtual = null; // Guarda a chave do livro aberto (ex: 'energia')

@@ -1118,23 +1118,59 @@ function resolverCTA(categoria, linkNoticia) {
     return { url: finalUrl, text: finalText };
 }
 
+/* Map de título de notícia → chave do guia (para links diretos) */
+const NOTICIA_GUIA_MAP = {
+    'hoovering'       : { tipo: null, guia: 'guia-hoovering' },
+    'stonewalling'    : { tipo: null, guia: 'guia-stonewalling' },
+    'gaslighting'     : { tipo: null, guia: 'guia-gaslighting' },
+    'véu da juventude': { tipo: 'veu-juventude', guia: null },
+    'veu da juventude': { tipo: 'veu-juventude', guia: null },
+    'pintura da sereia': { tipo: 'pintura-sereia', guia: null },
+};
+
+/* Descobre o link de destino a partir do título da notícia */
+function resolverLinkGuia(titulo) {
+    const norm = (titulo || '').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    for (const [keyword, dest] of Object.entries(NOTICIA_GUIA_MAP)) {
+        const keyNorm = keyword.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (norm.includes(keyNorm)) return dest;
+    }
+    return null;
+}
+
+/* Gera um ID único para cada card */
+let _newsCardId = 0;
+
 /* Builds a single news card DOM element from a data object */
 function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }) {
     const card = document.createElement('div');
     card.className = 'news-card feed-dinamico';
+    const cardId = 'newscard-' + (++_newsCardId);
 
-    const { url, text } = resolverCTA(categoria, linkNoticia);
+    // Tenta link de guia interno primeiro
+    const guiaDest = resolverLinkGuia(titulo);
+
+    let ctaHTML;
+    if (guiaDest) {
+        // Link interno para o Guia
+        if (guiaDest.tipo) {
+            // Guias Véu (veu-juventude / pintura-sereia)
+            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderVeuConteudo('${guiaDest.tipo}')">📚 Acessar o Guia →</button>`;
+        } else {
+            // Outros guias por chave
+            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="if(window.abrirGuia){window.abrirGuia('${guiaDest.guia}');}else{loadBooksShowcase();}">📚 Acessar o Guia →</button>`;
+        }
+    } else {
+        // Fallback: CTA original por categoria / link externo
+        const { url, text } = resolverCTA(categoria, linkNoticia);
+        ctaHTML = url
+            ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="clube-btn" style="display:inline-block;font-weight:700;">${text}</a>`
+            : `<a href="#" class="clube-btn" style="display:inline-block;font-weight:700;" onclick="alert('Artigo disponível em breve.'); return false;">${text}</a>`;
+    }
 
     const fallbackImg = 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800';
     const imgSrc = linkImagem && linkImagem.trim() ? linkImagem.trim() : fallbackImg;
-
-    const ctaHTML = url
-        ? `<a href="${url}" target="_blank" rel="noopener noreferrer"
-              class="clube-btn"
-              style="display:inline-block; font-weight:700;">${text}</a>`
-        : `<a href="#" class="clube-btn"
-              style="display:inline-block; font-weight:700;"
-              onclick="alert('Artigo disponível em breve.'); return false;">${text}</a>`;
 
     card.innerHTML = `
         <img src="${imgSrc}"
@@ -1143,12 +1179,37 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
         <div class="news-content">
             <span class="news-category">${categoria}</span>
             <h2 class="news-header-title">${titulo}</h2>
-            <p style="color:var(--text-muted); margin-bottom:24px; white-space:pre-wrap;">${resumo}</p>
+
+            <!-- Texto retrátil -->
+            <div class="news-body" id="${cardId}-body">
+                <p class="news-resumo" style="color:var(--text-muted); white-space:pre-wrap; margin:0;">${resumo}</p>
+            </div>
+            <div class="news-fade" id="${cardId}-fade"></div>
+
+            <button class="news-expand-btn" id="${cardId}-btn"
+                    onclick="toggleNewsCard('${cardId}')" style="margin-bottom:16px;">
+                Ler mais <span id="${cardId}-arrow">▼</span>
+            </button>
+
             ${ctaHTML}
         </div>
     `;
     return card;
 }
+
+/* Expande / recolhe um card de notícia */
+function toggleNewsCard(id) {
+    const body   = document.getElementById(id + '-body');
+    const fade   = document.getElementById(id + '-fade');
+    const btn    = document.getElementById(id + '-btn');
+    const arrow  = document.getElementById(id + '-arrow');
+    const open   = body.classList.toggle('news-body--open');
+    if (fade)  fade.style.display  = open ? 'none' : 'block';
+    if (arrow) arrow.textContent   = open ? '▲' : '▼';
+    if (btn)   btn.textContent     = (open ? 'Recolher ' : 'Ler mais ') ;
+    if (btn)   btn.appendChild(arrow);
+}
+
 
 /* Fetches and injects the Google Sheets CSV at the TOP of the feed.
    Called asynchronously after the static feed renders so the page isn't blocked. */
@@ -2855,7 +2916,7 @@ function renderGuias() {
         + '<div style="margin-bottom:36px;">'
         + '<span style="display:inline-block;background:#fdf8f0;color:var(--sage-green);font-size:12px;'
         + 'font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:4px 14px;border-radius:20px;margin-bottom:14px;">Biblioteca de Guias</span>'
-        + '<h1 style="font-size:28px;font-weight:900;color:#2a1a06;margin:0 0 8px;">Guias Práticos para o seu Dia a Dia</h1>'
+        + '<h1 style="font-size:28px;font-weight:900;color:#2a1a06;margin:0 0 8px;">Guias Práticos para a Evolução</h1>'
         + '<p style="font-size:15px;color:var(--text-muted);margin:0;">'
         + (isSubscriber ? 'Acesso completo &#8212; todos os guias estão liberados para você.' : 'Assine o Círculo Rainha para desbloquear os guias')
         + '</p></div>'

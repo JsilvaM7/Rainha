@@ -621,14 +621,19 @@ body {
 
 /* ── Collapsible news body ─────────────────────────────────────────── */
 .news-body {
-    max-height: 200px;       /* exibe o primeiro parágrafo completo */
+    display: none;           /* colapsado por padr\u00e3o — s\u00f3 aparece ap\u00f3s clicar */
     overflow: hidden;
-    transition: max-height 0.45s ease;
+    animation: newsBodyFadeIn 0.35s ease;
     margin-bottom: 0;
 }
 .news-body--open {
-    max-height: 1200px;      /* valor alto para acomodar qualquer tamanho */
-    margin-bottom: 16px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+@keyframes newsBodyFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Gradiente de fade no final do texto colapsado */

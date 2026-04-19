@@ -1148,29 +1148,17 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
     card.className = 'news-card feed-dinamico';
     const cardId = 'newscard-' + (++_newsCardId);
 
-    // Tenta link de guia interno primeiro
-    const guiaDest = resolverLinkGuia(titulo);
-
-    let ctaHTML;
-    if (guiaDest) {
-        // Link interno para o Guia
-        if (guiaDest.tipo) {
-            // Guias Véu (veu-juventude / pintura-sereia)
-            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderVeuConteudo('${guiaDest.tipo}')">Acessar o Guia →</button>`;
-        } else {
-            // Outros guias por chave
-            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="if(window.abrirGuia){window.abrirGuia('${guiaDest.guia}');}else{loadBooksShowcase();}">Acessar o Guia →</button>`;
-        }
-    } else {
-        // Fallback: CTA original por categoria / link externo
-        const { url, text } = resolverCTA(categoria, linkNoticia);
-        ctaHTML = url
-            ? `<a href="${url}" target="_blank" rel="noopener noreferrer" class="clube-btn" style="display:inline-block;font-weight:700;">${text}</a>`
-            : `<a href="#" class="clube-btn" style="display:inline-block;font-weight:700;" onclick="alert('Artigo disponível em breve.'); return false;">${text}</a>`;
-    }
-
     const fallbackImg = 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800';
     const imgSrc = linkImagem && linkImagem.trim() ? linkImagem.trim() : fallbackImg;
+
+    // Divide o resumo no primeiro break de parágrafo (\n\n ou \n simples entre parágrafos)
+    const partes = (resumo || '').split(/\n{2,}|(?<=\.)\s*\n/);
+    const primeiroPar = (partes[0] || '').trim();
+    const restante    = partes.slice(1).join('\n\n').trim();
+    const temResto    = restante.length > 0;
+
+    // Botão universal: sempre aponta para a seção de Guias
+    const ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="loadBooksShowcase()">Acessar o Guia →</button>`;
 
     card.innerHTML = `
         <img src="${imgSrc}"
@@ -1180,16 +1168,20 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
             <span class="news-category">${categoria}</span>
             <h2 class="news-header-title">${titulo}</h2>
 
-            <!-- Texto retrátil -->
+            <!-- Primeiro parágrafo sempre visível -->
+            <p style="color:var(--text-muted); white-space:pre-wrap; margin:0 0 ${temResto ? '0' : '24px'};">${primeiroPar}</p>
+
+            ${temResto ? `
+            <!-- Parágrafos restantes retráteis -->
             <div class="news-body" id="${cardId}-body">
-                <p class="news-resumo" style="color:var(--text-muted); white-space:pre-wrap; margin:0;">${resumo}</p>
+                <p style="color:var(--text-muted); white-space:pre-wrap; margin:12px 0 0;">${restante}</p>
             </div>
             <div class="news-fade" id="${cardId}-fade"></div>
-
             <button class="news-expand-btn" id="${cardId}-btn"
-                    onclick="toggleNewsCard('${cardId}')" style="margin-bottom:16px;">
+                    onclick="toggleNewsCard('${cardId}')" style="margin-top:4px;margin-bottom:16px;">
                 Ler mais <span id="${cardId}-arrow">▼</span>
             </button>
+            ` : '<div style="height:16px"></div>'}
 
             ${ctaHTML}
         </div>
@@ -1199,15 +1191,17 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
 
 /* Expande / recolhe um card de notícia */
 function toggleNewsCard(id) {
-    const body   = document.getElementById(id + '-body');
-    const fade   = document.getElementById(id + '-fade');
-    const btn    = document.getElementById(id + '-btn');
-    const arrow  = document.getElementById(id + '-arrow');
-    const open   = body.classList.toggle('news-body--open');
-    if (fade)  fade.style.display  = open ? 'none' : 'block';
-    if (arrow) arrow.textContent   = open ? '▲' : '▼';
-    if (btn)   btn.textContent     = (open ? 'Recolher ' : 'Ler mais ') ;
-    if (btn)   btn.appendChild(arrow);
+    const body  = document.getElementById(id + '-body');
+    const fade  = document.getElementById(id + '-fade');
+    const btn   = document.getElementById(id + '-btn');
+    const arrow = document.getElementById(id + '-arrow');
+    if (!body) return;
+    const open = body.classList.toggle('news-body--open');
+    if (fade)  fade.style.display = open ? 'none' : 'block';
+    if (arrow) arrow.textContent  = open ? '▲' : '▼';
+    if (btn) {
+        btn.childNodes[0].textContent = open ? 'Recolher ' : 'Ler mais ';
+    }
 }
 
 

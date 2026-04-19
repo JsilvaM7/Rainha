@@ -621,7 +621,7 @@ body {
 
 /* ── Collapsible news body ─────────────────────────────────────────── */
 .news-body {
-    max-height: 84px;        /* ~3 linhas de texto colapsadas */
+    max-height: 200px;       /* exibe o primeiro parágrafo completo */
     overflow: hidden;
     transition: max-height 0.45s ease;
     margin-bottom: 0;

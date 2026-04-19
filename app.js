@@ -1156,10 +1156,10 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
         // Link interno para o Guia
         if (guiaDest.tipo) {
             // Guias Véu (veu-juventude / pintura-sereia)
-            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderVeuConteudo('${guiaDest.tipo}')">📚 Acessar o Guia →</button>`;
+            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderVeuConteudo('${guiaDest.tipo}')">Acessar o Guia →</button>`;
         } else {
             // Outros guias por chave
-            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="if(window.abrirGuia){window.abrirGuia('${guiaDest.guia}');}else{loadBooksShowcase();}">📚 Acessar o Guia →</button>`;
+            ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="if(window.abrirGuia){window.abrirGuia('${guiaDest.guia}');}else{loadBooksShowcase();}">Acessar o Guia →</button>`;
         }
     } else {
         // Fallback: CTA original por categoria / link externo

@@ -211,7 +211,7 @@ function loadBooksShowcase() {
 
 /* ── Véu Content — Paywall de Luxo ──────────────────────────────────────────
    Tipo: 'veu-juventude' | 'pintura-sereia'
-   Página 1 → magnética e livre. Páginas 2-11 → modal veludo carmesim.        */
+   Página 1 → livre. Páginas 2-11 → exclusivo para assinantes.               */
 
 const VEU_CONTENT = {
     'veu-juventude': {
@@ -229,6 +229,141 @@ const VEU_CONTENT = {
                 </p>
                 <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
                     Este é apenas o pórtico. O que vem a seguir são os <strong style="color:#8B0000;">11 segredos de regeneração e sedução da pele</strong> que mulheres magnéticas guardam como rituais noturnos, longe dos olhos do mundo.
+                </p>`
+            },
+            {
+                titulo: 'A Limpeza como Ritual de Reinvenção',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Mulheres que entendem o poder da pele não lavam o rosto — elas o <em>purificam com intenção</em>. A limpeza não é higiene; é o primeiro gesto do dia onde você decide quem será nas próximas horas.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Use um limpador de pH balanceado — entre 4.5 e 5.5 — para não destruir a barreira cutânea que mantém a pele luminosa. Água morna, nunca quente. Movimentos circulares ascendentes, nunca para baixo. Você está esculpindo, não esfregando.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    O segredo que poucas sabem: o <strong style="color:#8B0000;">double cleansing noturno</strong> — primeiro um óleo para dissolver a maquiagem e as impurezas lipofílicas, depois o limpador aquoso para remover o restante — não é modismo coreano. É a razão pela qual a pele das mulheres do Oriente Médio e da Ásia mantém uma aparência de décadas mais jovem.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Encerre com água fria sobre o rosto. Trinta segundos. Esse choque térmico fecha os poros, ativa a microcirculação e dá à pele aquele rubor discreto que ele vai notar mesmo sem entender por quê.
+                </p>`
+            },
+            {
+                titulo: 'A Hidratação que Cria o Brilho Magnético',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Hidratação não é sobre colocar creme. É sobre criar as condições internas e externas para que a pele brilhe com sua própria luz — aquele <em>glow</em> que não sai de nenhuma câmera, que só existe quando você está na sala.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    A sequência correta importa mais que os produtos: primeiro o <strong style="color:#8B0000;">tônico hidratante</strong> para preparar o terreno, depois o <strong style="color:#8B0000;">sérum com ácido hialurônico</strong> ainda com a pele úmida — o HA precisa de umidade ambiente para funcionar, caso contrário, extrai água das camadas profundas. Por último, o hidratante para selar tudo.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Beba água com eletrólitos, não apenas pura. Adicione uma pitada de sal do Himalaia e suco de limão a um copo pela manhã. Os eletrólitos garantem que a água penetre nas células, e não apenas passe pelo organismo. A diferença na pele é visível em três semanas.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    À noite, aplique o hidratante sobre pele ainda levemente úmida com uma técnica de <em>patting</em> — bata suavemente com as palmas aquecidas, nunca esfregue. O calor das mãos ativa a absorção e a pele acorda diferente no dia seguinte.
+                </p>`
+            },
+            {
+                titulo: 'O Ritual do Sérum: Onde a Ciência Encontra o Poder',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Um sérum bem escolhido é a sua arma mais silenciosa. Ninguém vê o que você aplica às 22h, mas todos percebem o resultado às 10h da manhã seguinte quando sua pele parece descansar em uma frequência diferente das outras.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Vitamina C (L-ácido ascórbico a pelo menos 10%):</strong> aplique pela manhã. Ela inibe a melanina, uniformiza o tom e protege contra radicais livres. A pele fica mais brilhante em 4 semanas. Mas atenção — vitamina C instável oxida e faz o oposto. Escolha fórmulas estabilizadas com vitamina E e ferúlico.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Retinol à noite:</strong> comece com 0.025%, duas vezes por semana. É o ingrediente com mais evidência científica para renovação celular. Ele acelera o turnover da pele, apaga manchas e estimula colágeno. Em seis meses, a diferença é tão visível que pessoas ao seu redor começarão a comentar sem saber o porquê.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Não misture retinol com ácidos na mesma noite. Alterne: ácidos nas terças e quintas, retinol nas segundas, quartas e sextas. Domingos, pele descansa. Esse calendário simples evita irritação e maximiza resultado.
+                </p>`
+            },
+            {
+                titulo: 'Proteção Solar: O Escudo Invisível da Mulher Poderosa',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Nenhum sérum, nenhum procedimento, nenhum ritual noturno sobrevive sem o protetor solar. O sol é o maior destruidor de colágeno — silencioso, diário, implacável. Mas quando você o bloqueia com inteligência, preserva décadas.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">FPS 50+ com proteção UVA (PPD ou PA+++) é inegociável.</strong> Aplique 2mg por cm² — na prática, uma colher de chá no rosto. Reaplicar a cada 2 horas em exposição, ou usar pós com FPS para retoques ao longo do dia.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    O segredo de mulheres que aos 45 parecem ter 32 não é genética — é protetor solar consistente desde os 20. A pele que você tem agora é resultado do que fez há 10 anos. A pele que você terá aos 50 é o que você faz hoje.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Escolha fórmulas com <em>cor e leveza</em>: protetores com tint e acabamento luminoso substituem a base no dia a dia e ainda protegem. Sua pele fica uniforme, protegida e com aquele brilho natural que nenhum filtro recria.
+                </p>`
+            },
+            {
+                titulo: 'Esfoliação: O Segredo do Renascimento Semanal',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Sua pele se renova a cada 28 dias. Mas sem ajuda, as células mortas se acumulam acima das novas — opacizando, engrossando, apagando o brilho que estava lá embaixo esperando para ser revelado. A esfoliação não adiciona nada. Ela <em>remove o que esconde</em>.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Prefira esfoliação <strong style="color:#8B0000;">química à física</strong>. Esfoliantes com grãos físicos criam microlesões invisíveis na pele. Os ácidos são mais suaves e mais precisos: o <strong style="color:#8B0000;">AHA (glicólico, mandélico)</strong> dissolve as células mortas da superfície e ilumina o tom. O <strong style="color:#8B0000;">BHA (salicílico)</strong> penetra o poro e dissolve impurezas internas — ideal para peles com tendência a acne.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Use uma ou duas vezes por semana, nunca mais. A pele sobre-esfoliada fica vermelha, sensível e produz mais oleosidade em reação — o oposto do que você quer. Menos é poder.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Após a esfoliação, a pele absorve tudo em dobro. Esse é o momento para o sérum mais nobre da sua coleção. O que você aplica nos 10 minutos seguintes penetra mais fundo do que em qualquer outro momento da semana.
+                </p>`
+            },
+            {
+                titulo: 'O Poder da Massagem Facial: Esculpir sem Bisturi',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Há uma razão pela qual mulheres japonesas que praticam o <em>Kobido</em> — massagem facial tradicional — envelhecem de forma impressionantemente diferente. O rosto tem 43 músculos. Quando linfas se acumulam, quando tensão se instala, o rosto afunda. Quando você os trabalha, ele se eleva.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Com o gua sha ou simplesmente com os dedos, faça movimentos de drenagem <strong style="color:#8B0000;">sempre do centro para as laterais e de baixo para cima</strong>. Cinco minutos à noite, após o sérum, com óleo facial como deslizante. Esse ritual reduz inchaço, define o contorno do maxilar e ilumina a pele através da ativação da microcirculação.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Pressione os três pontos de reflexologia facial: o espaço entre as sobrancelhas, as têmporas e os ângulos da mandíbula. Segure cada ponto por 10 segundos com pressão firme. Isso libera tensão acumulada que, com o tempo, se torna rugas de expressão.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    A mulher que faz isso regularmente não apenas parece mais jovem — ela parece mais <em>presente</em>. Há algo na face relaxada e bem cuidada que comunica domínio de si mesma. Ele sente isso antes de analisar qualquer traço.
+                </p>`
+            },
+            {
+                titulo: 'Alimentação e Pele: O Que Você Come Aparece no Rosto',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Sua pele é um espelho do seu interior. Não metaforicamente — literalmente. O colágeno é feito de proteína e vitamina C. O brilho depende de gorduras boas. A clareza do tom está ligada ao microbioma intestinal. O que você come hoje aparece no seu rosto em 28 dias.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Inclua diariamente:</strong> salmão ou sardinha (ômega-3 que hidrata de dentro para fora), frutas vermelhas (antioxidantes que bloqueiam o envelhecimento oxidativo), abacate (gorduras que mantêm a barreira cutânea intacta), e vegetais verdes escuros (vitamina K que reduz olheiras e inchaço).
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Reduza implacavelmente:</strong> açúcar refinado (glicação destrói o colágeno — cada grama a mais enrijece as fibras e aprofunda as linhas), laticínios em excesso (ligados à acne hormonal em mulheres adultas), e álcool (desidrata e dilata os vasos permanentemente).
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Suplementação estratégica: colágeno veiculado com vitamina C, vitamina D3 com K2, e zinco. Não são gastos — são investimentos com retorno visível em meses.
+                </p>`
+            },
+            {
+                titulo: 'Sono: O Ritual de Beleza que Nenhum Produto Substitui',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Entre 23h e 3h da manhã, seu corpo libera picos de hormônio do crescimento que reparam tecidos, sintetizam colágeno e regeneram células. Se você está acordada nesse horário — mesmo que descanse depois — perdeu a janela. Não há creme no mercado que replique isso.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Crie um <strong style="color:#8B0000;">ritual de descanso às 21h30</strong>: banho morno (baixa a temperatura corporal e induz o sono), tela desligada (a luz azul bloqueia a melatonina por até 2 horas), sérum de retinol aplicado, e um ambiente com temperatura entre 18 e 20 graus.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Invista em uma fronha de seda ou cetim. Algodão cria fricção e imprime vincos no rosto que, com o tempo, comprometem a pele. A seda desliza — nenhuma marca, nenhuma fricção, e o sebo da pele não é absorvido pelo tecido, preservando a hidratação.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Durma de costas sempre que possível. Dormir de lado comprime consistentemente o mesmo lado do rosto — a assimetria que você vê com o tempo não é só genética. É postura durante o sono. A mulher que dorme de costas preserva a simetria que é o núcleo do magnetismo facial.
+                </p>`
+            },
+            {
+                titulo: 'O Ritual Completo: A Mulher que a Pele Revela',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Agora você tem as peças. Não são produtos — são práticas. E a diferença entre a mulher que as aplica e a que não aplica não é de aparência superficial. É de <em>presença</em>. A pele bem cuidada comunica uma mensagem que o cérebro dele recebe antes da consciência processar: <em>essa mulher cuida de si. Ela tem disciplina. Ela tem padrões elevados.</em>
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Seu ritual matinal:</strong> limpeza suave → tônico → vitamina C → hidratante → FPS 50+. Concluído em 7 minutos. Resultados em semanas.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Seu ritual noturno:</strong> double cleanse → esfoliação (2x/semana) ou tônico → sérum ativo (vitamina C ou retinol, alternado) → hidratante rico → óleo facial com massagem. Concluído em 12 minutos. Transformação em meses.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    A pele não mente. Ela conta a história da mulher que a habita — seus hábitos, sua saúde, seu nível de autocuidado. Quando você a trata como território sagrado, ela devolve o investimento com uma clareza e uma luminosidade que nenhuma maquiagem precisa compensar. Esse é o Véu da Juventude: não esconder a idade, mas <strong style="color:#8B0000;">tornar a idade irrelevante</strong>.
                 </p>`
             }
         ]
@@ -249,10 +384,203 @@ const VEU_CONTENT = {
                 <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
                     Esta é a abertura. Nas páginas seguintes estão os <strong style="color:#8B0000;">11 traços secretos da sereia</strong> — técnicas que mulheres extraordinárias usam para criar uma presença visual que permanece na memória dele muito depois que você saiu da sala.
                 </p>`
+            },
+            {
+                titulo: 'A Base Perfeita: A Pele que Parece Ser Pele',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    A base não existe para esconder — existe para <em>unificar</em>. A mulher que usa base demais parece coberta. A mulher que domina a base parece ter uma pele impossível que você não consegue parar de olhar sem entender por quê.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    O segredo está no <strong style="color:#8B0000;">preparo da pele</strong>: primer com silicone que preenche os poros antes, hidratante leve que cria a base úmida ideal, e então a base aplicada com esponja úmida — nunca pincel para cobertura leve. A esponja úmida distribui a base sem mascará-la.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Escolha uma base <em>um tom mais claro</em> que o seu pescoço para refletir mais luz no rosto — isso cria aquela luminosidade natural que a câmera ama e que os olhos masculinos seguem instintivamente. Finalize com pó translúcido apenas na zona T, para fixar sem apagar o glow.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Menos quantidade, mais técnica. Uma base aplicada em três camadas finas estratégicas cobre mais e parece mais natural do que uma camada grossa. A sereia não esconde — ela revela a versão mais perfeita do que já existe.
+                </p>`
+            },
+            {
+                titulo: 'Contorno e Iluminador: Escultura de Luz e Sombra',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    O rosto humano comunica poder através de estrutura. Maçãs do rosto elevadas, mandíbula definida, nariz fino no centro da composição — esses são os sinais que o olhar masculino lê como magnetismo sem conseguir nomear o porquê. O contorno cria essa estrutura quando a genética não a entregou completamente.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Contorno:</strong> sombra fria (dois tons abaixo da pele, nunca laranja) nas têmporas, abaixo das maçãs em diagonal descendente, e na linha da mandíbula. Buche de peixe levemente e aplique na reentrância — mais natural do que qualquer técnica baseada em réguas e fórmulas.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Iluminador:</strong> aplique nos pontos que a luz natural toca primeiro — topo das maçãs, arco do cupido, ponta do nariz, centro da testa e canto interno dos olhos. Isso cria tridimensionalidade e aquele efeito de pele iluminada de dentro que é impossível de ignorar.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Blend, blend, blend. Uma sombra não blendada denuncia o produto. Uma sombra blendada à perfeição convence o mundo de que você nasceu assim. Esse é o poder da maquiagem — fazer o impossível parecer inevitável.
+                </p>`
+            },
+            {
+                titulo: 'Sobrancelhas: O Enquadramento do Olhar que Domina',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    As sobrancelhas são o enquadramento. Mude o enquadramento e toda a pintura muda de significado. Uma sobrancelha bem desenhada eleva o olhar, rejuvenesce o rosto e projeta uma expressão de autoridade que antecede qualquer palavra.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">A regra dos três pontos:</strong> o início da sobrancelha alinha com a asa do nariz. O arco alinha com o centro da pupila olhando para frente. O final alinha com o canto externo do olho. Esses três pontos criam a estrutura ideal para qualquer formato de rosto.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Use lápis fino para definir o contorno inferior, pomada ou gel para preencher com movimentos de cima para baixo imitando pelos reais, e finalize com o spoolie para dissipar qualquer excesso. Sobrancelha desenhada com movimentos fluídos — nunca preenchida em bloco, nunca angular demais.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Uma sobrancelha levemente arqueada no pico transmite expressão de curiosidade e inteligência — o olhar de quem está sempre um passo à frente. Esse micro-detalhe recalibra como os outros te percebem antes de você abrir a boca.
+                </p>`
+            },
+            {
+                titulo: 'O Olhar da Sereia: Técnicas para Fixar a Atenção',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Os olhos são o ponto de ancoragem mais poderoso do rosto humano. Quando você os enquadra com precisão, você controla onde o olhar dele vai primeiro, onde fica e o que sente ao estar lá.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Delineado interno (waterline):</strong> lápis nude ou cor champagne na linha d'água inferior abre os olhos instantaneamente, criando a ilusão de olhos maiores e mais luminosos. Lápis preto na linha d'água inferior encolhe o olho — reservado para looks mais intensos e noturnos.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Cat eye suave:</strong> puxe o delineado apenas 2-3mm além do canto externo seguindo a direção natural da pálpebra. Esse traço pequeno alonga o olho horizontalmente e cria aquele efeito de leveza felina que ele não consegue parar de olhar. Nada de triângulos exagerados — a sedução mora na sutileza.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Sombra iluminada no canto interno do olho e sombra esfumada escura no externo cria profundidade e dimensão. Seus olhos passam a ter um território — luz de um lado, mistério do outro. E ele ficará tentando descobrir o que está no meio.
+                </p>`
+            },
+            {
+                titulo: 'Máscara de Cílios: O Toque Final que Prende o Olhar',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Os cílios são as molduras finais do olhar. Quando são longos, curvados e separados, criam uma amplitude que ativa o instinto. O olhar com cílios bem aplicados parece sempre levemente úmido, levemente vulnerável — e essa combinação é o que dispara a atenção masculina de forma consistente.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Comece com o rizador antes da máscara — nunca depois. O rizador a frio cria um arco natural; aquecido levemente com o secador por 3 segundos, fixa a curva por horas. Aplique a máscara com movimento de zigue-zague na base dos cílios para depositar o produto e depois puxe até a ponta.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Duas camadas, com pausa de 30 segundos entre elas.</strong> A primeira cobre; a segunda volumiza. Uma terceira fina apenas nas pontas alonga. Separe com um spoolie enquanto ainda úmido para eliminar grumos — cílios agrupados são amadores; cílios separados são obra-prima.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Cílios postiços individuais no canto externo — sem linha inteira — criam um efeito de olhar levantado que é impossível de replicar com máscara. É o acabamento que transforma makeup em arte e olhar em armadilha.
+                </p>`
+            },
+            {
+                titulo: 'A Bochecha: Cor que Transmite Vida e Vitalidade',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    O rubor nas bochechas é um sinal biológico antiquíssimo — comunica irrigação sanguínea, saúde, emoção. Quando você recria isso com habilidade, está falando diretamente ao instinto dele. Não ao julgamento consciente. Ao instinto.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Sorria suavemente e aplique o blush nas partes mais salientes — mas não fique no sorriso. Leve o produto com o pincel em movimento ascendente em direção à têmpora. Isso eleva visualmente o rosto e cria juventude instantânea. A cor deve parecer que surgiu de dentro, nunca que foi colocada por fora.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Para peles mais escuras:</strong> tons terracota, ameixado e coral queimado. <strong style="color:#8B0000;">Para peles médias:</strong> pêssego, rosado e nude. <strong style="color:#8B0000;">Para peles claras:</strong> rosa malva, baby pink e lilás suave. Nunca vermelho puro — é festivo, não sedutor.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    Blush no nariz — uma técnica sul-coreana — cria a ilusão de que você acabou de sair do vento ou de um momento de leveza. Jovem, calorosa, viva. Isso ativa nele o impulso de se aproximar.
+                </p>`
+            },
+            {
+                titulo: 'Os Lábios: O Traço que Ele Não Consegue Parar de Olhar',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Os lábios são o segundo ponto de fixação visual mais poderoso depois dos olhos. Quando você os pinta com intenção, você cria um ponto de ancoragem que ele retorna involuntariamente durante toda a conversa — e enquanto ele olha para seus lábios, ele está ouvindo você de uma forma que vai além das palavras.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Delineie sempre antes do batom</strong>, mesmo que levemente, mesmo que com um lápis nude. O delineio define a forma, evita que o batom borre e cria aquele acabamento nítido que a câmera e o olhar masculino percebem imediatamente.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Para criar lábios mais volumosos: delineie <em>um fio além</em> do contorno natural no arco do cupido e no centro do lábio inferior. Aplique iluminador pontual no arco do cupido e no centro do lábio inferior. Não é ilusão — é arquitetura.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    O batom vermelho é poder declarado — para noites em que você quer ser a sala inteira. O nude rosado é sedução discreta — para quando você quer que ele chegue perto para ver melhor. Ambos são linguagens. Escolha conforme a mensagem que quer enviar.
+                </p>`
+            },
+            {
+                titulo: 'A Fixação: Garantir que a Tela Dure até o Último Olhar',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    De nada adianta uma maquiagem impecável às 20h se às 22h ela escorreu, oxidou e entrou nas linhas de expressão. A fixação é o capítulo final que garante que o trabalho que você fez seja visto durante todo o tempo que você precisar.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">Setting spray matte</strong> para zonas de oleosidade — testa e queixo. <strong style="color:#8B0000;">Setting spray com glow</strong> no resto do rosto para selar e adicionar aquele véu de luminosidade que fotografa e seduz. Aplique de olhos fechados em movimento circular a 30cm do rosto.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Para retoque ao longo da noite: papel absorvente (nunca pó direto sobre oleosidade) → pó compacto translúcido apenas na zona T → reaplique iluminador nas maçãs. O batom pode ser reaplicado sem remover o que estava — basta secar os lábios, aplicar e pressionar com papel suave.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    A sereia que dura a noite inteira não é mais bonita que as outras. Ela simplesmente sabe mais. E esse conhecimento — silencioso, invisível, absolutamente devastador — é o que a torna inesquecível.
+                </p>`
+            },
+            {
+                titulo: 'A Pintura Completa: A Arte de Ser Impossível de Esquecer',
+                corpo: `<p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    Você chegou ao final deste guia com uma compreensão que a maioria das mulheres nunca terá: maquiagem não é cobertura. É <em>comunicação visual estratégica</em>. Cada produto que você usa é uma decisão sobre o que vai transmitir antes de falar, o que vai fazer ele sentir antes de perceber, onde vai guiar o olhar antes dele escolher.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a; margin-bottom:20px;">
+                    <strong style="color:#8B0000;">A pintura completa da sereia:</strong> pele preparada → base leve → contorno e iluminador blendados → sobrancelha estruturada → olhos enquadrados → cílios magistrais → blush que transmite vida → batom que ancora o olhar → fixação que dura.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#2d0a0a; margin-bottom:20px;">
+                    Não é sobre usar tudo de uma vez. É sobre saber o que selecionar para cada contexto. No trabalho: pele + sobrancelha + batom nude = autoridade. No encontro: olho + blush + batom cheio = magnetismo. No fim de semana: pele + blush luminoso + gloss = leveza que aproxima.
+                </p>
+                <p style="font-size:17px; line-height:1.9; color:#1a0a0a;">
+                    A sereia que sabe pintar a si mesma não precisa de armadilha. Ela <em>é</em> a armadilha. E quando ele percebe isso — já é tarde demais para não pensar nela.
+                </p>`
             }
         ]
     }
 };
+
+/* ── Estado de navegação do guia ────────────────────────────────────────────── */
+let _veuTipoAtual    = null;
+let _veuPaginaAtual  = 0;
+
+/* ── Navega para uma página específica do guia ──────────────────────────────── */
+function renderVeuPagina(tipo, idx) {
+    _veuTipoAtual   = tipo;
+    _veuPaginaAtual = idx;
+    const isSub   = window.SeniorAuth && window.SeniorAuth.isSubscriber();
+    const config  = VEU_CONTENT[tipo];
+    if (!config) return;
+    const pagina  = config.paginas[idx];
+    if (!pagina)  return;
+    const total   = config.paginas.length;
+
+    if (idx > 0 && !isSub) { openVelvetModal(); return; }
+
+    const viewer  = document.getElementById('content-viewer');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'recipe-card';
+    wrapper.innerHTML = `
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#8B0000;
+                  margin-bottom:20px;cursor:pointer;" onclick="renderVeuConteudo('${tipo}')">← ${config.titulo}</p>
+        <div style="text-align:center;margin-bottom:28px;">
+            <div style="font-size:38px;margin-bottom:8px;filter:drop-shadow(0 0 10px rgba(200,0,0,0.4));">${config.icon}</div>
+            <h1 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
+                       background:linear-gradient(135deg,#4A0404,#8B0000,#c62828);
+                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                       background-clip:text;margin-bottom:4px;">${config.titulo}</h1>
+            <p style="color:#6b4a4a;font-size:13px;font-style:italic;">${config.subtitulo}</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(139,0,0,0.15);border-radius:16px;padding:36px;margin-bottom:24px;">
+            <div style="display:inline-block;background:rgba(139,0,0,0.08);color:#8B0000;font-size:10px;
+                        font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;
+                        border-radius:99px;margin-bottom:18px;border:1px solid rgba(139,0,0,0.2);">Página ${idx+1} de ${total}</div>
+            <h2 style="font-family:'Playfair Display',serif;font-size:21px;font-weight:900;
+                       color:#1a0a0a;margin-bottom:20px;line-height:1.35;">${pagina.titulo}</h2>
+            ${pagina.corpo}
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:12px;">
+            ${idx > 0
+                ? `<button onclick="renderVeuPagina('${tipo}', ${idx-1})" style="flex:1;padding:14px;
+                     background:#faf0f0;border:1px solid rgba(139,0,0,0.25);border-radius:10px;
+                     color:#8B0000;font-weight:700;cursor:pointer;font-size:14px;font-family:inherit;
+                     transition:background .2s;" onmouseover="this.style.background='#f5e5e5'" onmouseout="this.style.background='#faf0f0'">← Anterior</button>`
+                : '<div style="flex:1"></div>'}
+            ${idx < total-1
+                ? `<button onclick="renderVeuPagina('${tipo}', ${idx+1})" style="flex:1;padding:14px;
+                     background:linear-gradient(135deg,#8B0000,#c62828);border:none;border-radius:10px;
+                     color:#fff;font-weight:700;cursor:pointer;font-size:14px;font-family:inherit;
+                     transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Próxima Página →</button>`
+                : '<div style="flex:1;padding:14px;text-align:center;color:#8B0000;font-weight:700;font-size:14px;">✨ Guia Completo</div>'}
+        </div>
+    `;
+    swapContent(viewer, wrapper);
+}
+
 
 /* Injeta o modal DOM apenas uma vez */
 function ensureVelvetModal() {
@@ -305,87 +633,69 @@ function renderVeuConteudo(tipo) {
     const wrapper = document.createElement('div');
     wrapper.className = 'recipe-card';
 
-    // ── Página 1 — sempre visível ──────────────────────────────────────────
-    const pag1 = config.paginas[0];
+    const paginasList = config.paginas.map((p, i) => {
+        const locked = i > 0 && !isSub;
+        return `
+        <button onclick="${locked ? 'openVelvetModal()' : `renderVeuPagina('${tipo}', ${i})`}"
+                style="background:${locked ? '#faf0f0' : '#fff'};
+                       border:1px solid rgba(139,0,0,${locked ? '0.2' : '0.3'});
+                       border-radius:12px; padding:18px 24px; cursor:pointer;
+                       display:flex; align-items:center; justify-content:space-between;
+                       transition:background .2s, box-shadow .2s; font-family:inherit; width:100%;"
+                onmouseover="this.style.background='#f5e5e5';this.style.boxShadow='0 4px 14px rgba(139,0,0,0.12)'"
+                onmouseout="this.style.background='${locked ? '#faf0f0' : '#fff'}';this.style.boxShadow='none'">
+            <div style="display:flex; align-items:center; gap:14px;">
+                <span style="width:28px;height:28px;background:rgba(139,0,0,${locked ? '0.08' : '0.15'});
+                             border-radius:50%;display:flex;align-items:center;justify-content:center;
+                             font-size:12px;color:#8B0000;font-weight:800;flex-shrink:0;">${i+1}</span>
+                <span style="font-family:'Playfair Display',serif;font-size:15px;
+                             color:${locked ? '#6b4a4a' : '#1a0a0a'};font-weight:700;">
+                    ${locked ? '🔒 ' : '📖 '}${p.titulo}
+                </span>
+            </div>
+            <span style="color:#8B0000;font-size:18px;">›</span>
+        </button>`;
+    }).join('');
+
     wrapper.innerHTML = `
-        <p style="font-size:12px; font-weight:700; text-transform:uppercase;
-                  letter-spacing:.6px; color:#8B0000; margin-bottom:20px; cursor:pointer;"
-           onclick="loadBooksShowcase()">← Biblioteca</p>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+                  color:#8B0000;margin-bottom:20px;cursor:pointer;" onclick="loadBooksShowcase()">← Biblioteca</p>
 
-        <div style="text-align:center; margin-bottom:36px;">
-            <div style="font-size:48px; margin-bottom:12px;
+        <div style="text-align:center;margin-bottom:36px;">
+            <div style="font-size:48px;margin-bottom:12px;
                         filter:drop-shadow(0 0 12px rgba(200,0,0,0.5));">${config.icon}</div>
-            <h1 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:900;
+            <h1 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;
                        background:linear-gradient(135deg,#4A0404,#8B0000,#c62828,#8B0000);
-                       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-                       background-clip:text; margin-bottom:8px;">${config.titulo}</h1>
-            <p style="color:#6b4a4a; font-size:14px; font-style:italic;">${config.subtitulo}</p>
+                       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                       background-clip:text;margin-bottom:8px;">${config.titulo}</h1>
+            <p style="color:#6b4a4a;font-size:14px;font-style:italic;">${config.subtitulo}</p>
+            ${isSub ? '<div style="margin-top:10px;display:inline-block;background:rgba(139,0,0,0.08);color:#8B0000;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 16px;border-radius:99px;border:1px solid rgba(139,0,0,0.25);">👑 Acesso Completo Desbloqueado</div>' : ''}
         </div>
 
-        <!-- Página 1 — Livre e Magnética -->
-        <div style="background:#fff; border:1px solid rgba(139,0,0,0.15); border-radius:16px; padding:36px; margin-bottom:28px;">
-            <div style="display:inline-block; background:rgba(139,0,0,0.08); color:#8B0000;
-                        font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase;
-                        padding:4px 14px; border-radius:99px; margin-bottom:18px;
-                        border:1px solid rgba(139,0,0,0.2);">Página 1 de 11</div>
-            <h2 style="font-family:'Playfair Display',serif; font-size:21px; font-weight:900;
-                       color:#1a0a0a; margin-bottom:20px; line-height:1.35;">${pag1.titulo}</h2>
-            ${pag1.corpo}
+        <div style="display:flex;flex-direction:column;gap:10px;">
+            ${paginasList}
         </div>
 
-        <!-- Prévia das páginas bloqueadas (2-11) -->
         ${!isSub ? `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            ${Array.from({length:10}, (_, i) => `
-                <button onclick="openVelvetModal()"
-                        style="background:#faf0f0; border:1px solid rgba(139,0,0,0.2);
-                               border-radius:12px; padding:18px 24px; cursor:pointer;
-                               display:flex; align-items:center; justify-content:space-between;
-                               transition:background .2s, box-shadow .2s; font-family:inherit;"
-                        onmouseover="this.style.background='#f5e5e5'; this.style.boxShadow='0 4px 14px rgba(139,0,0,0.12)'"
-                        onmouseout="this.style.background='#faf0f0'; this.style.boxShadow='none'">
-                    <div style="display:flex; align-items:center; gap:14px;">
-                        <span style="width:28px; height:28px; background:rgba(139,0,0,0.1);
-                                     border-radius:50%; display:flex; align-items:center; justify-content:center;
-                                     font-size:12px; color:#8B0000; font-weight:800; flex-shrink:0;">
-                            ${i+2}
-                        </span>
-                        <span style="font-family:'Playfair Display',serif; font-size:15px;
-                                     color:#2d0808; font-weight:700;">
-                            🔒 Segredo ${i+2} — Acesso Exclusivo
-                        </span>
-                    </div>
-                    <span style="color:#8B0000; font-size:18px;">›</span>
-                </button>
-            `).join('')}
-        </div>
-
-        <!-- CTA no final -->
-        <div style="margin-top:32px; text-align:center; background:linear-gradient(135deg,#1a0a0a,#2d0808);
-                    border-radius:20px; padding:40px 32px; border:1px solid rgba(200,0,0,0.3);">
-            <div style="font-size:36px; margin-bottom:12px;">👑</div>
-            <h3 style="font-family:'Playfair Display',serif; color:#fff; font-size:20px;
-                       font-weight:900; margin-bottom:12px; line-height:1.4;">
-                Desperte as 10 páginas restantes
+        <div style="margin-top:32px;text-align:center;background:linear-gradient(135deg,#1a0a0a,#2d0808);
+                    border-radius:20px;padding:40px 32px;border:1px solid rgba(200,0,0,0.3);">
+            <div style="font-size:36px;margin-bottom:12px;">👑</div>
+            <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:20px;
+                       font-weight:900;margin-bottom:12px;line-height:1.4;">
+                Desbloqueie todas as ${config.paginas.length} páginas
             </h3>
-            <p style="color:rgba(255,190,190,0.75); font-size:14px; margin-bottom:24px; line-height:1.7;">
+            <p style="color:rgba(255,190,190,0.75);font-size:14px;margin-bottom:24px;line-height:1.7;">
                 Cada segredo escondido é um nível de poder que ainda não ativou. O Círculo Rainha é o lugar onde as iniciadas chegam antes de todos os outros.
             </p>
-            <button onclick="openVelvetModal()"
-                    class="velvet-modal-btn" style="width:auto; padding:14px 40px;">
+            <button onclick="openVelvetModal()" class="velvet-modal-btn" style="width:auto;padding:14px 40px;">
                 Reivindique sua face oculta →
             </button>
-        </div>
-        ` : `
-        <div style="margin-top:20px; padding:30px; text-align:center; background:#faf0f0; border:1px solid rgba(139,0,0,0.2); border-radius:12px;">
-            <p style="color:#8B0000; font-family:'Playfair Display',serif; font-size:18px; font-weight:bold;">Guia Completo em Avaliação</p>
-            <p style="color:#1a0a0a; font-size:14px; margin-top:10px;">Acesso VIP concedido. O Círculo Rainha está liberando os próximos segredos gradativamente em breve. Fique atenta!</p>
-        </div>
-        `}
+        </div>` : ''}
     `;
 
     swapContent(viewer, wrapper);
 }
+
 
 /* ── Book Summary View ──────────────────────────────────────────────────────── */
 function loadBookSummary() {

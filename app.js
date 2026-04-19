@@ -1157,8 +1157,8 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
     const restante    = partes.slice(1).join('\n\n').trim();
     const temResto    = restante.length > 0;
 
-    // Botão universal: sempre aponta para a seção de Guias
-    const ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="loadBooksShowcase()">Acessar o Guia →</button>`;
+    // Botão universal: sempre aponta para a aba de Guias
+    const ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderGuias()">Acessar o Guia \u2192</button>`;
 
     card.innerHTML = `
         <img src="${imgSrc}"

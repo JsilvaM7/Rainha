@@ -1023,11 +1023,11 @@ const CATEGORIA_CTA = {
         url:  null
     },
     'MANIPULAÇÃO': {
-        text: '🔍 Saber mais sobre Manipulação',
+        text: '🔍 Saber mais sobre Dinâmicas de Controle',
         url:  null
     },
     'MANIPULACAO': {  // alias sem acento
-        text: '🔍 Saber mais sobre Manipulação',
+        text: '🔍 Saber mais sobre Dinâmicas de Controle',
         url:  null
     },
     'POSICIONAMENTO': {
@@ -1258,7 +1258,7 @@ async function carregarFeedNoticias(feedContainer) {
         divider.textContent = 'O FEMININO: Decifrando as Intenções';
         feedContainer.appendChild(divider);
 
-        // Determina o índice do primeiro card de Manipulação (destaque)
+        // Determina o índice do primeiro card de Dinâmicas de Controle (destaque)
         const idxDestaque = dataRows.findIndex(r => normalizarCat(r[iCat]) === 'manipulacao');
 
         dataRows.forEach((r, idx) => {
@@ -1269,7 +1269,7 @@ async function carregarFeedNoticias(feedContainer) {
                 linkNoticia: r[iLink] || '#',
                 linkImagem: r[iImg] || ''
             });
-            // Aplica destaque visual ao primeiro card de Manipulação
+            // Aplica destaque visual ao primeiro card de Dinâmicas de Controle
             if (idx === idxDestaque) {
                 card.classList.add('news-card--destaque');
             }
@@ -1762,7 +1762,7 @@ function resolverTextoViagem(d) {
     return '🗺️ Explorar Destino';
 }
 
-/* ── Manipulação — Inteligência Relacional e Comportamental ──────── */
+/* ── Dinâmicas de Controle — Inteligência Relacional e Comportamental ──────── */
 const MANIPULACAO_TEMAS = [
     {
         emoji: '🎭',
@@ -1852,7 +1852,7 @@ function renderManipulacao() {
 
         <div style="margin-bottom:32px;">
             <h1 style="font-size:28px; font-weight:900; color:#2a1a06; margin:0 0 8px;">
-                👁️ Manipulação
+                👁️ Dinâmicas de Controle
             </h1>
             <p style="font-size:15px; color:#7a5e32; margin:0;">
                 Inteligência relacional, leitura de pessoas e estética do poder. Para quem joga no nível mais alto.
@@ -1876,7 +1876,7 @@ const GUIAS_DATA = [
 
     {
         id: 'gaslighting',
-        titulo: 'Gaslighting',
+        titulo: 'Névoa Mental',
         descricao: 'O guia que toda mulher deveria ter lido antes. Cinco cap&#237;tulos para reconhecer, nomear e se libertar da n&#233;voa que algu&#233;m criou na sua mente.',
         paginas: [
             {
@@ -2029,13 +2029,13 @@ const GUIAS_DATA = [
             }
         ],
         get conteudo() { return this.paginas[0].conteudo; },
-        categoria: 'Manipulação',
+        categoria: 'Dinâmicas de Controle',
         gratis: true
     },
 
     {
         id: 'negging',
-        titulo: 'Negging',
+        titulo: 'O Reconvite',
         descricao: 'O veneno disfarçado de elogio. Cinco cap&#237;tulos para identificar, neutralizar e se blindar da deprecia&#231;&#227;o sutil que corrói a autoestima de mulheres de alto valor.',
         paginas: [
             {
@@ -2092,7 +2092,7 @@ const GUIAS_DATA = [
                         <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Decifrando as Frases Comuns</h3></div>
                         <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Por tr&#225;s de cada frase de negging existe uma inten&#231;&#227;o precisa. Quando voc&#234; aprende a traduzir o que est&#225; sendo dito, a frase perde seu veneno. Aqui est&#227;o os c&#243;digos mais usados e o que eles realmente significam.</p></div>
                         <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
-                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Dicion&#225;rio do Negging</h3>
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Dicionário do Reconvite</h3>
                             <div style="display:flex;flex-direction:column;gap:18px;">
                                 <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Voc&#234; seria perfeita se...&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Voc&#234; n&#227;o &#233; suficiente como &#233;. Existe uma condi&#231;&#227;o para o seu valor. Essa frase ancora sua autoestima a uma aprova&#231;&#227;o que nunca vir&#225;.</p></div>
                                 <div style="background:#fff;border-radius:12px;padding:20px 22px;border-top:3px solid #dc2626;"><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 8px;">&ldquo;Estou falando isso porque me importo.&rdquo;</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><strong>Real:</strong> Disfarce de cuidado para que voc&#234; receba a cr&#237;tica sem resist&#234;ncia e, mais grave, se sinta grata por ela.</p></div>
@@ -2193,13 +2193,13 @@ const GUIAS_DATA = [
             }
         ],
         get conteudo() { return this.paginas[0].conteudo; },
-        categoria: 'Manipulação',
+        categoria: 'Dinâmicas de Controle',
         gratis: true
     },
 
     {
         id: 'triangulacao',
-        titulo: 'Triangulação',
+        titulo: 'O Terceiro Elemento',
         descricao: 'A terceira sombra e a insegurança como ferramenta de governo. Cinco cap&#237;tulos para reconhecer, desarmar e sair do ringue invis&#237;vel onde o manipulador se torna o árbitro da sua vida.',
         paginas: [
             {
@@ -2295,7 +2295,7 @@ const GUIAS_DATA = [
                 gratis: false,
                 conteudo: `
                     <div style="display:flex;flex-direction:column;gap:32px;">
-                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Técnicas para Desarmar a Triangulação</h3></div>
+                        <div><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span><h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Técnicas para Desarmar O Terceiro Elemento</h3></div>
                         <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Sair do ringue não é uma ato de resignação &#8212; é um ato de soberania. A seguir estão as técnicas de comunicação assertiva que desarmam a triangulação sem drama e sem perder a classe.</p></div>
                         <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
                             <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Arsenal da Recusa ao Ringue</h3>
@@ -2346,7 +2346,7 @@ const GUIAS_DATA = [
             }
         ],
         get conteudo() { return this.paginas[0].conteudo; },
-        categoria: 'Manipulação',
+        categoria: 'Dinâmicas de Controle',
         gratis: true
     }
 ,
@@ -2500,14 +2500,14 @@ const GUIAS_DATA = [
             }
         ],
         get conteudo() { return this.paginas[0].conteudo; },
-        categoria: 'Manipulação',
+        categoria: 'Dinâmicas de Controle',
         gratis: true
     }
 ,
 
     {
         id: 'hoovering',
-        titulo: 'Hoovering',
+        titulo: 'Ciclos de Retorno',
         descricao: 'O aspirador emocional e a armadilha do resgate. Cinco capítulos para reconhecer o retorno manipulador, desativar as iscas de empatia e manter seu reino inviolável.',
         paginas: [
             {
@@ -2539,7 +2539,7 @@ const GUIAS_DATA = [
                         <div>
                             <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
                                 <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
-                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais Clássicos do Hoovering</h3>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais Clássicos dos Ciclos de Retorno</h3>
                             </div>
                             <div style="display:flex;flex-direction:column;gap:12px;">
                                 <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Mensagens sentimentais enviadas exatamente quando você está se sentindo bem e seguindo em frente.</p></div>
@@ -2665,7 +2665,7 @@ const GUIAS_DATA = [
             }
         ],
         get conteudo() { return this.paginas[0].conteudo; },
-        categoria: 'Manipulação',
+        categoria: 'Dinâmicas de Controle',
         gratis: true
     }
 ];

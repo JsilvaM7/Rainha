@@ -1213,7 +1213,8 @@ const CATEGORIAS_VALIDAS = ['beleza', 'feminina', 'manipulacao', 'dinamicas de c
 /* Normaliza string para comparação de categoria (sem acento, minúscula) */
 function normalizarCat(s) {
     return (s || '').trim().toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[.,;!?]+$/, '').trim();
 }
 
 async function carregarFeedNoticias(feedContainer) {

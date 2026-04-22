@@ -1208,7 +1208,7 @@ function toggleNewsCard(id) {
 /* Fetches and injects the Google Sheets CSV at the TOP of the feed.
    Called asynchronously after the static feed renders so the page isn't blocked. */
 /* Categorias válidas do portal Rainha (comparadas sem acento, em minúsculo) */
-const CATEGORIAS_VALIDAS = ['beleza', 'feminina', 'manipulacao', 'posicionamento'];
+const CATEGORIAS_VALIDAS = ['beleza', 'feminina', 'manipulacao', 'dinamicas de controle', 'posicionamento'];
 
 /* Normaliza string para comparação de categoria (sem acento, minúscula) */
 function normalizarCat(s) {
@@ -1259,7 +1259,7 @@ async function carregarFeedNoticias(feedContainer) {
         feedContainer.appendChild(divider);
 
         // Determina o índice do primeiro card de Dinâmicas de Controle (destaque)
-        const idxDestaque = dataRows.findIndex(r => normalizarCat(r[iCat]) === 'manipulacao');
+        const idxDestaque = dataRows.findIndex(r => ['manipulacao', 'dinamicas de controle'].includes(normalizarCat(r[iCat])));
 
         dataRows.forEach((r, idx) => {
             const card = criarCardNoticia({

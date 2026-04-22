@@ -290,7 +290,7 @@ window.renderModalConteudo = function() {
         '<p style="font-size:14px;font-weight:700;color:var(--sage-green-dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">🗳️ Votação do Dia</p>' +
         '<p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">O que você quer ver mais na próxima semana?</p>' +
         '<button class="vote-btn" onclick="submitVote(\'Pel\')">Pele</button>' +
-        '<button class="vote-btn" onclick="submitVote(\'Man\')">Dinâmicas de Controle</button>' +
+        '<button class="vote-btn" onclick="submitVote(\'Man\')">Manipulação</button>' +
         '<button class="vote-btn" onclick="submitVote(\'Pos\')">Posicionamento</button>' +
         '<button class="vote-btn" onclick="submitVote(\'Ape\')">Aperfeiçoamento</button>' +
         '<p style="font-size:11px;color:var(--text-muted);margin-top:14px;">Seu voto ajuda a construir o portal dos seus sonhos.</p>';

@@ -21,11 +21,8 @@ window.SeniorAuth = {
 
     loginComGoogle: function() {
         if (!fbAuth) { alert('Firebase indisponível.'); return; }
-        fbAuth.signInWithRedirect(fbProvider).then(function(result) {
-            if (result && result.user) _atualizarUI(result.user);
-        }).catch(function(e) {
-            if (e.code !== 'auth/popup-closed-by-user')
-                alert('Erro ao fazer login: ' + e.message);
+        fbAuth.signInWithRedirect(fbProvider).catch(function(e) {
+            alert('Erro ao redirecionar para o login: ' + e.message);
         });
     },
 

@@ -197,6 +197,10 @@ const db   = firebase.firestore();
 const ADMIN_EMAILS = ['julioynvest@gmail.com', 'Juliofs2011@gmail.com'];
 
 /* ── Auth ────────────────────────────────────────────────────────────── */
+auth.getRedirectResult().catch(function(e) {
+    console.error(e);
+});
+
 auth.onAuthStateChanged(function(user) {
     if (user && ADMIN_EMAILS.map(e=>e.toLowerCase()).includes(user.email.toLowerCase())) {
         document.getElementById('login-screen').style.display = 'none';
@@ -217,7 +221,7 @@ auth.onAuthStateChanged(function(user) {
 function loginAdmin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-    auth.signInWithPopup(provider);
+    auth.signInWithRedirect(provider);
 }
 
 /* ── Helpers ─────────────────────────────────────────────────────────── */

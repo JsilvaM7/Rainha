@@ -239,6 +239,10 @@ var ADMIN_EMAILS = [
 ];
 
 /* ── Auth ──────────────────────────────────────────────────────────── */
+auth.getRedirectResult().catch(function(e) {
+    showLoginError(e.message);
+});
+
 auth.onAuthStateChanged(function(user) {
     if (!user) {
         document.getElementById('login-gate').style.display = 'block';
@@ -264,8 +268,8 @@ auth.onAuthStateChanged(function(user) {
 });
 
 function adminLogin() {
-    auth.signInWithPopup(provider).catch(function(e) {
-        if (e.code !== 'auth/popup-closed-by-user') showLoginError(e.message);
+    auth.signInWithRedirect(provider).catch(function(e) {
+        showLoginError(e.message);
     });
 }
 

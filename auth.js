@@ -21,7 +21,7 @@ window.SeniorAuth = {
 
     loginComGoogle: function() {
         if (!fbAuth) { alert('Firebase indisponível.'); return; }
-        fbAuth.signInWithPopup(fbProvider).then(function(result) {
+        fbAuth.signInWithRedirect(fbProvider).then(function(result) {
             if (result && result.user) _atualizarUI(result.user);
         }).catch(function(e) {
             if (e.code !== 'auth/popup-closed-by-user')

@@ -4,7 +4,7 @@
    ══════════════════════════════════════════════════════════════════════════════ */
 
 /* ── Webhook para captura de leads (substitua pela URL real) ────────────────── */
-var RAINHA_WEBHOOK_URL = 'SEU_WEBHOOK_URL_AQUI'; /* ⚠️ Substitua pela URL do Make/n8n/Apps Script */
+var RAINHA_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyJwrA4ajxUi7_eolnY17x--tL2ZqJSqZPT758A4eABkruFEcVs0JpEtZu4u0yXoMk/exec';
 
 window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/E105391945G?bid=1776289319139';
 
@@ -57,19 +57,26 @@ window.RainhaCaptura = {
 
     /* Envia o lead ao webhook (não bloqueia a UI em caso de falha) */
     _enviarWebhook: function(contato) {
-        if (!RAINHA_WEBHOOK_URL || RAINHA_WEBHOOK_URL.indexOf('SEU_WEBHOOK') !== -1) {
-            console.warn('[RainhaCaptura] Webhook não configurado. Dado capturado apenas no localStorage.');
-            return;
-        }
-        fetch(RAINHA_WEBHOOK_URL, {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({
-                contato:    contato,
-                origem:     'portal_rainha',
-                timestamp:  new Date().toISOString(),
-                userAgent:  navigator.userAgent
-            })
+        if (!RAINHA_WEBHOOK_URL) return;
+
+        /* Detecta se é e-mail ou WhatsApp para preencher os campos certos */
+        var isEmail  = contato.indexOf('@') !== -1;
+        var payload  = {
+            nome:      isEmail ? '' : contato,   /* WhatsApp / nome livre */
+            email:     isEmail ? contato : '',   /* E-mail */
+            contato:   contato,                  /* Campo genérico (backup) */
+            origem:    'portal_rainha',
+            timestamp: new Date().toISOString()
+        };
+
+        /* Google Apps Script aceita melhor application/x-www-form-urlencoded via no-cors */
+        var params = Object.keys(payload).map(function(k) {
+            return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+        }).join('&');
+
+        fetch(RAINHA_WEBHOOK_URL + '?' + params, {
+            method: 'GET',
+            mode:   'no-cors'
         }).catch(function(e) {
             console.warn('[RainhaCaptura] Erro ao enviar webhook:', e.message);
         });

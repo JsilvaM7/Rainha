@@ -28,6 +28,7 @@ window.SeniorAuth = {
     },
 
     logout: function() {
+        localStorage.removeItem('rainha_contato');
         if (fbAuth) fbAuth.signOut().then(function() { _atualizarUI(null); });
         else _atualizarUI(null);
     },
@@ -505,6 +506,10 @@ try {
 
         fbAuth.onAuthStateChanged(function(user) {
             if (!user) {
+                if (localStorage.getItem('rainha_contato')) {
+                    /* Se tem usuário local, ignora Firebase vazio para não deslogar a UI */
+                    return;
+                }
                 _isSubscriber = false;
                 _atualizarUI(null);
                 return;

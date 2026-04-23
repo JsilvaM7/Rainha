@@ -588,31 +588,58 @@ body.eng-modal-open {
     margin-bottom: 30px;
 }
 
-/* Botão Google */
-.eng-google-btn {
+/* Campo de captura E-mail / WhatsApp */
+.eng-capture-wrap {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    align-items: stretch;
+    gap: 8px;
     width: 100%;
-    padding: 14px 20px;
-    background: #ffffff;
-    color: #1a0a0a;
+    margin-bottom: 20px;
+}
+
+.eng-contato-input {
+    flex: 1;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(200, 0, 0, 0.35);
+    border-radius: 12px;
+    color: #fff;
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
+    min-width: 0;
+}
+
+.eng-contato-input::placeholder {
+    color: rgba(255, 180, 180, 0.4);
+}
+
+.eng-contato-input:focus {
+    border-color: rgba(220, 40, 40, 0.75);
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow: 0 0 0 3px rgba(180, 0, 0, 0.2);
+}
+
+.eng-acessar-btn {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #8B0000 0%, #c62828 100%);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
     font-weight: 700;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    text-decoration: none;
-    transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-    margin-bottom: 20px;
+    white-space: nowrap;
+    transition: box-shadow 0.22s, transform 0.18s, background 0.22s;
+    box-shadow: 0 4px 16px rgba(139, 0, 0, 0.5);
+    flex-shrink: 0;
 }
 
-.eng-google-btn:hover {
-    background: #f5f5f5;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+.eng-acessar-btn:hover {
+    background: linear-gradient(135deg, #a50000 0%, #e53535 100%);
+    box-shadow: 0 8px 24px rgba(180, 0, 0, 0.65);
     transform: translateY(-2px);
 }
 

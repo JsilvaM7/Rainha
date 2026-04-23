@@ -1,9 +1,12 @@
 /* ══════════════════════════════════════════════════════════════════════════════
-   SeniorHub — Auth + Sidebar  |  v9.0
+   SeniorHub — Auth + Sidebar  |  v10.0
    Estados distintos: isLoggedIn (autenticado) vs isSubscriber (assinante pago)
    ══════════════════════════════════════════════════════════════════════════════ */
 
-window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/B105027530C';
+/* ── Webhook para captura de leads (substitua pela URL real) ────────────────── */
+var RAINHA_WEBHOOK_URL = 'SEU_WEBHOOK_URL_AQUI'; /* ⚠️ Substitua pela URL do Make/n8n/Apps Script */
+
+window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/E105391945G?bid=1776289319139';
 
 /* ── Estado global ──────────────────────────────────────────────────────────── */
 var _currentUser  = null;
@@ -20,10 +23,8 @@ window.SeniorAuth = {
     isMember()       { return _isSubscriber; },
 
     loginComGoogle: function() {
-        if (!fbAuth) { alert('Firebase indisponível.'); return; }
-        fbAuth.signInWithRedirect(fbProvider).catch(function(e) {
-            alert('Erro ao redirecionar para o login: ' + e.message);
-        });
+        /* ⚠️ Desativado — agora usamos captura por e-mail/WhatsApp (RainhaCaptura) */
+        console.info('[Auth] loginComGoogle desativado. Use RainhaCaptura.acessar().');
     },
 
     logout: function() {
@@ -36,6 +37,82 @@ window.SeniorAuth = {
         _isSubscriber = true;
         _atualizarUI(_currentUser);
         alert('✅ Modo assinante ativado para teste!');
+    }
+};
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CAPTURA POR E-MAIL / WHATSAPP
+   ══════════════════════════════════════════════════════════════════════════════ */
+window.RainhaCaptura = {
+
+    /* Cria um objeto de usuário sintético a partir do contato digitado */
+    _criarUsuario: function(contato) {
+        return {
+            displayName: contato,
+            email:       contato,
+            photoURL:    null,
+            uid:         'local_' + contato.replace(/[^a-z0-9]/gi, '_')
+        };
+    },
+
+    /* Envia o lead ao webhook (não bloqueia a UI em caso de falha) */
+    _enviarWebhook: function(contato) {
+        if (!RAINHA_WEBHOOK_URL || RAINHA_WEBHOOK_URL.indexOf('SEU_WEBHOOK') !== -1) {
+            console.warn('[RainhaCaptura] Webhook não configurado. Dado capturado apenas no localStorage.');
+            return;
+        }
+        fetch(RAINHA_WEBHOOK_URL, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({
+                contato:    contato,
+                origem:     'portal_rainha',
+                timestamp:  new Date().toISOString(),
+                userAgent:  navigator.userAgent
+            })
+        }).catch(function(e) {
+            console.warn('[RainhaCaptura] Erro ao enviar webhook:', e.message);
+        });
+    },
+
+    /* Chamado pelo botão "Acessar" do modal ou sidebar */
+    acessar: function(origem) {
+        var inputId = (origem === 'modal') ? 'eng-contato-input' : 'lsb-contato-input';
+        var el      = document.getElementById(inputId);
+        var contato = el ? el.value.trim() : '';
+
+        if (!contato) {
+            if (el) { el.focus(); el.style.borderColor = '#c0392b'; }
+            return;
+        }
+
+        /* 1. Salva no localStorage */
+        localStorage.setItem('rainha_contato', contato);
+        console.log('[RainhaCaptura] Contato salvo:', contato);
+
+        /* 2. Envia ao webhook (assíncrono, não bloqueia) */
+        window.RainhaCaptura._enviarWebhook(contato);
+
+        /* 3. Cria usuário sintético e libera navegação */
+        var usuario = window.RainhaCaptura._criarUsuario(contato);
+        _isSubscriber = false; /* conta gratuita por padrão */
+        _atualizarUI(usuario);
+
+        /* 4. Fecha modal/sidebar conforme origem */
+        if (origem === 'modal' && window._fecharEngagementModal) window._fecharEngagementModal();
+        if (origem === 'sidebar' && window.fecharSideBar) window.fecharSideBar();
+    },
+
+    /* Restaura sessão do localStorage ao carregar a página */
+    restaurarSessao: function() {
+        var contato = localStorage.getItem('rainha_contato');
+        if (!contato) return;
+        /* Só restaura se não há usuário Firebase já logado */
+        if (_currentUser) return;
+        console.log('[RainhaCaptura] Sessão restaurada do localStorage:', contato);
+        var usuario = window.RainhaCaptura._criarUsuario(contato);
+        _isSubscriber = false;
+        _atualizarUI(usuario);
     }
 };
 
@@ -126,15 +203,17 @@ function _renderSideBarBody() {
                         '<circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>' +
                     '</svg>' +
                 '</div>' +
-                '<p class="lsb-bemvindo">Olá! Entre na sua conta<br>para acessar o clube.</p>' +
-                '<button class="lsb-google-btn" onclick="window.SeniorAuth.loginComGoogle()">' +
-                    googleSVG + ' Entrar com Google' +
-                '</button>' +
+                '<p class="lsb-bemvindo">Olá! Informe seu contato<br>para acessar o portal.</p>' +
+                '<div class="eng-capture-wrap" style="flex-direction:column;gap:8px;">' +
+                    '<input type="text" id="lsb-contato-input" class="eng-contato-input" placeholder="Digite seu E-mail ou WhatsApp" autocomplete="off"' +
+                    ' onkeydown="if(event.key===\'Enter\') window.RainhaCaptura && window.RainhaCaptura.acessar(\'sidebar\')"/>' +
+                    '<button class="eng-acessar-btn" style="width:100%;" onclick="window.RainhaCaptura && window.RainhaCaptura.acessar(\'sidebar\')">Acessar</button>' +
+                '</div>' +
             '</div>' +
-            '<div class="lsb-divider"><span>ou</span></div>' +
+            '<div class="lsb-divider"><span>ou torne-se membro</span></div>' +
             '<div class="lsb-section">' +
                 '<p class="lsb-label">⭐ Assinar o Círculo Rainha</p>' +
-                '<p class="lsb-desc">Acesse todos os livros, vote nos tópicos de notícias a serem postadas e ganhe descontos exclusivos.</p>' +
+                '<p class="lsb-desc">Acesse todos os livros, vote nos tópicos e ganhe descontos exclusivos.</p>' +
                 '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 28/mês</a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>';
@@ -516,6 +595,10 @@ function _init() {
     _criarSideBar();
     _renderHeaderBtn();
     if (window.renderModalConteudo) window.renderModalConteudo();
+    /* Restaura sessão do localStorage após 1s (dá prioridade ao Firebase auth) */
+    setTimeout(function() {
+        if (window.RainhaCaptura) window.RainhaCaptura.restaurarSessao();
+    }, 1000);
 }
 
 if (document.readyState === 'loading') {

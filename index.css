@@ -600,13 +600,14 @@ body.eng-modal-open {
 .eng-contato-input {
     flex: 1;
     padding: 14px 16px;
-    background: #ffffff;
+    background: #ffffff !important;
     border: 1px solid rgba(200, 0, 0, 0.35);
     border-radius: 12px;
-    color: #111827;
+    color: #000000 !important;
     font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: normal !important;
     outline: none;
     transition: border-color 0.22s, box-shadow 0.22s;
     min-width: 0;

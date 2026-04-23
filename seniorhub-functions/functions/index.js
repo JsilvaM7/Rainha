@@ -728,10 +728,25 @@ exports.exportarVotos = functions
         rows.push(["Última Atualização", new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }), ""]);
 
         // 3. Limpar a planilha atual e escrever os novos dados (overwrite)
-        await sheets.spreadsheets.values.clear({
-            spreadsheetId,
-            range: `${tabName}!A:C`
-        });
+        try {
+            await sheets.spreadsheets.values.clear({
+                spreadsheetId,
+                range: `${tabName}!A:C`
+            });
+        } catch (e) {
+            // Se a aba não existe, e.message conterá algo como "Unable to parse range"
+            console.log("Aba 'Votos do Dia' não encontrada. Tentando criar automaticamente...");
+            await sheets.spreadsheets.batchUpdate({
+                spreadsheetId,
+                requestBody: {
+                    requests: [{
+                        addSheet: {
+                            properties: { title: tabName }
+                        }
+                    }]
+                }
+            });
+        }
 
         await sheets.spreadsheets.values.update({
             spreadsheetId,
@@ -750,15 +765,6 @@ exports.exportarVotos = functions
 
     } catch (error) {
         console.error("❌ Erro ao exportar votos:", error);
-        
-        // Verifica se a aba não existe
-        if (error.message && error.message.includes("Unable to parse range")) {
-            return res.status(500).json({ 
-                status: "error", 
-                message: "A aba 'Votos do Dia' não existe na planilha. Crie a aba primeiro." 
-            });
-        }
-        
         return res.status(500).json({ status: "error", message: error.message });
     }
 });

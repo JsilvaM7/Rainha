@@ -1,4 +1,4 @@
-﻿/* ══════════════════════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════════════════════════
    SeniorHub — Auth + Sidebar  |  v9.0
    Estados distintos: isLoggedIn (autenticado) vs isSubscriber (assinante pago)
    ══════════════════════════════════════════════════════════════════════════════ */
@@ -393,7 +393,7 @@ try {
     if (typeof firebase !== 'undefined') {
         var cfg = {
             apiKey:            "AIzaSyCBz9R_hIX0WtIQ4O1SQml5UyJrYhhFlV8",
-            authDomain:        "rainha-aa80a.firebaseapp.com",
+            authDomain:        "rainhavenus.e-dolphin.info",
             projectId:         "rainha-aa80a",
             storageBucket:     "rainha-aa80a.firebasestorage.app",
             messagingSenderId: "733791452283",

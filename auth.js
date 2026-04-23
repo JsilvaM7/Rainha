@@ -57,7 +57,10 @@ window.RainhaCaptura = {
 
     /* Envia o lead ao webhook (não bloqueia a UI em caso de falha) */
     _enviarWebhook: function(contato) {
-        if (!RAINHA_WEBHOOK_URL) return;
+        if (!RAINHA_WEBHOOK_URL) {
+            console.warn('[RainhaCaptura] Webhook URL não configurada.');
+            return;
+        }
 
         /* Detecta se é e-mail ou WhatsApp para preencher os campos certos */
         var isEmail  = contato.indexOf('@') !== -1;
@@ -69,16 +72,21 @@ window.RainhaCaptura = {
             timestamp: new Date().toISOString()
         };
 
-        /* Google Apps Script aceita melhor application/x-www-form-urlencoded via no-cors */
+        /* Monta a URL com parâmetros (GET) */
         var params = Object.keys(payload).map(function(k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
         }).join('&');
+        
+        var urlFinal = RAINHA_WEBHOOK_URL + '?' + params;
+        console.log('[RainhaCaptura] Disparando Webhook GET para:', urlFinal);
 
-        fetch(RAINHA_WEBHOOK_URL + '?' + params, {
+        fetch(urlFinal, {
             method: 'GET',
             mode:   'no-cors'
+        }).then(function() {
+            console.log('[RainhaCaptura] Webhook disparado com sucesso (no-cors, sem resposta legível).');
         }).catch(function(e) {
-            console.warn('[RainhaCaptura] Erro ao enviar webhook:', e.message);
+            console.warn('[RainhaCaptura] Erro ao disparar webhook:', e.message);
         });
     },
 
@@ -89,13 +97,16 @@ window.RainhaCaptura = {
         var contato = el ? el.value.trim() : '';
 
         if (!contato) {
+            console.warn('[RainhaCaptura] Tentativa de acesso com campo vazio.');
             if (el) { el.focus(); el.style.borderColor = '#c0392b'; }
             return;
         }
 
+        console.log('[RainhaCaptura] Ação de acessar iniciada. Contato digitado:', contato);
+
         /* 1. Salva no localStorage */
         localStorage.setItem('rainha_contato', contato);
-        console.log('[RainhaCaptura] Contato salvo:', contato);
+        console.log('[RainhaCaptura] Contato salvo no localStorage.');
 
         /* 2. Envia ao webhook (assíncrono, não bloqueia) */
         window.RainhaCaptura._enviarWebhook(contato);

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -90,6 +90,52 @@
         </aside>
     </div>
 
+    <!-- ── Modal de Engajamento (2 min) ───────────────────────────────────── -->
+    <div id="engagement-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="eng-modal-title">
+        <div class="eng-modal-box" id="engagement-modal-box">
+            <!-- Botão fechar -->
+            <button class="eng-modal-close" id="eng-modal-close-btn"
+                    onclick="_fecharEngagementModal()" aria-label="Fechar">&#10005;</button>
+
+            <!-- Coroa decorativa -->
+            <div class="eng-modal-crown" aria-hidden="true">♛</div>
+
+            <!-- Frase de impacto -->
+            <h2 class="eng-modal-headline" id="eng-modal-title">
+                Ajude a financiar o Projeto Rainha e libere agora o acesso a todos os nossos livros e guias exclusivos
+            </h2>
+
+            <p class="eng-modal-sub">
+                Mais de 6 guias aprofundados sobre Manipulação, Gaslighting, Love Bombing, Posicionamento e muito mais — tudo em um só lugar.
+            </p>
+
+            <!-- Botão Google -->
+            <button class="eng-google-btn" id="eng-google-btn"
+                    onclick="_fecharEngagementModal(); setTimeout(function(){ if(window.SeniorAuth) window.SeniorAuth.loginComGoogle(); else if(window.abrirSideBar) window.abrirSideBar(); }, 200);">
+                <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+                    <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.8 6C12.4 13 17.8 9.5 24 9.5z"/>
+                    <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17z"/>
+                    <path fill="#FBBC05" d="M10.4 28.7A14.6 14.6 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6A23.9 23.9 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.8-6z"/>
+                    <path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.2 0-11.5-4.2-13.4-9.8l-7.8 6C6.6 42.6 14.6 48 24 48z"/>
+                </svg>
+                Entrar com Google
+            </button>
+
+            <!-- Divisor -->
+            <div class="eng-modal-divider"><span>ou torne-se membro agora</span></div>
+
+            <!-- Botão Assinar -->
+            <a class="eng-clube-btn" id="eng-clube-btn"
+               href="https://pay.hotmart.com/B105027530C"
+               target="_blank" rel="noopener noreferrer"
+               onclick="_fecharEngagementModal()">
+                ♛ &nbsp;Assinar o Clube — R$ 28/mês
+            </a>
+
+            <p class="eng-modal-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>
+        </div>
+    </div>
+
     <!-- Modal Círculo Rainha -->
     <div class="modal-overlay" id="voting-modal">
         <div class="modal-container">
@@ -132,6 +178,45 @@
     <script src="auth.js?v=14.1"></script>
 
     <script>
+        /* ── Modal de Engajamento — 2 minutos ───────────────────────── */
+        (function() {
+            var _shown = false;
+
+            function _mostrarEngagementModal() {
+                if (_shown) return;
+                /* Não exibe se o usuário já está logado */
+                if (window.SeniorAuth && window.SeniorAuth.isLoggedIn()) return;
+                _shown = true;
+                var overlay = document.getElementById('engagement-modal-overlay');
+                if (!overlay) return;
+                overlay.classList.add('eng-modal--visible');
+                document.body.classList.add('eng-modal-open');
+                /* Foca o primeiro botão para acessibilidade */
+                setTimeout(function() {
+                    var btn = document.getElementById('eng-google-btn');
+                    if (btn) btn.focus();
+                }, 400);
+            }
+
+            window._fecharEngagementModal = function() {
+                var overlay = document.getElementById('engagement-modal-overlay');
+                if (overlay) {
+                    overlay.classList.remove('eng-modal--visible');
+                    overlay.classList.add('eng-modal--closing');
+                    setTimeout(function() { overlay.classList.remove('eng-modal--closing'); }, 500);
+                }
+                document.body.classList.remove('eng-modal-open');
+            };
+
+            /* Fecha com Escape */
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') window._fecharEngagementModal();
+            });
+
+            /* Timer: 120 segundos */
+            setTimeout(_mostrarEngagementModal, 120000);
+        })();
+
         function toggleSidebar() {
             var sidebar = document.querySelector(".sidebar");
             var overlay = document.getElementById("sidebar-overlay");

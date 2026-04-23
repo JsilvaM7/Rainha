@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "seniorhub-functions/**",
+      "seniorhub-functions.zip",
+      "_*.js",
+      "create_receitas.*",
+      "test*.js",
+      "run_debug*.js",
+      "check_all.js",
+      "DEPLOY.md",
+      "output.txt",
+      "debug_result.json",
+      "test_result.json",
+      "debug.html",
+      "*.py",
+      "firebaserc"
+    ]
+  }
+}

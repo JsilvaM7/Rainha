@@ -493,14 +493,13 @@ exports.ativarAssinantePlanilha = functions.https.onRequest(async (req, res) => 
     console.log(`📋 Apps Script → ${actionLog}: ${emailNorm} | status lido: "${status}"`);
 
     /* ── Localiza usuário no Firebase Auth ───────────────────────────────── */
-    let userRecord;
+    let userRecord = null;
+    let uidToUse = emailNorm; // Usa o próprio número/email como UID se não houver conta Auth
     try {
         userRecord = await admin.auth().getUserByEmail(emailNorm);
+        uidToUse = userRecord.uid;
     } catch (_) {
-        return res.status(404).json({
-            status: "error",
-            message: `Usuário ${emailNorm} não encontrado no Firebase Auth. Ela precisa ter feito login ao menos uma vez.`
-        });
+        console.warn(`Usuário ${emailNorm} não tem conta Auth. Usando contato como UID local.`);
     }
 
     const db  = admin.firestore();
@@ -510,32 +509,34 @@ exports.ativarAssinantePlanilha = functions.https.onRequest(async (req, res) => 
         const dataExpiracao = new Date();
         dataExpiracao.setDate(dataExpiracao.getDate() + 32);
 
-        /* Custom Claim */
-        await admin.auth().setCustomUserClaims(userRecord.uid, {
-            isSubscriber: true,
-            subscribedAt: new Date().toISOString()
-        });
+        /* Custom Claim (Apenas se tiver conta Auth real) */
+        if (userRecord) {
+            await admin.auth().setCustomUserClaims(uidToUse, {
+                isSubscriber: true,
+                subscribedAt: new Date().toISOString()
+            });
+        }
 
-        /* subscribers/{uid} */
-        await db.collection("subscribers").doc(userRecord.uid).set({
-            email: emailNorm, uid: userRecord.uid,
+        /* subscribers/{uid} - Aqui é onde o site lê! */
+        await db.collection("subscribers").doc(uidToUse).set({
+            email: emailNorm, uid: uidToUse,
             isSubscriber: true, statusAssinatura: "Ativo",
             dataExpiracao: admin.firestore.Timestamp.fromDate(dataExpiracao),
             ativadoEm: now, fonte: "planilha_manual"
         }, { merge: true });
 
         /* users/{uid} */
-        await db.collection("users").doc(userRecord.uid).set({
+        await db.collection("users").doc(uidToUse).set({
             statusAssinatura: "Ativo",
             dataExpiracao: admin.firestore.Timestamp.fromDate(dataExpiracao),
             atualizadoEm: now
         }, { merge: true });
 
-        console.log(`✅ Ativado via planilha: ${emailNorm} | uid: ${userRecord.uid}`);
+        console.log(`✅ Ativado via planilha: ${emailNorm} | uid: ${uidToUse}`);
         return res.status(200).json({
             status: "success",
             message: `${emailNorm} ativada com sucesso no Firebase`,
-            uid: userRecord.uid
+            uid: uidToUse
         });
     }
 

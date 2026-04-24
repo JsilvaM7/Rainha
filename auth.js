@@ -112,10 +112,9 @@ window.RainhaCaptura = {
         /* 2. Envia ao webhook (assíncrono, não bloqueia) */
         window.RainhaCaptura._enviarWebhook(contato);
 
-        /* 3. Cria usuário sintético e libera navegação */
+        /* 3. Cria usuário sintético e verifica status no Firebase */
         var usuario = window.RainhaCaptura._criarUsuario(contato);
-        _isSubscriber = false; /* conta gratuita por padrão */
-        _atualizarUI(usuario);
+        window.RainhaCaptura._verificarAssinatura(usuario);
 
         /* 4. Fecha modal/sidebar conforme origem */
         if (origem === 'modal' && window._fecharEngagementModal) window._fecharEngagementModal();
@@ -130,8 +129,41 @@ window.RainhaCaptura = {
         if (_currentUser) return;
         console.log('[RainhaCaptura] Sessão restaurada do localStorage:', contato);
         var usuario = window.RainhaCaptura._criarUsuario(contato);
-        _isSubscriber = false;
-        _atualizarUI(usuario);
+        window.RainhaCaptura._verificarAssinatura(usuario);
+    },
+
+    /* Consulta o Firebase Firestore para ver se o contato é assinante ativo */
+    _verificarAssinatura: function(usuario) {
+        if (!window.firebase || !firebase.firestore) {
+            _isSubscriber = false;
+            _atualizarUI(usuario);
+            return;
+        }
+
+        var db = firebase.firestore();
+        db.collection('subscribers').doc(usuario.email).get().then(function(doc) {
+            if (doc.exists && doc.data().status === 'active') {
+                _isSubscriber = true;
+                _atualizarUI(usuario);
+                console.log('[RainhaCaptura] Acesso Premium liberado para:', usuario.email);
+            } else {
+                /* Se não está na principal, verifica na lista de pendentes/planilha */
+                if (typeof _verificarPendingEMigrar === 'function') {
+                    _verificarPendingEMigrar(db, usuario, function() {
+                        _isSubscriber = false;
+                        _atualizarUI(usuario);
+                        console.log('[RainhaCaptura] Acesso Gratuito para:', usuario.email);
+                    });
+                } else {
+                    _isSubscriber = false;
+                    _atualizarUI(usuario);
+                }
+            }
+        }).catch(function(e) {
+            console.warn('[RainhaCaptura] Erro ao verificar assinatura:', e);
+            _isSubscriber = false;
+            _atualizarUI(usuario);
+        });
     }
 };
 

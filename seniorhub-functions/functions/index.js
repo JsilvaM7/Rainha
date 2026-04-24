@@ -769,3 +769,83 @@ exports.exportarVotos = functions
         return res.status(500).json({ status: "error", message: error.message });
     }
 });
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   FUNÇÃO 6 — verificarStatusPlanilha
+   Lê a planilha Google Sheets diretamente e retorna o status do contato.
+   Esta função É A PONTE entre o portal e a planilha (fonte única de verdade).
+
+   GET ?contato=11999999999
+   → Se encontrado: { status, isSubscriber, exists: true }
+   → Se novo:       registra linha e retorna { status: "Apenas Cadastro", isSubscriber: false, exists: false }
+   ══════════════════════════════════════════════════════════════════════════════ */
+exports.verificarStatusPlanilha = functions.https.onRequest(async (req, res) => {
+
+    /* ── CORS — permite o site chamar esta função ────────────────────────────── */
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    if (req.method === "OPTIONS") return res.status(204).send("");
+
+    const contato = ((req.query.contato || "") + "").trim();
+    if (!contato) {
+        return res.status(400).json({ error: "contato_obrigatorio" });
+    }
+
+    try {
+        /* ── Conecta ao Google Sheets via credenciais do App Default ─────────── */
+        const { google } = require("googleapis");
+        const auth   = new google.auth.GoogleAuth({
+            scopes: ["https://www.googleapis.com/auth/spreadsheets"]
+        });
+        const sheets        = google.sheets({ version: "v4", auth });
+        const spreadsheetId = process.env.SHEETS_ID;
+        const tabName       = process.env.SHEETS_TAB;
+
+        /* ── Lê todas as linhas da planilha ──────────────────────────────────── */
+        const resp = await sheets.spreadsheets.values.get({
+            spreadsheetId,
+            range: `'${tabName}'!A:H`
+        });
+        const rows    = resp.data.values || [];
+        const headers = (rows[0] || []).map(h => h.toString().trim().toLowerCase());
+
+        const idxEmail  = headers.indexOf("e-mail");
+        const idxStatus = headers.indexOf("status da assinatura");
+        const idxNome   = headers.indexOf("nome");
+
+        /* ── Procura o contato ───────────────────────────────────────────────── */
+        for (let i = 1; i < rows.length; i++) {
+            const emailCell = (rows[i][idxEmail] || "").toString().trim();
+            if (emailCell === contato) {
+                const status      = (rows[i][idxStatus] || "Apenas Cadastro").toString().trim();
+                const statusLower = status.toLowerCase();
+                const isSubscriber = (statusLower === "ativa" || statusLower === "ativo" || statusLower === "active");
+                console.log(`✅ Contato encontrado: ${contato} | status: ${status}`);
+                return res.status(200).json({ status, isSubscriber, exists: true, contato });
+            }
+        }
+
+        /* ── Não encontrado → adiciona linha nova ────────────────────────────── */
+        const novaLinha = new Array(8).fill("");
+        if (idxNome   >= 0) novaLinha[idxNome]   = contato;
+        if (idxEmail  >= 0) novaLinha[idxEmail]  = contato;
+        if (idxStatus >= 0) novaLinha[idxStatus] = "Apenas Cadastro";
+
+        await sheets.spreadsheets.values.append({
+            spreadsheetId,
+            range:            `'${tabName}'!A:H`,
+            valueInputOption: "USER_ENTERED",
+            requestBody:      { values: [novaLinha] }
+        });
+
+        console.log(`📋 Novo contato registrado: ${contato}`);
+        return res.status(200).json({
+            status: "Apenas Cadastro", isSubscriber: false, exists: false, contato
+        });
+
+    } catch (err) {
+        console.error("❌ verificarStatusPlanilha:", err.message);
+        return res.status(500).json({ error: err.message });
+    }
+});

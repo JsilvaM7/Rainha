@@ -56,58 +56,24 @@ window.RainhaCaptura = {
         };
     },
 
-    /* ─── Envia lead ao webhook SEM ler resposta (no-cors) ────────────────
-       Usado apenas para registros novos quando não queremos esperar a planilha. 
-       Normalmente não é mais chamado diretamente — _consultarPlanilha faz tudo. */
-    _enviarWebhook: function(contato) {
-        if (!RAINHA_WEBHOOK_URL) return;
-        var isEmail = contato.indexOf('@') !== -1;
-        var payload = {
-            nome:    isEmail ? '' : contato,
-            email:   isEmail ? contato : '',
-            contato: contato
-        };
-        var params = Object.keys(payload).map(function(k) {
-            return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
-        }).join('&');
-        fetch(RAINHA_WEBHOOK_URL + '?' + params, { method: 'GET', mode: 'no-cors' })
-            .catch(function(e) { console.warn('[RainhaCaptura] Webhook err:', e.message); });
-    },
-
-    /* ─── Consulta planilha via JSONP e retorna status — FONTE DE VERDADE ─
-       Faz as duas coisas ao mesmo tempo:
-       1. Se número não existe na planilha → adiciona linha nova
-       2. Retorna o status atual ("Ativa" ou "Apenas Cadastro") */
+    /* ─── Consulta planilha via Cloud Function — FONTE ÚNICA DE VERDADE ──────
+       Usa fetch normal (não JSONP) graças ao CORS configurado na Cloud Function.
+       Faz duas coisas: verifica se existe + retorna status atual.
+       Se não existe → a Cloud Function adiciona linha nova automaticamente. */
     _consultarPlanilha: function(contato, onResposta) {
-        var cbName = '_rainhaStatus_' + Date.now();
-        var script = document.createElement('script');
-        var url = RAINHA_WEBHOOK_URL
-            + '?contato=' + encodeURIComponent(contato)
-            + '&callback=' + cbName;
+        var url = 'https://us-central1-rainha-aa80a.cloudfunctions.net/verificarStatusPlanilha'
+                + '?contato=' + encodeURIComponent(contato);
 
-        var timeout = setTimeout(function() {
-            console.warn('[RainhaCaptura] Timeout ao consultar planilha.');
-            delete window[cbName];
-            if (script.parentNode) document.body.removeChild(script);
-            onResposta({ status: 'Apenas Cadastro', isSubscriber: false, isNew: false });
-        }, 8000);
-
-        window[cbName] = function(data) {
-            clearTimeout(timeout);
-            delete window[cbName];
-            if (script.parentNode) document.body.removeChild(script);
-            console.log('[RainhaCaptura] Resposta da planilha:', data);
-            onResposta(data);
-        };
-
-        script.src = url;
-        script.onerror = function() {
-            clearTimeout(timeout);
-            delete window[cbName];
-            console.warn('[RainhaCaptura] Erro ao carregar script da planilha.');
-            onResposta({ status: 'Apenas Cadastro', isSubscriber: false, isNew: false });
-        };
-        document.body.appendChild(script);
+        fetch(url)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                console.log('[RainhaCaptura] Planilha respondeu:', data);
+                onResposta(data);
+            })
+            .catch(function(err) {
+                console.warn('[RainhaCaptura] Erro ao consultar planilha:', err.message);
+                onResposta({ status: 'Apenas Cadastro', isSubscriber: false });
+            });
     },
 
     /* Chamado pelo botão "Acessar" do modal ou sidebar */

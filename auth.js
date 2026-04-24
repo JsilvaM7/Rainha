@@ -56,39 +56,58 @@ window.RainhaCaptura = {
         };
     },
 
-    /* Envia o lead ao webhook (não bloqueia a UI em caso de falha) */
+    /* ─── Envia lead ao webhook SEM ler resposta (no-cors) ────────────────
+       Usado apenas para registros novos quando não queremos esperar a planilha. 
+       Normalmente não é mais chamado diretamente — _consultarPlanilha faz tudo. */
     _enviarWebhook: function(contato) {
-        if (!RAINHA_WEBHOOK_URL) {
-            console.warn('[RainhaCaptura] Webhook URL não configurada.');
-            return;
-        }
-
-        /* Detecta se é e-mail ou WhatsApp para preencher os campos certos */
-        var isEmail  = contato.indexOf('@') !== -1;
-        var payload  = {
-            nome:      isEmail ? '' : contato,   /* WhatsApp / nome livre */
-            email:     isEmail ? contato : '',   /* E-mail */
-            contato:   contato,                  /* Campo genérico (backup) */
-            origem:    'portal_rainha',
-            timestamp: new Date().toISOString()
+        if (!RAINHA_WEBHOOK_URL) return;
+        var isEmail = contato.indexOf('@') !== -1;
+        var payload = {
+            nome:    isEmail ? '' : contato,
+            email:   isEmail ? contato : '',
+            contato: contato
         };
-
-        /* Monta a URL com parâmetros (GET) */
         var params = Object.keys(payload).map(function(k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
         }).join('&');
-        
-        var urlFinal = RAINHA_WEBHOOK_URL + '?' + params;
-        console.log('[RainhaCaptura] Disparando Webhook GET para:', urlFinal);
+        fetch(RAINHA_WEBHOOK_URL + '?' + params, { method: 'GET', mode: 'no-cors' })
+            .catch(function(e) { console.warn('[RainhaCaptura] Webhook err:', e.message); });
+    },
 
-        fetch(urlFinal, {
-            method: 'GET',
-            mode:   'no-cors'
-        }).then(function() {
-            console.log('[RainhaCaptura] Webhook disparado com sucesso (no-cors, sem resposta legível).');
-        }).catch(function(e) {
-            console.warn('[RainhaCaptura] Erro ao disparar webhook:', e.message);
-        });
+    /* ─── Consulta planilha via JSONP e retorna status — FONTE DE VERDADE ─
+       Faz as duas coisas ao mesmo tempo:
+       1. Se número não existe na planilha → adiciona linha nova
+       2. Retorna o status atual ("Ativa" ou "Apenas Cadastro") */
+    _consultarPlanilha: function(contato, onResposta) {
+        var cbName = '_rainhaStatus_' + Date.now();
+        var script = document.createElement('script');
+        var url = RAINHA_WEBHOOK_URL
+            + '?contato=' + encodeURIComponent(contato)
+            + '&callback=' + cbName;
+
+        var timeout = setTimeout(function() {
+            console.warn('[RainhaCaptura] Timeout ao consultar planilha.');
+            delete window[cbName];
+            if (script.parentNode) document.body.removeChild(script);
+            onResposta({ status: 'Apenas Cadastro', isSubscriber: false, isNew: false });
+        }, 8000);
+
+        window[cbName] = function(data) {
+            clearTimeout(timeout);
+            delete window[cbName];
+            if (script.parentNode) document.body.removeChild(script);
+            console.log('[RainhaCaptura] Resposta da planilha:', data);
+            onResposta(data);
+        };
+
+        script.src = url;
+        script.onerror = function() {
+            clearTimeout(timeout);
+            delete window[cbName];
+            console.warn('[RainhaCaptura] Erro ao carregar script da planilha.');
+            onResposta({ status: 'Apenas Cadastro', isSubscriber: false, isNew: false });
+        };
+        document.body.appendChild(script);
     },
 
     /* Chamado pelo botão "Acessar" do modal ou sidebar */
@@ -98,107 +117,69 @@ window.RainhaCaptura = {
         var contato = el ? el.value.trim() : '';
 
         if (!contato) {
-            console.warn('[RainhaCaptura] Tentativa de acesso com campo vazio.');
             if (el) { el.focus(); el.style.borderColor = '#c0392b'; }
             return;
         }
 
-        console.log('[RainhaCaptura] Ação de acessar iniciada. Contato digitado:', contato);
+        console.log('[RainhaCaptura] Acessar:', contato);
 
-        /* 1. Verifica se já existe no localStorage (evita duplicar na planilha) */
-        var contatoExistente = localStorage.getItem('rainha_contato');
-        var jaEraAssinante   = localStorage.getItem('rainha_assinante') === '1';
-        var ehNovoContato    = (contatoExistente !== contato);
-
-        /* 2. Salva no localStorage */
+        /* Salva contato e limpa cache de status se número diferente */
+        var anterior = localStorage.getItem('rainha_contato');
+        if (anterior && anterior !== contato) localStorage.removeItem('rainha_assinante');
         localStorage.setItem('rainha_contato', contato);
-        if (ehNovoContato) {
-            /* Limpa cache de status ao trocar de número */
-            localStorage.removeItem('rainha_assinante');
-            jaEraAssinante = false;
-        }
-        console.log('[RainhaCaptura] Contato salvo no localStorage. Novo?', ehNovoContato);
 
-        /* 3. Só dispara webhook se for um contato NOVO (evita duplicação) */
-        if (ehNovoContato) {
-            window.RainhaCaptura._enviarWebhook(contato);
-        } else {
-            console.log('[RainhaCaptura] Contato já conhecido — webhook ignorado para não duplicar.');
-        }
-
-        /* 4. Se já sabemos que é assinante (cache local), libera direto */
-        if (jaEraAssinante) {
-            console.log('[RainhaCaptura] Status assinante restaurado do cache local.');
-            _isSubscriber = true;
-            var usuario = window.RainhaCaptura._criarUsuario(contato);
-            _atualizarUI(usuario);
-        } else {
-            /* Consulta o Firebase para descobrir o status atual */
-            var usuario = window.RainhaCaptura._criarUsuario(contato);
-            window.RainhaCaptura._verificarAssinatura(usuario);
-        }
-
-        /* 5. Fecha modal/sidebar conforme origem */
+        /* Fecha modal/sidebar imediatamente */
         if (origem === 'modal' && window._fecharEngagementModal) window._fecharEngagementModal();
         if (origem === 'sidebar' && window.fecharSideBar) window.fecharSideBar();
+
+        /* Mostra nome imediatamente com cache local enquanto consulta planilha */
+        var usuario = window.RainhaCaptura._criarUsuario(contato);
+        _isSubscriber = localStorage.getItem('rainha_assinante') === '1';
+        _atualizarUI(usuario);
+
+        /* Consulta PLANILHA — FONTE ÚNICA DE VERDADE */
+        window.RainhaCaptura._consultarPlanilha(contato, function(data) {
+            _isSubscriber = !!(data && data.isSubscriber);
+            if (_isSubscriber) localStorage.setItem('rainha_assinante', '1');
+            else localStorage.removeItem('rainha_assinante');
+            _atualizarUI(usuario);
+            console.log('[RainhaCaptura] Status da planilha:', data ? data.status : 'erro');
+        });
     },
 
     /* Restaura sessão do localStorage ao carregar a página */
     restaurarSessao: function() {
         var contato = localStorage.getItem('rainha_contato');
         if (!contato) return;
-        /* Só restaura se não há usuário Firebase já logado */
         if (_currentUser) return;
-        console.log('[RainhaCaptura] Sessão restaurada do localStorage:', contato);
+        console.log('[RainhaCaptura] Restaurando sessão:', contato);
         var usuario = window.RainhaCaptura._criarUsuario(contato);
-        window.RainhaCaptura._verificarAssinatura(usuario);
+        /* Mostra com cache local imediatamente */
+        _isSubscriber = localStorage.getItem('rainha_assinante') === '1';
+        _atualizarUI(usuario);
+        /* Re-valida com planilha 1x por sessão */
+        window.RainhaCaptura._consultarPlanilha(contato, function(data) {
+            var novoStatus = !!(data && data.isSubscriber);
+            if (novoStatus !== _isSubscriber) {
+                _isSubscriber = novoStatus;
+                if (_isSubscriber) localStorage.setItem('rainha_assinante', '1');
+                else localStorage.removeItem('rainha_assinante');
+                _atualizarUI(usuario);
+                console.log('[RainhaCaptura] Status atualizado da planilha:', data.status);
+            }
+        });
     },
 
-    /* Consulta o Firebase Firestore para ver se o contato é assinante ativo */
+    /* Mantido para compatibilidade — redireciona para _consultarPlanilha */
     _verificarAssinatura: function(usuario) {
-        if (!window.firebase || !firebase.firestore) {
-            _isSubscriber = false;
-            _atualizarUI(usuario);
-            return;
-        }
-
-        var db      = firebase.firestore();
-        /* O contato (número/email) é usado como doc ID pela Cloud Function */
-        var docId   = usuario.email; /* ex: "11999999999" */
-        var uidLocal = usuario.uid;  /* ex: "local_11999999999" */
-
-        /* Tenta pelos dois IDs possíveis: pelo contato direto e pelo uid local */
-        Promise.all([
-            db.collection('subscribers').doc(docId).get(),
-            db.collection('subscribers').doc(uidLocal).get()
-        ]).then(function(resultados) {
-            var ativo = resultados.some(function(doc) {
-                if (!doc.exists) return false;
-                var d = doc.data();
-                /* Aceita qualquer dos formatos que a Cloud Function pode usar */
-                return d.isSubscriber === true
-                    || d.statusAssinatura === 'Ativo'
-                    || d.statusAssinatura === 'Ativa'
-                    || d.status === 'active';
-            });
-
-            if (ativo) {
-                _isSubscriber = true;
-                localStorage.setItem('rainha_assinante', '1'); /* cache local */
-                _atualizarUI(usuario);
-                console.log('[RainhaCaptura] ✅ Acesso Premium liberado para:', docId);
-            } else {
-                _isSubscriber = false;
-                localStorage.removeItem('rainha_assinante');
-                _atualizarUI(usuario);
-                console.log('[RainhaCaptura] Conta Gratuita para:', docId);
-            }
-        }).catch(function(e) {
-            console.warn('[RainhaCaptura] Erro ao verificar assinatura:', e);
-            _isSubscriber = false;
+        window.RainhaCaptura._consultarPlanilha(usuario.email, function(data) {
+            _isSubscriber = !!(data && data.isSubscriber);
+            if (_isSubscriber) localStorage.setItem('rainha_assinante', '1');
+            else localStorage.removeItem('rainha_assinante');
             _atualizarUI(usuario);
         });
     }
+};
 };
 
 /* ══════════════════════════════════════════════════════════════════════════════

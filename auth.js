@@ -4,7 +4,7 @@
    ══════════════════════════════════════════════════════════════════════════════ */
 
 /* ── Webhook para captura de leads (substitua pela URL real) ────────────────── */
-var RAINHA_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyJwrA4ajxUi7_eolnY17x--tL2ZqJSqZPT758A4eABkruFEcVs0JpEtZu4u0yXoMk/exec';
+var RAINHA_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzpfGoVUdcpq3p40hCCWajloDQ-kxnRjq846dFlKILrQqE7T_A9XKIXhDeBnAPHqObx/exec';
 
 window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/E105391945G?bid=1776289319139';
 

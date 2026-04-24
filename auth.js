@@ -105,18 +105,40 @@ window.RainhaCaptura = {
 
         console.log('[RainhaCaptura] Ação de acessar iniciada. Contato digitado:', contato);
 
-        /* 1. Salva no localStorage */
+        /* 1. Verifica se já existe no localStorage (evita duplicar na planilha) */
+        var contatoExistente = localStorage.getItem('rainha_contato');
+        var jaEraAssinante   = localStorage.getItem('rainha_assinante') === '1';
+        var ehNovoContato    = (contatoExistente !== contato);
+
+        /* 2. Salva no localStorage */
         localStorage.setItem('rainha_contato', contato);
-        console.log('[RainhaCaptura] Contato salvo no localStorage.');
+        if (ehNovoContato) {
+            /* Limpa cache de status ao trocar de número */
+            localStorage.removeItem('rainha_assinante');
+            jaEraAssinante = false;
+        }
+        console.log('[RainhaCaptura] Contato salvo no localStorage. Novo?', ehNovoContato);
 
-        /* 2. Envia ao webhook (assíncrono, não bloqueia) */
-        window.RainhaCaptura._enviarWebhook(contato);
+        /* 3. Só dispara webhook se for um contato NOVO (evita duplicação) */
+        if (ehNovoContato) {
+            window.RainhaCaptura._enviarWebhook(contato);
+        } else {
+            console.log('[RainhaCaptura] Contato já conhecido — webhook ignorado para não duplicar.');
+        }
 
-        /* 3. Cria usuário sintético e verifica status no Firebase */
-        var usuario = window.RainhaCaptura._criarUsuario(contato);
-        window.RainhaCaptura._verificarAssinatura(usuario);
+        /* 4. Se já sabemos que é assinante (cache local), libera direto */
+        if (jaEraAssinante) {
+            console.log('[RainhaCaptura] Status assinante restaurado do cache local.');
+            _isSubscriber = true;
+            var usuario = window.RainhaCaptura._criarUsuario(contato);
+            _atualizarUI(usuario);
+        } else {
+            /* Consulta o Firebase para descobrir o status atual */
+            var usuario = window.RainhaCaptura._criarUsuario(contato);
+            window.RainhaCaptura._verificarAssinatura(usuario);
+        }
 
-        /* 4. Fecha modal/sidebar conforme origem */
+        /* 5. Fecha modal/sidebar conforme origem */
         if (origem === 'modal' && window._fecharEngagementModal) window._fecharEngagementModal();
         if (origem === 'sidebar' && window.fecharSideBar) window.fecharSideBar();
     },
@@ -140,24 +162,36 @@ window.RainhaCaptura = {
             return;
         }
 
-        var db = firebase.firestore();
-        db.collection('subscribers').doc(usuario.email).get().then(function(doc) {
-            if (doc.exists && doc.data().status === 'active') {
+        var db      = firebase.firestore();
+        /* O contato (número/email) é usado como doc ID pela Cloud Function */
+        var docId   = usuario.email; /* ex: "11999999999" */
+        var uidLocal = usuario.uid;  /* ex: "local_11999999999" */
+
+        /* Tenta pelos dois IDs possíveis: pelo contato direto e pelo uid local */
+        Promise.all([
+            db.collection('subscribers').doc(docId).get(),
+            db.collection('subscribers').doc(uidLocal).get()
+        ]).then(function(resultados) {
+            var ativo = resultados.some(function(doc) {
+                if (!doc.exists) return false;
+                var d = doc.data();
+                /* Aceita qualquer dos formatos que a Cloud Function pode usar */
+                return d.isSubscriber === true
+                    || d.statusAssinatura === 'Ativo'
+                    || d.statusAssinatura === 'Ativa'
+                    || d.status === 'active';
+            });
+
+            if (ativo) {
                 _isSubscriber = true;
+                localStorage.setItem('rainha_assinante', '1'); /* cache local */
                 _atualizarUI(usuario);
-                console.log('[RainhaCaptura] Acesso Premium liberado para:', usuario.email);
+                console.log('[RainhaCaptura] ✅ Acesso Premium liberado para:', docId);
             } else {
-                /* Se não está na principal, verifica na lista de pendentes/planilha */
-                if (typeof _verificarPendingEMigrar === 'function') {
-                    _verificarPendingEMigrar(db, usuario, function() {
-                        _isSubscriber = false;
-                        _atualizarUI(usuario);
-                        console.log('[RainhaCaptura] Acesso Gratuito para:', usuario.email);
-                    });
-                } else {
-                    _isSubscriber = false;
-                    _atualizarUI(usuario);
-                }
+                _isSubscriber = false;
+                localStorage.removeItem('rainha_assinante');
+                _atualizarUI(usuario);
+                console.log('[RainhaCaptura] Conta Gratuita para:', docId);
             }
         }).catch(function(e) {
             console.warn('[RainhaCaptura] Erro ao verificar assinatura:', e);

@@ -452,7 +452,7 @@ body {
 #engagement-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(8, 0, 0, 0.78);
+    background: rgba(5, 0, 20, 0.78);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
@@ -481,7 +481,7 @@ body.eng-modal-open {
 }
 
 .eng-modal-box {
-    background: linear-gradient(160deg, #130000 0%, #220505 45%, #130000 100%);
+    background: linear-gradient(160deg, #0a0020 0%, #160040 45%, #0a0020 100%);
     border: 1px solid rgba(75, 0, 130, 0.55);
     border-radius: 26px;
     padding: 52px 44px 44px;
@@ -492,7 +492,7 @@ body.eng-modal-open {
     box-shadow:
         0 0 0 1px rgba(75, 0, 130, 0.12),
         0 32px 80px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 80, 80, 0.06),
+        inset 0 1px 0 rgba(150, 80, 220, 0.06),
         0 0 60px rgba(75, 0, 130, 0.15);
     transform: translateY(48px) scale(0.95);
     opacity: 0;
@@ -510,15 +510,15 @@ body.eng-modal-open {
     position: absolute;
     top: 16px;
     right: 18px;
-    background: rgba(255, 80, 80, 0.08);
-    border: 1px solid rgba(255, 80, 80, 0.15);
+    background: rgba(150, 80, 220, 0.08);
+    border: 1px solid rgba(150, 80, 220, 0.2);
     border-radius: 50%;
     width: 34px;
     height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 140, 140, 0.6);
+    color: rgba(180, 130, 220, 0.7);
     font-size: 14px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -526,16 +526,16 @@ body.eng-modal-open {
 }
 
 .eng-modal-close:hover {
-    background: rgba(255, 80, 80, 0.18);
-    border-color: rgba(255, 80, 80, 0.4);
-    color: rgba(255, 100, 100, 0.95);
+    background: rgba(150, 80, 220, 0.18);
+    border-color: rgba(150, 80, 220, 0.45);
+    color: rgba(180, 130, 255, 0.95);
 }
 
 /* Coroa decorativa */
 .eng-modal-crown {
     font-size: 46px;
     margin-bottom: 18px;
-    filter: drop-shadow(0 0 14px rgba(220, 0, 0, 0.65));
+    filter: drop-shadow(0 0 14px rgba(106, 13, 173, 0.7));
     background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -544,8 +544,8 @@ body.eng-modal-open {
 }
 
 @keyframes engCrownPulse {
-    0%, 100% { filter: drop-shadow(0 0 14px rgba(220, 0, 0, 0.65)); }
-    50%       { filter: drop-shadow(0 0 26px rgba(255, 80, 80, 0.9)); }
+    0%, 100% { filter: drop-shadow(0 0 14px rgba(106, 13, 173, 0.7)); }
+    50%       { filter: drop-shadow(0 0 26px rgba(150, 80, 220, 0.9)); }
 }
 
 /* Headline */
@@ -555,7 +555,7 @@ body.eng-modal-open {
     font-weight: 900;
     line-height: 1.38;
     margin-bottom: 14px;
-    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #ffb3ae 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #D4AAFF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -564,7 +564,7 @@ body.eng-modal-open {
 /* Subtítulo */
 .eng-modal-sub {
     font-size: 14px;
-    color: rgba(255, 200, 200, 0.68);
+    color: rgba(210, 185, 240, 0.75);
     line-height: 1.72;
     margin-top: 16px;
     margin-bottom: 20px;
@@ -577,7 +577,7 @@ body.eng-modal-open {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: rgba(255, 160, 160, 0.55);
+    color: rgba(180, 150, 220, 0.6);
     margin-bottom: 14px;
     margin-top: -6px;
 }
@@ -613,7 +613,7 @@ body.eng-modal-open {
 }
 
 .eng-contato-input:focus {
-    border-color: rgba(220, 40, 40, 0.9);
+    border-color: rgba(106, 13, 173, 0.9);
     box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.2);
 }
 
@@ -634,7 +634,7 @@ body.eng-modal-open {
 }
 
 .eng-acessar-btn:hover {
-    background: linear-gradient(135deg, #a50000 0%, #e53535 100%);
+    background: linear-gradient(135deg, #2D0058 0%, #6A0DAD 100%);
     box-shadow: 0 8px 24px rgba(75, 0, 130, 0.65);
     transform: translateY(-2px);
 }
@@ -645,7 +645,7 @@ body.eng-modal-open {
     align-items: center;
     gap: 12px;
     margin-bottom: 20px;
-    color: rgba(255, 150, 150, 0.35);
+    color: rgba(160, 120, 210, 0.45);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -695,7 +695,7 @@ body.eng-modal-open {
 /* Fine print */
 .eng-modal-fine {
     font-size: 11.5px;
-    color: rgba(255, 150, 150, 0.38);
+    color: rgba(160, 120, 210, 0.45);
     margin-top: 4px;
 }
 
@@ -713,7 +713,7 @@ body.eng-modal-open {
 #member-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(8, 0, 0, 0.78);
+    background: rgba(5, 0, 20, 0.78);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
@@ -737,7 +737,7 @@ body.eng-modal-open {
 }
 
 .mem-modal-box {
-    background: linear-gradient(160deg, #130000 0%, #220505 45%, #130000 100%);
+    background: linear-gradient(160deg, #0a0020 0%, #160040 45%, #0a0020 100%);
     border: 1px solid rgba(75, 0, 130, 0.55);
     border-radius: 26px;
     padding: 52px 44px 44px;
@@ -748,7 +748,7 @@ body.eng-modal-open {
     box-shadow:
         0 0 0 1px rgba(75, 0, 130, 0.12),
         0 32px 80px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 80, 80, 0.06),
+        inset 0 1px 0 rgba(150, 80, 220, 0.06),
         0 0 60px rgba(75, 0, 130, 0.15);
     transform: translateY(48px) scale(0.95);
     opacity: 0;
@@ -766,15 +766,15 @@ body.eng-modal-open {
     position: absolute;
     top: 16px;
     right: 18px;
-    background: rgba(255, 80, 80, 0.08);
-    border: 1px solid rgba(255, 80, 80, 0.15);
+    background: rgba(150, 80, 220, 0.08);
+    border: 1px solid rgba(150, 80, 220, 0.2);
     border-radius: 50%;
     width: 34px;
     height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 140, 140, 0.6);
+    color: rgba(180, 130, 220, 0.7);
     font-size: 14px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -782,16 +782,16 @@ body.eng-modal-open {
 }
 
 .mem-modal-close:hover {
-    background: rgba(255, 80, 80, 0.18);
-    border-color: rgba(255, 80, 80, 0.4);
-    color: rgba(255, 100, 100, 0.95);
+    background: rgba(150, 80, 220, 0.18);
+    border-color: rgba(150, 80, 220, 0.45);
+    color: rgba(180, 130, 255, 0.95);
 }
 
 /* Coroa */
 .mem-modal-crown {
     font-size: 46px;
     margin-bottom: 18px;
-    filter: drop-shadow(0 0 14px rgba(220, 0, 0, 0.65));
+    filter: drop-shadow(0 0 14px rgba(106, 13, 173, 0.7));
     background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -802,7 +802,7 @@ body.eng-modal-open {
 /* Texto principal guias — cor branca do primeiro modal */
 .mem-modal-sub {
     font-size: 15px;
-    color: rgba(255, 220, 220, 0.92);
+    color: rgba(225, 210, 245, 0.92);
     line-height: 1.75;
     margin-bottom: 24px;
     font-weight: 500;
@@ -814,7 +814,7 @@ body.eng-modal-open {
     align-items: center;
     gap: 12px;
     margin-bottom: 18px;
-    color: rgba(255, 150, 150, 0.35);
+    color: rgba(160, 120, 210, 0.45);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -834,7 +834,7 @@ body.eng-modal-open {
     font-family: var(--font-logo);
     font-size: 16px;
     font-weight: 800;
-    color: rgba(255, 220, 220, 0.92);
+    color: rgba(225, 210, 245, 0.92);
     margin-bottom: 20px;
     letter-spacing: 0.5px;
 }
@@ -874,7 +874,7 @@ body.eng-modal-open {
 /* Fine print */
 .mem-modal-fine {
     font-size: 11.5px;
-    color: rgba(255, 150, 150, 0.38);
+    color: rgba(160, 120, 210, 0.45);
     margin-top: 4px;
 }
 

@@ -261,7 +261,9 @@
             function _mostrarMemberModal() {
                 if (_memShown) return;
                 /* Exibe APENAS se o usuário estiver logado */
+                /* Somente para conta gratuita: logado E não assinante */
                 if (!window.SeniorAuth || !window.SeniorAuth.isLoggedIn()) return;
+                if (window.SeniorAuth.isSubscriber()) return;
                 _memShown = true;
                 var overlay = document.getElementById('member-modal-overlay');
                 if (!overlay) return;

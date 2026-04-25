@@ -1009,12 +1009,12 @@ body.eng-modal-open {
 
 /* News Feed Specific Styles */
 .news-card {
-    background: white;
-    border-radius: 20px;
+    background: #ffffff;
+    border-radius: 10px;
     overflow: hidden;
-    border: 1px solid var(--border-color);
+    border: 1.5px solid #E1306C;
     margin-bottom: 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
 .news-image {

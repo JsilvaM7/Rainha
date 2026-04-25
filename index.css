@@ -585,7 +585,20 @@ body.eng-modal-open {
     font-size: 14px;
     color: rgba(255, 200, 200, 0.68);
     line-height: 1.72;
-    margin-bottom: 30px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+/* Frase Mantenha o Projeto */
+.eng-modal-mantenha {
+    font-family: var(--font-logo);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 160, 160, 0.55);
+    margin-bottom: 14px;
+    margin-top: -6px;
 }
 
 /* Campo de captura E-mail / WhatsApp */

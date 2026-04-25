@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
 
 :root {
-    /* Rainha Color Palette — Instagram Clean */
-    --primary-purple: #E1306C;
-    --primary-purple-light: #F77737;
-    --sage-green: #E1306C;       /* Vermelho Instagram — ações */
-    --sage-green-dark: #C13584;  /* Acento mais profundo */
-    --gold: #E1306C;             /* Botões principais */
-    --gold-dark: #C13584;        /* Hover */
+    /* Rainha Color Palette — Carmesim Profundo */
+    --primary-purple: #8B0000;
+    --primary-purple-light: #B22222;
+    --sage-green: #8B0000;       /* Carmesim — principal */
+    --sage-green-dark: #4A0404;  /* Profundidade carmesim */
+    --gold: #8B0000;             /* Carmesim — Botões */
+    --gold-dark: #4A0404;        /* Hover carmesim */
     --background-white: #ffffff;
     --background-soft: #fafafa;
     --text-dark: #262626;
@@ -61,17 +61,23 @@ body {
     letter-spacing: 2px;
     /* Rubi Carmesim — seda vermelha profínda */
     background: linear-gradient(
-        135deg,
-        #E1306C 0%,
-        #C13584 35%,
-        #833AB4 65%,
-        #E1306C 100%
+        160deg,
+        #ff6b6b 0%,
+        #c0392b 15%,
+        #ff8a80 30%,
+        #8B0000 48%,
+        #e53935 63%,
+        #4A0404 76%,
+        #c62828 88%,
+        #8B0000 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    -webkit-text-stroke: 0px;
-    filter: drop-shadow(0 1px 3px rgba(225,48,108,0.35));
+    -webkit-text-stroke: 0.5px rgba(74, 4, 4, 0.4);
+    filter: drop-shadow(0 1px 0px rgba(139, 0, 0, 0.7))
+            drop-shadow(0 2px 6px rgba(139, 0, 0, 0.45))
+            drop-shadow(0 0 12px rgba(200, 0, 0, 0.2));
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -80,7 +86,9 @@ body {
 }
 
 .logo:hover {
-    filter: drop-shadow(0 2px 8px rgba(225,48,108,0.5));
+    filter: drop-shadow(0 1px 0px rgba(139, 0, 0, 0.9))
+            drop-shadow(0 3px 10px rgba(180, 0, 0, 0.65))
+            drop-shadow(0 0 18px rgba(220, 30, 30, 0.4));
     transform: scale(1.015);
 }
 
@@ -428,7 +436,7 @@ body {
 
 /* ── Destaque card — última notícia de Manipulação ─────────────────────── */
 .news-card--destaque {
-    border: 1.5px solid #E1306C !important;
+    border: 1.5px solid #8B0000 !important;
     box-shadow: none !important;
     position: relative;
     overflow: visible !important;
@@ -439,7 +447,7 @@ body {
     position: absolute;
     top: -14px;
     left: 24px;
-    background: #E1306C;
+    background: #8B0000;
     color: #fff;
     font-size: 10px;
     font-weight: 900;
@@ -452,7 +460,7 @@ body {
 }
 
 .news-card--destaque .news-header-title {
-    background: linear-gradient(135deg, #E1306C 0%, #C13584 60%, #833AB4 100%);
+    background: linear-gradient(135deg, #4A0404 0%, #8B0000 40%, #e53935 70%, #8B0000 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1012,7 +1020,7 @@ body.eng-modal-open {
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
-    border: 1.5px solid #E1306C;
+    border: 1.5px solid #8B0000;
     margin-bottom: 32px;
     box-shadow: none;
 }

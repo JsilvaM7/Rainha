@@ -2669,6 +2669,212 @@ const GUIAS_DATA = [
         categoria: 'Manipulação',
         gratis: true
     }
+,
+
+    {
+        id: 'love-bombing',
+        titulo: 'Love Bombing',
+        descricao: 'O cerco emocional disfarçado de amor absoluto. Cinco capítulos para reconhecer o bombardeio de atenção calculada, desativar a dependência criada e retomar o comando do seu próprio ritmo.',
+        paginas: [
+            {
+                num: 1,
+                titulo: 'O Cerco da Atenção',
+                gratis: true,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Amor que Não Pede Tempo</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O <em>love bombing</em> é uma das táticas de infiltração mais sofisticadas porque se disfarça daquilo que todas nós fomos ensinadas a desejar: o amor absoluto. É um cerco emocional executado através de uma inundação de atenção, elogios e promessas grandiosas — projetado para cegar sua percepção crítica antes mesmo de você saber o sobrenome dele.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Diferente de um romance saudável que floresce no tempo da natureza, o bombardeio emocional é um incêndio controlado. Não pela paixão — mas pelo calculista que precisa queimar suas defesas e criar uma dependência da presença dele antes que você tenha clareza suficiente para avaliá-lo.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Pense em um cavaleiro que não avança passo a passo pelo campo: ele salta. Atravessa as barreiras que o tempo deveria erguer e aparece no centro do seu mundo antes que você tenha sequer percebido o movimento. É exatamente assim que o love bomber opera.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">A Infiltração pelo Desejo</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 20px;">No início, a sensação é de que o destino finalmente sorriu. São mensagens de bom dia que parecem poesias, planos para viagens feitos na segunda semana e uma disponibilidade que beira o sobrenatural. Mas ele não está amando você — está espelhando a imagem da mulher que você quer ser, para que você se sinta numa dívida de gratidão impagável por ter sido &#8220;escolhida&#8221; por alguém tão perfeito.</p>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">O espelho calculado</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ele descobre o que você sempre quis ouvir — em uma conversa, num perfil, num olhar — e se transforma exatamente nisso. Não é coincidência ele gostar das mesmas músicas, sonhar com as mesmas viagens e sentir as mesmas dores. É estratégia.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:20px 22px;border-left:4px solid var(--gold);"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 8px;">A dívida impagável</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Quando alguém oferece atenção em abundância, o cérebro registra uma dívida emocional automática. Questionar o afeto parece ingratidão. Essa culpa é o primeiro fio da armadilha.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">III</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Os Sinais do Cerco no Início</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Declarações de amor intensas nas primeiras duas semanas de conversa.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Planos de futuro grandiosos (casamento, filhos, viagens) feitos antes dos três meses.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Disponibilidade irreal: responde instantaneamente, nunca tem outros compromissos, vive para você.</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Pressão sutil para exclusividade antes do tempo natural de conhecimento mútuo.</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">O Abismo que Não Parecia Abismo</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">A vertigem do love bombing é que ele se sente exatamente como o amor dos sonhos. Não existe alarme. Existe a sensação de ter chegado em casa. E é exatamente essa sensação que a soberana precisa aprender a questionar: amor real não tem pressa de te trancar.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&#8220;A pressa dele é, quase sempre, a urgência de te trancar em um castelo antes que você perceba as rachaduras nas paredes.&#8221;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 2,
+                titulo: 'A Arquitetura da Dependência',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">A Química da Captura</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O love bombing não é apenas um comportamento — é uma engenharia emocional. Cada mensagem de madrugada, cada elogio preciso, cada gesto grandioso libera dopamina e oxitocina no seu cérebro com uma intensidade que o cortejo natural nunca produziria em tão pouco tempo.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">O resultado é uma dependência química real: a presença dele se torna necessária para o seu equilíbrio emocional antes mesmo de você tê-lo avaliado como parceiro. Você já está viciada antes de saber quem ele é de verdade.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Os Três Estágios do Vício Emocional</h3>
+                            <div style="display:flex;flex-direction:column;gap:18px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Inundação</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Atenção em excesso, todos os dias, em todos os canais. O volume é tão alto que apaga qualquer voz interna que poderia questionar a velocidade do que está acontecendo.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Calibração</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Quando você já está acostumada ao volume alto, ele começa a variar a intensidade: momentos de frio e calor que criam ansiedade e fazem você trabalhar para recuperar a atenção que antes era gratuita.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Consolidação</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Você já reorganizou sua rotina, seus planos e sua identidade em torno dele. O custo de sair agora parece insuportável. Esse custo foi calculado e construído por ele, tijolo a tijolo.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 14px;">O Diálogo que Você Reconhece</h3>
+                            <p style="font-size:15px;color:#374151;line-height:1.8;margin:0 0 16px;">Lembra quando ele disse: <strong>&#8220;Nunca senti isso por ninguém. Você é diferente de todas as outras&#8221;</strong> — na terceira semana? Esse é o texto. Não é poesia espontânea. É um roteiro.</p>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><em>&#8220;Eu sei que é cedo, mas eu quero construir algo sério com você.&#8221;</em></p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><em>&#8220;Minha família vai te adorar. Já falei de você para todo mundo.&#8221;</em></p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;"><em>&#8220;Eu nunca fui assim com ninguém. Você é especial demais.&#8221;</em></p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&#8220;Você não escolheu o vício. Ele foi instalado. Reconhecer a arquitetura é o primeiro ato de libertação.&#8221;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 3,
+                titulo: 'O Preço Oculto do Banquete',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">Quando a Asa Vira Âncora</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Esse banquete de afeto tem um preço invisível que começa a ser cobrado assim que a primeira sombra de dúvida surge. Quando o bombardeio atinge seu objetivo e você está emocionalmente rendida, a intensidade que era um presente vira uma ferramenta de controle.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Se você precisa de espaço, ele se sente <em>rejeitado</em>. Se você sai com amigas, ele se sente <em>negligenciado</em>. O amor, que antes era uma asa, torna-se uma âncora. E o mais perturbador: a transição acontece tão gradualmente que você mal percebe o exato momento em que o porto virou prisão.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">A Inversão do Controle</h3>
+                            <div style="display:flex;flex-direction:column;gap:16px;">
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Antes: ele dava atenção livremente</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Depois: a atenção se torna recompensa condicionada ao seu comportamento. Você aprende, sem perceber, a não incomodá-lo para não perder o calor.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Antes: ele respeitava sua agenda</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Depois: qualquer compromisso seu é lido como preferência pelos outros. A culpa que ele instala é sutil, mas constante.</p></div>
+                                <div style="background:#fff;border-radius:12px;padding:18px 20px;border-left:4px solid #dc2626;"><p style="font-size:15px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Antes: seus limites eram &#8220;respeitosos&#8221;</p><p style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Depois: qualquer limite é reframed como &#8220;você não confia em mim&#8221; ou &#8220;se me amasse, não precisaria disso&#8221;.</p></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Objetivo era o Castelo, Não o Amor</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">O objetivo do love bomber nunca foi te amar. Foi te convencer de que ele é insubstituível antes que você pudesse ver quem ele realmente é. Uma vez dentro do castelo emocional que ele construiu ao redor de você, as paredes que pareciam proteção revelam sua função real: contenção.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">A soberana precisa fazer uma pergunta fría e honesta: <strong>&#8220;Ele me amava, ou amava o controle que exercia sobre mim?&#8221;</strong> A resposta muda tudo.</p>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&#8220;O amor que precisa te isolar para sobreviver não é amor. É cercamento.&#8221;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 4,
+                titulo: 'O Avanço Diagonal',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Avanço Sempre na Mesma Direção</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">Há um tipo de figura que nunca muda de caminho: avança sempre em diagonal, sempre na mesma direção, com a certeza de quem sabe exatamente onde quer chegar. O bispo de um rei não hesita — ele avança. O love bomber também.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Cada mensagem, cada gesto, cada declaração segue a mesma trajetória: aproximar, envolver, consolidar. O que parece espontaneidade é uma rota. O que parece paixão é uma estratégia. E a dinâmica só muda de nome — nunca de natureza.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">Como o Movimento Evolui</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Atenção Vira Vigilância</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">O que era &#8220;saudade&#8221; se torna necessidade de saber onde você está, com quem e por quê. A frequência das mensagens não diminui — muda de tom.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">O Cuidado Vira Posse</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">&#8220;Fiz tudo por você&#8221; passa a ser usado como argumento de dívida. O histórico de gestos que ele construiu agora é uma fatura a ser paga com obediência.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">A Exclusividade Vira Isolamento</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">O que era &#8220;eu quero só você&#8221; se transforma em redução progressiva de suas redes de apoio. Suas amigas são &#8220;influências ruins&#8221;. Sua família &#8220;não entende&#8221;. Até você precisar só dele.</p></div></div>
+                            </div>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 14px;">A Pergunta que Desarma</h3>
+                            <p style="font-size:15px;color:#374151;line-height:1.8;margin:0 0 16px;">Antes de qualquer decisão, pergunte: <strong>&#8220;O que mudou nele — além da intensidade?&#8221;</strong></p>
+                            <div style="display:flex;flex-direction:column;gap:12px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Ele respeita o seu &#8220;não&#8221; sem drama?</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Você se sente mais ela mesma ou mais dependente após cada encontro?</p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;">✦</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Suas amigas e família estão mais perto ou mais distantes desde que ele chegou?</p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&#8220;Quem te ama quer que você floresça. Quem te possui quer que você murche até caber no vaso que ele escolheu.&#8221;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            },
+            {
+                num: 5,
+                titulo: 'O Tempo É Seu Cetro',
+                gratis: false,
+                conteudo: `
+                    <div style="display:flex;flex-direction:column;gap:32px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">I</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Tempo É Seu Cetro</h3>
+                            </div>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0 0 16px;">A verdadeira soberania reside no domínio do próprio tempo. Uma Rainha não se deixa levar pela correnteza de um afeto que não foi testado pelo caráter e pela consistência. Identificar o love bombing exige a coragem de desacelerar o que ele quer acelerar.</p>
+                            <p style="font-size:16px;color:#374151;line-height:1.85;margin:0;">Quando você dita o ritmo, você reassume o comando do seu reino emocional. O amor real sobrevive à paciência. A manipulação, não. Proteger suas fronteiras contra o excesso é tão vital quanto protegê-las contra a escâssez.</p>
+                        </div>
+                        <div style="background:#fdf8f0;border-radius:16px;padding:28px;">
+                            <h3 style="font-size:18px;font-weight:900;color:#2a1a06;margin:0 0 18px;">O Protocolo da Soberana</h3>
+                            <div style="display:flex;flex-direction:column;gap:20px;">
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Imponha seu próprio ritmo deliberadamente</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Se ele quer ver você todo dia na primeira semana, aceite um encontro por semana. Observe a reação. A raiva, a manipulação ou a pressão que vem depois da sua desaceleração é o seu raio-X emocional mais honesto.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Mantenha sua vida intacta</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Suas amigas, seus compromissos, seus projetos existiam antes dele e devem continuar existindo. Qualquer relação que exija que você se esvaúie para caber dentro dela não é relação — é absorción.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Teste o caráter, não o sentimento</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Sentimento é fácil de fabricar. Caráter é revelado sob pressão, no desacordo, no tempo. Observe como ele trata quem não pode lhe dar nada. Esse é o homem real.</p></div></div>
+                                <div style="display:flex;gap:16px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div><p style="font-size:16px;font-weight:800;color:#2a1a06;margin:0 0 6px;">Não confunda intensidade com profundidade</p><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">O oceano é profundo e silencioso. O love bombing é uma tempestade que faz muito barulho e passa. Profundidade se constrói devagar; intensidade excessiva no início é quase sempre um sinal de aviso.</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                                <span style="background:#fdf8f0;border:1.5px solid var(--gold);color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 14px;border-radius:99px;">II</span>
+                                <h3 style="font-size:21px;font-weight:900;color:#2a1a06;margin:0;">O Decreto da Rainha</h3>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Afirme: <em>&#8220;Quem me ama respeita meu ritmo. Quem pressiona revela sua agenda.&#8221;</em></p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Lembre-se: <em>&#8220;A minha atenção é o bem mais valioso do meu reino. Não se vende por intensidade.&#8221;</em></p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Pergunte sempre: <em>&#8220;Depois de estar com ele, eu me sinto maior ou menor?&#8221;</em></p></div>
+                                <div style="display:flex;gap:14px;align-items:flex-start;"><div style="background:var(--gold);color:#fff;font-size:13px;font-weight:900;min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><p style="font-size:15px;color:#374151;line-height:1.8;margin:0;">Decrete: <em>&#8220;Meu trono só é ocupado por quem respeita a liturgia do tempo e a integridade da minha paz.&#8221;</em></p></div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);border-radius:16px;padding:32px;">
+                            <h3 style="font-size:21px;font-weight:900;color:#fff;margin:0 0 16px;">A Soberania do Seu Tempo</h3>
+                            <p style="font-size:16px;color:#e8d4a8;line-height:1.9;margin:0 0 16px;">O trono que você protege não se conquista com inundação. Conquista-se com consistência. Qualquer um que tente tomar seu castelo pela velocidade e pelo excesso já revelou que não merece as chaves.</p>
+                            <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:20px 24px;border-left:4px solid #C5A059;"><p style="font-size:15px;color:#fff;font-style:italic;line-height:1.85;margin:0;"><strong style="color:#e8c97a;">&#8220;Amor real sobrevive à paciência. Manipulação, não. Você não precisa de fogo — precisa de luz.&#8221;</strong><br><span style="font-size:13px;color:#c4a87a;margin-top:8px;display:block;">Portal Rainha</span></p></div>
+                        </div>
+                    </div>`
+            }
+        ],
+        get conteudo() { return this.paginas[0].conteudo; },
+        categoria: 'Manipulação',
+        gratis: true
+    }
 ];
 
 /* ── Sidebar: marca o link ativo ────────────────────────────────────────── */

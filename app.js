@@ -141,15 +141,15 @@ function loadBooksShowcase() {
         <div class="veu-cards-grid">
             <!-- Botão 1: O Véu da Juventude -->
             <button onclick="renderVeuConteudo('veu-juventude')" style="
-                background: linear-gradient(135deg, #4A0404 0%, #8B0000 60%, #c62828 100%);
-                color: #fff; border: 1px solid rgba(200,0,0,0.4);
+                background: linear-gradient(135deg, #2D0058 0%, #4B0082 60%, #6A0DAD 100%);
+                color: #fff; border: 1px solid rgba(75,0,130,0.4);
                 border-radius: 16px; padding: 24px 20px;
                 text-align: left; cursor: pointer;
-                box-shadow: 0 4px 20px rgba(139,0,0,0.3);
+                box-shadow: 0 4px 20px rgba(75,0,130,0.3);
                 transition: box-shadow 0.25s, transform 0.2s;
                 font-family: inherit;
-            " onmouseover="this.style.boxShadow='0 8px 32px rgba(180,0,0,0.5)'; this.style.transform='translateY(-3px)'"
-               onmouseout="this.style.boxShadow='0 4px 20px rgba(139,0,0,0.3)'; this.style.transform='translateY(0)'">
+            " onmouseover="this.style.boxShadow='0 8px 32px rgba(75,0,130,0.5)'; this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.boxShadow='0 4px 20px rgba(75,0,130,0.3)'; this.style.transform='translateY(0)'">
                 <div style="font-size:28px; margin-bottom:10px;">💋</div>
                 <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:900; letter-spacing:0.3px; margin-bottom:6px; line-height:1.3;">O Véu da Juventude</div>
                 <div style="font-size:12px; color:rgba(255,180,180,0.75); line-height:1.5;">Segredos para a Pele que Seduz sem Palavras</div>
@@ -157,15 +157,15 @@ function loadBooksShowcase() {
 
             <!-- Botão 2: A Pintura da Sereia -->
             <button onclick="renderVeuConteudo('pintura-sereia')" style="
-                background: linear-gradient(135deg, #1a0a0a 0%, #3d0a0a 60%, #8B0000 100%);
-                color: #fff; border: 1px solid rgba(200,0,0,0.35);
+                background: linear-gradient(135deg, #1a0030 0%, #2D0058 60%, #4B0082 100%);
+                color: #fff; border: 1px solid rgba(75,0,130,0.35);
                 border-radius: 16px; padding: 24px 20px;
                 text-align: left; cursor: pointer;
-                box-shadow: 0 4px 20px rgba(74,4,4,0.4);
+                box-shadow: 0 4px 20px rgba(75,0,130,0.4);
                 transition: box-shadow 0.25s, transform 0.2s;
                 font-family: inherit;
-            " onmouseover="this.style.boxShadow='0 8px 32px rgba(139,0,0,0.5)'; this.style.transform='translateY(-3px)'"
-               onmouseout="this.style.boxShadow='0 4px 20px rgba(74,4,4,0.4)'; this.style.transform='translateY(0)'">
+            " onmouseover="this.style.boxShadow='0 8px 32px rgba(75,0,130,0.5)'; this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.boxShadow='0 4px 20px rgba(75,0,130,0.4)'; this.style.transform='translateY(0)'">
                 <div style="font-size:28px; margin-bottom:10px;">🧜‍♀️</div>
                 <div style="font-family:'Playfair Display',serif; font-size:15px; font-weight:900; letter-spacing:0.3px; margin-bottom:6px; line-height:1.3;">A Pintura da Sereia</div>
                 <div style="font-size:12px; color:rgba(255,180,180,0.75); line-height:1.5;">Traços de Maquiagem que Hipnotizam e Seduzem</div>
@@ -173,7 +173,7 @@ function loadBooksShowcase() {
         </div>
 
         <div style="text-align:center; margin-bottom:32px;">
-            <span style="display:inline-block; background:rgba(139,0,0,0.1); color:#8B0000; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; padding:4px 14px; border-radius:20px; margin-bottom:14px; border:1px solid rgba(139,0,0,0.2);">Círculo Rainha — Biblioteca</span>
+            <span style="display:inline-block; background:rgba(75,0,130,0.1); color:#4B0082; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; padding:4px 14px; border-radius:20px; margin-bottom:14px; border:1px solid rgba(75,0,130,0.2);">Círculo Rainha — Biblioteca</span>
             <h1 style="font-family:'Playfair Display',serif; font-size:26px; font-weight:900; color:#1a0a0a; margin-bottom:8px;">Os Cinco Livros do Domínio</h1>
             <p style="color:var(--text-muted); font-size:15px;">Cada volume é um nível de inteligência feminina revelado</p>
         </div>
@@ -184,12 +184,12 @@ function loadBooksShowcase() {
                     if (isSub) {
                         return `
                         <div style="display:flex; align-items:center; gap:12px; width:100%;
-                                    background:#fff; border:1.5px solid rgba(139,0,0,0.3);
+                                    background:#fff; border:1.5px solid rgba(75,0,130,0.3);
                                     border-radius:16px; padding:16px 20px;
-                                    box-shadow:0 2px 10px rgba(139,0,0,0.08);">
+                                    box-shadow:0 2px 10px rgba(75,0,130,0.08);">
                             <div class="book-info" style="flex:1; min-width:0;">
                                 <div class="book-num">Vol. ${num}
-                                    <span style="font-size:10px;background:#8B0000;color:#fff;
+                                    <span style="font-size:10px;background:#4B0082;color:#fff;
                                                  padding:1px 7px;border-radius:20px;vertical-align:middle;">
                                         ✓ Incluso
                                     </span>
@@ -571,7 +571,7 @@ function renderVeuPagina(tipo, idx) {
         <div style="background:#fff;border:1px solid rgba(139,0,0,0.15);border-radius:16px;padding:36px;margin-bottom:24px;">
             <div style="display:inline-block;background:rgba(139,0,0,0.08);color:#8B0000;font-size:10px;
                         font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 14px;
-                        border-radius:99px;margin-bottom:18px;border:1px solid rgba(139,0,0,0.2);">Página ${idx+1} de ${total}</div>
+                        border-radius:99px;margin-bottom:18px;border:1px solid rgba(75,0,130,0.2);">Página ${idx+1} de ${total}</div>
             <h2 style="font-family:'Playfair Display',serif;font-size:21px;font-weight:900;
                        color:#1a0a0a;margin-bottom:20px;line-height:1.35;">${pagina.titulo}</h2>
             ${pagina.corpo}

@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
 
 :root {
-    /* Rainha Color Palette — Carmesim Profundo */
-    --primary-purple: #8B0000;
-    --primary-purple-light: #B22222;
-    --sage-green: #8B0000;       /* Carmesim — principal */
-    --sage-green-dark: #4A0404;  /* Profundidade carmesim */
-    --gold: #8B0000;             /* Carmesim — Botões */
-    --gold-dark: #4A0404;        /* Hover carmesim */
+    /* Rainha Color Palette — Roxo Profundo */
+    --primary-purple: #4B0082;
+    --primary-purple-light: #6A0DAD;
+    --sage-green: #4B0082;       /* Roxo Profundo — principal */
+    --sage-green-dark: #2D0058;  /* Profundidade */
+    --gold: #4B0082;             /* Botões principais */
+    --gold-dark: #2D0058;        /* Hover */
     --background-white: #ffffff;
     --background-soft: #fafafa;
     --text-dark: #262626;
@@ -60,24 +60,10 @@ body {
     font-weight: 900;
     letter-spacing: 2px;
     /* Rubi Carmesim — seda vermelha profínda */
-    background: linear-gradient(
-        160deg,
-        #ff6b6b 0%,
-        #c0392b 15%,
-        #ff8a80 30%,
-        #8B0000 48%,
-        #e53935 63%,
-        #4A0404 76%,
-        #c62828 88%,
-        #8B0000 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-text-stroke: 0.5px rgba(74, 4, 4, 0.4);
-    filter: drop-shadow(0 1px 0px rgba(139, 0, 0, 0.7))
-            drop-shadow(0 2px 6px rgba(139, 0, 0, 0.45))
-            drop-shadow(0 0 12px rgba(200, 0, 0, 0.2));
+    color: #4B0082;
+    -webkit-text-fill-color: #4B0082;
+    -webkit-text-stroke: 0px;
+    filter: drop-shadow(0 1px 4px rgba(75,0,130,0.4));
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -86,9 +72,7 @@ body {
 }
 
 .logo:hover {
-    filter: drop-shadow(0 1px 0px rgba(139, 0, 0, 0.9))
-            drop-shadow(0 3px 10px rgba(180, 0, 0, 0.65))
-            drop-shadow(0 0 18px rgba(220, 30, 30, 0.4));
+    filter: drop-shadow(0 2px 8px rgba(75,0,130,0.5));
     transform: scale(1.015);
 }
 
@@ -436,7 +420,7 @@ body {
 
 /* ── Destaque card — última notícia de Manipulação ─────────────────────── */
 .news-card--destaque {
-    border: 1.5px solid #8B0000 !important;
+    border: 1.5px solid #4B0082 !important;
     box-shadow: none !important;
     position: relative;
     overflow: visible !important;
@@ -447,7 +431,7 @@ body {
     position: absolute;
     top: -14px;
     left: 24px;
-    background: #8B0000;
+    background: #4B0082;
     color: #fff;
     font-size: 10px;
     font-weight: 900;
@@ -460,10 +444,7 @@ body {
 }
 
 .news-card--destaque .news-header-title {
-    background: linear-gradient(135deg, #4A0404 0%, #8B0000 40%, #e53935 70%, #8B0000 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #4B0082;
     font-weight: 900;
 }
 
@@ -501,7 +482,7 @@ body.eng-modal-open {
 
 .eng-modal-box {
     background: linear-gradient(160deg, #130000 0%, #220505 45%, #130000 100%);
-    border: 1px solid rgba(139, 0, 0, 0.55);
+    border: 1px solid rgba(75, 0, 130, 0.55);
     border-radius: 26px;
     padding: 52px 44px 44px;
     max-width: 500px;
@@ -509,10 +490,10 @@ body.eng-modal-open {
     text-align: center;
     position: relative;
     box-shadow:
-        0 0 0 1px rgba(200, 0, 0, 0.12),
+        0 0 0 1px rgba(75, 0, 130, 0.12),
         0 32px 80px rgba(0, 0, 0, 0.7),
         inset 0 1px 0 rgba(255, 80, 80, 0.06),
-        0 0 60px rgba(139, 0, 0, 0.15);
+        0 0 60px rgba(75, 0, 130, 0.15);
     transform: translateY(48px) scale(0.95);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
@@ -555,7 +536,7 @@ body.eng-modal-open {
     font-size: 46px;
     margin-bottom: 18px;
     filter: drop-shadow(0 0 14px rgba(220, 0, 0, 0.65));
-    background: linear-gradient(135deg, #ff8a80 0%, #e53935 50%, #ff8a80 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -574,7 +555,7 @@ body.eng-modal-open {
     font-weight: 900;
     line-height: 1.38;
     margin-bottom: 14px;
-    background: linear-gradient(135deg, #ff8a80 0%, #e53935 50%, #ffb3ae 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #ffb3ae 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -614,7 +595,7 @@ body.eng-modal-open {
     flex: 1;
     padding: 14px 16px;
     background: #ffffff !important;
-    border: 1px solid rgba(200, 0, 0, 0.35);
+    border: 1px solid rgba(75, 0, 130, 0.35);
     border-radius: 12px;
     color: #000000 !important;
     font-family: var(--font-body);
@@ -633,12 +614,12 @@ body.eng-modal-open {
 
 .eng-contato-input:focus {
     border-color: rgba(220, 40, 40, 0.9);
-    box-shadow: 0 0 0 3px rgba(180, 0, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.2);
 }
 
 .eng-acessar-btn {
     padding: 14px 20px;
-    background: linear-gradient(135deg, #8B0000 0%, #c62828 100%);
+    background: linear-gradient(135deg, #4B0082 0%, #6A0DAD 100%);
     color: #fff;
     font-family: var(--font-body);
     font-size: 14px;
@@ -648,13 +629,13 @@ body.eng-modal-open {
     cursor: pointer;
     white-space: nowrap;
     transition: box-shadow 0.22s, transform 0.18s, background 0.22s;
-    box-shadow: 0 4px 16px rgba(139, 0, 0, 0.5);
+    box-shadow: 0 4px 16px rgba(75, 0, 130, 0.5);
     flex-shrink: 0;
 }
 
 .eng-acessar-btn:hover {
     background: linear-gradient(135deg, #a50000 0%, #e53535 100%);
-    box-shadow: 0 8px 24px rgba(180, 0, 0, 0.65);
+    box-shadow: 0 8px 24px rgba(75, 0, 130, 0.65);
     transform: translateY(-2px);
 }
 
@@ -676,7 +657,7 @@ body.eng-modal-open {
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(139, 0, 0, 0.35);
+    background: rgba(75, 0, 130, 0.35);
 }
 
 /* Botão Assinar */
@@ -687,7 +668,7 @@ body.eng-modal-open {
     gap: 8px;
     width: 100%;
     padding: 16px 24px;
-    background: linear-gradient(135deg, #8B0000 0%, #c62828 50%, #8B0000 100%);
+    background: linear-gradient(135deg, #4B0082 0%, #6A0DAD 50%, #4B0082 100%);
     background-size: 200% 100%;
     color: #fff;
     font-family: var(--font-logo);
@@ -699,13 +680,13 @@ body.eng-modal-open {
     cursor: pointer;
     text-decoration: none;
     transition: background-position 0.4s ease, box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 6px 24px rgba(139, 0, 0, 0.55);
+    box-shadow: 0 6px 24px rgba(75, 0, 130, 0.55);
     margin-bottom: 16px;
 }
 
 .eng-clube-btn:hover {
     background-position: right center;
-    box-shadow: 0 10px 32px rgba(180, 0, 0, 0.72);
+    box-shadow: 0 10px 32px rgba(75, 0, 130, 0.72);
     transform: translateY(-2px);
     color: #fff;
     text-decoration: none;
@@ -757,7 +738,7 @@ body.eng-modal-open {
 
 .mem-modal-box {
     background: linear-gradient(160deg, #130000 0%, #220505 45%, #130000 100%);
-    border: 1px solid rgba(139, 0, 0, 0.55);
+    border: 1px solid rgba(75, 0, 130, 0.55);
     border-radius: 26px;
     padding: 52px 44px 44px;
     max-width: 460px;
@@ -765,10 +746,10 @@ body.eng-modal-open {
     text-align: center;
     position: relative;
     box-shadow:
-        0 0 0 1px rgba(200, 0, 0, 0.12),
+        0 0 0 1px rgba(75, 0, 130, 0.12),
         0 32px 80px rgba(0, 0, 0, 0.7),
         inset 0 1px 0 rgba(255, 80, 80, 0.06),
-        0 0 60px rgba(139, 0, 0, 0.15);
+        0 0 60px rgba(75, 0, 130, 0.15);
     transform: translateY(48px) scale(0.95);
     opacity: 0;
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
@@ -811,7 +792,7 @@ body.eng-modal-open {
     font-size: 46px;
     margin-bottom: 18px;
     filter: drop-shadow(0 0 14px rgba(220, 0, 0, 0.65));
-    background: linear-gradient(135deg, #ff8a80 0%, #e53935 50%, #ff8a80 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -845,7 +826,7 @@ body.eng-modal-open {
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(139, 0, 0, 0.35);
+    background: rgba(75, 0, 130, 0.35);
 }
 
 /* Mantenha o Projeto — cor branca do primeiro modal */
@@ -866,7 +847,7 @@ body.eng-modal-open {
     gap: 8px;
     width: 100%;
     padding: 16px 24px;
-    background: linear-gradient(135deg, #8B0000 0%, #c62828 50%, #8B0000 100%);
+    background: linear-gradient(135deg, #4B0082 0%, #6A0DAD 50%, #4B0082 100%);
     background-size: 200% 100%;
     color: #fff;
     font-family: var(--font-logo);
@@ -878,13 +859,13 @@ body.eng-modal-open {
     cursor: pointer;
     text-decoration: none;
     transition: background-position 0.4s ease, box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 6px 24px rgba(139, 0, 0, 0.55);
+    box-shadow: 0 6px 24px rgba(75, 0, 130, 0.55);
     margin-bottom: 16px;
 }
 
 .mem-clube-btn:hover {
     background-position: right center;
-    box-shadow: 0 10px 32px rgba(180, 0, 0, 0.72);
+    box-shadow: 0 10px 32px rgba(75, 0, 130, 0.72);
     transform: translateY(-2px);
     color: #fff;
     text-decoration: none;
@@ -926,7 +907,7 @@ body.eng-modal-open {
 
 .velvet-modal-box {
     background: linear-gradient(160deg, #1a0a0a 0%, #2d0808 50%, #1a0505 100%);
-    border: 1px solid rgba(139,0,0,0.6);
+    border: 1px solid rgba(75,0,130,0.6);
     border-radius: 24px;
     padding: 52px 48px 44px;
     max-width: 480px;
@@ -971,7 +952,7 @@ body.eng-modal-open {
     font-weight: 900;
     line-height: 1.35;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #ff8a80 0%, #e53935 50%, #ff8a80 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -989,7 +970,7 @@ body.eng-modal-open {
     align-items: center;
     justify-content: center;
     padding: 15px 36px;
-    background: linear-gradient(135deg, #8B0000, #c62828, #8B0000);
+    background: linear-gradient(135deg, #4B0082, #6A0DAD, #4B0082);
     color: #fff;
     font-family: var(--font-logo);
     font-size: 15px;
@@ -1000,12 +981,12 @@ body.eng-modal-open {
     cursor: pointer;
     text-decoration: none;
     transition: box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 4px 20px rgba(139,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(75,0,130,0.5);
     width: 100%;
 }
 
 .velvet-modal-btn:hover {
-    box-shadow: 0 8px 28px rgba(180,0,0,0.7);
+    box-shadow: 0 8px 28px rgba(75,0,130,0.7);
     transform: translateY(-2px);
 }
 
@@ -1020,7 +1001,7 @@ body.eng-modal-open {
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
-    border: 1.5px solid #8B0000;
+    border: 1.5px solid #4B0082;
     margin-bottom: 32px;
     box-shadow: none;
 }
@@ -2261,7 +2242,7 @@ img {
 }
 .lsb-logout-btn:hover {
     background: #fef2f2;
-    color: #dc2626;
+    color: #4B0082;
     border-color: #fca5a5;
 }
 
@@ -2484,13 +2465,13 @@ img {
 .ad-showcase--oracle {
     background: linear-gradient(160deg, #1a0505 0%, #2d0808 55%, #1a0a0a 100%);
     border-radius: 20px;
-    border: 1px solid rgba(180, 0, 0, 0.35);
+    border: 1px solid rgba(75, 0, 130, 0.35);
     padding: 28px 22px 22px;
     text-align: center;
     position: relative;
     overflow: hidden;
     box-shadow:
-        0 0 0 1px rgba(139, 0, 0, 0.2),
+        0 0 0 1px rgba(75, 0, 130, 0.2),
         0 8px 32px rgba(0, 0, 0, 0.45);
     animation: oracleGlow 3s ease-in-out infinite;
 }
@@ -2498,15 +2479,15 @@ img {
 @keyframes oracleGlow {
     0%, 100% {
         box-shadow:
-            0 0 0 1px rgba(139,0,0,0.2),
+            0 0 0 1px rgba(75,0,130,0.2),
             0 8px 32px rgba(0,0,0,0.45),
-            0 0 24px rgba(139,0,0,0.12);
+            0 0 24px rgba(75,0,130,0.12);
     }
     50% {
         box-shadow:
-            0 0 0 1px rgba(180,0,0,0.45),
+            0 0 0 1px rgba(75,0,130,0.45),
             0 8px 40px rgba(0,0,0,0.5),
-            0 0 40px rgba(180,0,0,0.28);
+            0 0 40px rgba(75,0,130,0.28);
     }
 }
 
@@ -2544,7 +2525,7 @@ img {
     top: 14px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(139, 0, 0, 0.35);
+    background: rgba(75, 0, 130, 0.35);
     color: rgba(255, 160, 160, 0.9);
     font-size: 10px;
     font-weight: 800;
@@ -2552,7 +2533,7 @@ img {
     text-transform: uppercase;
     padding: 3px 14px;
     border-radius: 99px;
-    border: 1px solid rgba(200, 0, 0, 0.3);
+    border: 1px solid rgba(75, 0, 130, 0.3);
     white-space: nowrap;
 }
 
@@ -2563,7 +2544,7 @@ img {
     font-weight: 900;
     line-height: 1.3;
     margin: 0 0 8px;
-    background: linear-gradient(135deg, #ff8a80 0%, #e53935 50%, #ff8a80 100%);
+    background: linear-gradient(135deg, #B38DEA 0%, #6A0DAD 50%, #B38DEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2583,7 +2564,7 @@ img {
     display: block;
     width: 100%;
     padding: 13px 16px;
-    background: linear-gradient(135deg, #8B0000, #c62828, #8B0000);
+    background: linear-gradient(135deg, #4B0082, #6A0DAD, #4B0082);
     color: #fff !important;
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 14px;
@@ -2594,12 +2575,12 @@ img {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(139, 0, 0, 0.45);
+    box-shadow: 0 4px 16px rgba(75, 0, 130, 0.45);
     transition: box-shadow 0.25s, transform 0.2s;
 }
 
 .ad-btn--crimson:hover {
-    box-shadow: 0 8px 28px rgba(180, 0, 0, 0.65);
+    box-shadow: 0 8px 28px rgba(75, 0, 130, 0.65);
     transform: translateY(-2px);
 }
 
@@ -2616,17 +2597,17 @@ img {
     height: 7px;
     border-radius: 50%;
     background: rgba(255, 100, 100, 0.25);
-    border: 1px solid rgba(200, 0, 0, 0.3);
+    border: 1px solid rgba(75, 0, 130, 0.3);
     cursor: pointer;
     transition: background 0.25s, transform 0.2s;
     flex-shrink: 0;
 }
 
 .ad-showcase--oracle .ad-dot.active {
-    background: #c62828;
+    background: #6A0DAD;
     border-color: #ff5252;
     transform: scale(1.3);
-    box-shadow: 0 0 6px rgba(200, 0, 0, 0.6);
+    box-shadow: 0 0 6px rgba(75, 0, 130, 0.6);
 }
 
 /* Seta de navegação (hover lateral) */
@@ -2634,7 +2615,7 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(139, 0, 0, 0.25);
+    background: rgba(75, 0, 130, 0.25);
     border: none;
     color: rgba(255, 150, 150, 0.7);
     font-size: 20px;
@@ -2650,9 +2631,9 @@ img {
 }
 
 .ad-showcase--oracle .ad-nav:hover {
-    background: rgba(139, 0, 0, 0.5);
+    background: rgba(75, 0, 130, 0.5);
     color: #fff;
 }
 
 .ad-showcase--oracle .ad-nav--prev { left: 8px; }
-.ad-showcase--oracle .ad-nav--next { right: 8px; }
+.ad-showcase--oracle .ad-nav--next { right: 8px; }

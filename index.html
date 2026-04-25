@@ -140,6 +140,39 @@
         </div>
     </div>
 
+    <!-- ── Modal Membro — aparece após 3 min (só para logados) ──────────── -->
+    <div id="member-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="mem-modal-title">
+        <div class="mem-modal-box" id="member-modal-box">
+            <!-- Botão fechar -->
+            <button class="mem-modal-close" id="mem-modal-close-btn"
+                    onclick="_fecharMemberModal()" aria-label="Fechar">&#10005;</button>
+
+            <!-- Coroa decorativa -->
+            <div class="mem-modal-crown" aria-hidden="true">♛</div>
+
+            <!-- Texto guias -->
+            <p class="mem-modal-sub" id="mem-modal-title">
+                Mais de 6 guias aprofundados sobre Manipulação, Gaslighting, Love Bombing, Posicionamento e muito mais — tudo em um só lugar.
+            </p>
+
+            <!-- Divisor -->
+            <div class="mem-modal-divider"><span>torne-se membro agora</span></div>
+
+            <!-- Frase destaque -->
+            <p class="mem-modal-mantenha">Mantenha o Projeto!</p>
+
+            <!-- Botão Assinar -->
+            <a class="mem-clube-btn" id="mem-clube-btn"
+               href="https://pay.hotmart.com/E105391945G?bid=1776289319139"
+               target="_blank" rel="noopener noreferrer"
+               onclick="_fecharMemberModal()">
+                ♛ &nbsp;Assinar o Clube — R$ 28/mês
+            </a>
+
+            <p class="mem-modal-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>
+        </div>
+    </div>
+
     <!-- Modal Círculo Rainha -->
     <div class="modal-overlay" id="voting-modal">
         <div class="modal-container">
@@ -219,6 +252,40 @@
 
             /* Timer: 120 segundos */
             setTimeout(_mostrarEngagementModal, 120000);
+        })();
+
+        /* ── Modal Membro — 3 minutos (só para logados) ─────────────────── */
+        (function() {
+            var _memShown = false;
+
+            function _mostrarMemberModal() {
+                if (_memShown) return;
+                /* Exibe APENAS se o usuário estiver logado */
+                if (!window.SeniorAuth || !window.SeniorAuth.isLoggedIn()) return;
+                _memShown = true;
+                var overlay = document.getElementById('member-modal-overlay');
+                if (!overlay) return;
+                overlay.classList.add('mem-modal--visible');
+                document.body.classList.add('eng-modal-open');
+            }
+
+            window._fecharMemberModal = function() {
+                var overlay = document.getElementById('member-modal-overlay');
+                if (overlay) {
+                    overlay.classList.remove('mem-modal--visible');
+                    overlay.classList.add('mem-modal--closing');
+                    setTimeout(function() { overlay.classList.remove('mem-modal--closing'); }, 500);
+                }
+                document.body.classList.remove('eng-modal-open');
+            };
+
+            /* Fecha com Escape */
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') window._fecharMemberModal();
+            });
+
+            /* Timer: 180 segundos (3 minutos) */
+            setTimeout(_mostrarMemberModal, 180000);
         })();
 
         function toggleSidebar() {

@@ -427,7 +427,7 @@ body {
 }
 
 .news-card--destaque::before {
-    content: '♥ EM DESTAQUE';
+    content: 'LIBERDADE';
     position: absolute;
     top: -14px;
     left: 24px;
@@ -435,12 +435,13 @@ body {
     color: #fff;
     font-size: 10px;
     font-weight: 900;
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
     padding: 4px 16px;
     border-radius: 10px;
     z-index: 10;
     text-transform: uppercase;
     box-shadow: none;
+    animation: liberdadePulse 4s ease-in-out infinite;
 }
 
 .news-card--destaque .news-header-title {

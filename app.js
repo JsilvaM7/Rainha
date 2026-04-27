@@ -1,4 +1,4 @@
-﻿/* ── Link do Clube (espelho do auth.js para uso no app.js) ─────────────────── */
+/* ── Link do Clube (espelho do auth.js para uso no app.js) ─────────────────── */
 window.CLUBE_CHECKOUT_URL = window.CLUBE_CHECKOUT_URL || 'https://pay.hotmart.com/E105391945G';
 
 /* ── Links Google Drive — acesso exclusivo de assinantes (/preview = iframe sem barra) ── */
@@ -1270,10 +1270,8 @@ async function carregarFeedNoticias(feedContainer) {
                 linkNoticia: r[iLink] || '#',
                 linkImagem: r[iImg] || ''
             });
-            // Aplica destaque visual ao primeiro card de Manipulação
-            if (idx === idxDestaque) {
-                card.classList.add('news-card--destaque');
-            }
+            // Aplica badge "LIBERDADE" em todos os cards
+            card.classList.add('news-card--destaque');
             feedContainer.appendChild(card);
         });
 

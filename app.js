@@ -1208,7 +1208,7 @@ function toggleNewsCard(id) {
 /* Fetches and injects the Google Sheets CSV at the TOP of the feed.
    Called asynchronously after the static feed renders so the page isn't blocked. */
 /* Categorias válidas do portal Rainha (comparadas sem acento, em minúsculo) */
-const CATEGORIAS_VALIDAS = ['beleza', 'feminina', 'manipulacao', 'dinamicas de controle', 'posicionamento'];
+const CATEGORIAS_VALIDAS = ['beleza', 'feminina', 'manipulacao', 'dinamicas de controle', 'posicionamento', 'liberdade'];
 
 /* Normaliza string para comparação de categoria (sem acento, minúscula) */
 function normalizarCat(s) {

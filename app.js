@@ -1165,7 +1165,7 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
              alt="${titulo}" class="news-image"
              onerror="this.src='${fallbackImg}'">
         <div class="news-content">
-            <span class="news-category">${categoria}</span>
+            <span class="news-category">${/manipul/i.test(categoria) ? 'Liberdade' : categoria}</span>
             <h2 class="news-header-title">${titulo}</h2>
 
             <!-- Primeiro parágrafo sempre visível -->

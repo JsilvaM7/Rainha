@@ -1158,7 +1158,7 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
     const temResto    = restante.length > 0;
 
     // Botão universal: sempre aponta para a aba de Guias
-    const ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderGuias()">Acessar o Guia \u2192</button>`;
+    const ctaHTML = `<button class="clube-btn" style="display:inline-block;font-weight:700;cursor:pointer;" onclick="renderGuias()">Guia Liberdade \u2192</button>`;
 
     card.innerHTML = `
         <img src="${imgSrc}"

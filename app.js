@@ -1398,23 +1398,14 @@ function renderAd() {
         `<span class="ad-dot ${i === currentAdIndex ? 'active' : ''}" onclick="goToAd(${i})" title="${ads[i].title}"></span>`
     ).join('');
 
-    // Botão CTA — Cavalo→Bispo
+    // Botão CTA — só Liberdade →
     let adBtnHtml;
     if (ad.tipo === 'livro') {
         adBtnHtml = isSubscriber
-            ? `<button onclick="window.handleBookClick(${ad.livro})" class="ad-btn ad-btn--crimson">
-                   <span class="clube-btn-liberdade">Liberdade</span>
-                   <span class="clube-btn-label">💋 Ler no Portal →</span>
-               </button>`
-            : `<a href="${ad.link}" target="_blank" rel="noopener noreferrer" class="ad-btn ad-btn--crimson">
-                   <span class="clube-btn-liberdade">Liberdade</span>
-                   <span class="clube-btn-label">${ad.btnText} →</span>
-               </a>`;
+            ? `<button onclick="window.handleBookClick(${ad.livro})" class="ad-btn ad-btn--crimson">Liberdade →</button>`
+            : `<a href="${ad.link}" target="_blank" rel="noopener noreferrer" class="ad-btn ad-btn--crimson">Liberdade →</a>`;
     } else {
-        adBtnHtml = `<button onclick="renderVeuConteudo('${ad.veuKey}')" class="ad-btn ad-btn--crimson">
-               <span class="clube-btn-liberdade">Liberdade</span>
-               <span class="clube-btn-label">${ad.btnText} →</span>
-           </button>`;
+        adBtnHtml = `<button onclick="renderVeuConteudo('${ad.veuKey}')" class="ad-btn ad-btn--crimson">Liberdade →</button>`;
     }
 
     container.innerHTML = `

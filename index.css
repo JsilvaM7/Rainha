@@ -2602,18 +2602,20 @@ img {
     margin: 0 0 18px;
 }
 
-/* Botão de ação — Vermelho Rubi */
+/* Botão de ação — só Liberdade → */
 .ad-btn--crimson {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
     width: 100%;
-    padding: 11px 16px 10px;
+    padding: 13px 16px;
     background: linear-gradient(135deg, #4B0082, #6A0DAD, #4B0082);
     color: #fff !important;
     font-family: 'Playfair Display', Georgia, serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -2621,6 +2623,7 @@ img {
     text-align: center;
     box-shadow: 0 4px 16px rgba(75, 0, 130, 0.45);
     transition: box-shadow 0.25s, transform 0.2s;
+    animation: liberdadePulse 4s ease-in-out infinite;
 }
 
 .ad-btn--crimson:hover {

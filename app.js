@@ -3036,7 +3036,7 @@ function renderGuias() {
                 + 'border:none;color:#2a1a06;font-size:13px;font-weight:800;padding:10px 22px;border-radius:10px;cursor:pointer;"'
                 + ' onmouseover="this.style.background=\'#f0d98a\'"'
                 + ' onmouseout="this.style.background=\'#e8c97a\'">'
-                + '<i class="ph ph-book-open" style="font-size:15px;"></i> Abrir Livro</button>'
+                + '<i class="ph ph-book-open" style="font-size:15px;"></i> Abra</button>'
                 + '</div>'
                 /* Body */
                 + '<div id="guia-body-' + g.id + '" class="guia-card__body" style="display:none;padding:0;">'

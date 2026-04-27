@@ -1179,7 +1179,7 @@ function criarCardNoticia({ categoria, titulo, resumo, linkNoticia, linkImagem }
             <div class="news-fade" id="${cardId}-fade"></div>
             <button class="news-expand-btn" id="${cardId}-btn"
                     onclick="toggleNewsCard('${cardId}')" style="margin-top:4px;margin-bottom:16px;">
-                Ler mais <span id="${cardId}-arrow">▼</span>
+                Continue lendo <span id="${cardId}-arrow">▼</span>
             </button>
             ` : '<div style="height:16px"></div>'}
 
@@ -1200,7 +1200,7 @@ function toggleNewsCard(id) {
     if (fade)  fade.style.display = open ? 'none' : 'block';
     if (arrow) arrow.textContent  = open ? '▲' : '▼';
     if (btn) {
-        btn.childNodes[0].textContent = open ? 'Recolher ' : 'Ler mais ';
+        btn.childNodes[0].textContent = open ? 'Recolher ' : 'Continue lendo ';
     }
 }
 

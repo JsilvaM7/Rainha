@@ -3021,7 +3021,8 @@ function renderGuias() {
             }).join('');
 
             /* Card livro unificado */
-            return '<div class="guia-card" id="guia-card-' + g.id + '" style="overflow:hidden;">'
+            return '<div class="guia-card" id="guia-card-' + g.id + '" style="overflow:hidden;position:relative;">'
+                + '<span class="guia-liberdade-badge">LIBERDADE</span>'
                 + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')"'
                 + ' style="cursor:pointer;background:linear-gradient(135deg,#2a1a06 0%,#5a3a10 100%);'
                 + 'border-radius:12px 12px 0 0;padding:24px 28px;">'
@@ -3080,14 +3081,16 @@ function renderGuias() {
             + ' onmouseout="this.style.background=\'#fff\'">'
             + 'Ver Guia <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i></button>';
         if (isFree) {
-            return '<div class="guia-card" id="guia-card-' + g.id + '">'
+            return '<div class="guia-card" id="guia-card-' + g.id + '" style="position:relative;">'
+                + '<span class="guia-liberdade-badge">LIBERDADE</span>'
                 + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')" style="cursor:pointer;">'
                 + guiaBadge + '<h2 class="guia-card__title">' + g.titulo + '</h2>'
                 + '<p class="guia-card__desc">' + g.descricao + '</p>' + toggleBtn + '</div>'
                 + '<div id="guia-body-' + g.id + '" class="guia-card__body" style="display:none;">'
                 + g.conteudo + navButtons + '</div></div>';
         } else {
-            return '<div class="guia-card guia-card--locked" id="guia-card-' + g.id + '">'
+            return '<div class="guia-card guia-card--locked" id="guia-card-' + g.id + '" style="position:relative;">'
+                + '<span class="guia-liberdade-badge">LIBERDADE</span>'
                 + '<div class="guia-card__header" onclick="toggleGuia(\'' + g.id + '\')" style="cursor:pointer;">'
                 + guiaBadge + '<h2 class="guia-card__title">' + g.titulo + '</h2>'
                 + '<p class="guia-card__desc">' + g.descricao + '</p>' + toggleBtn + '</div>'

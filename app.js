@@ -3079,7 +3079,7 @@ function renderGuias() {
             + 'padding:9px 18px;border-radius:8px;cursor:pointer;margin-top:8px;transition:background .2s;"'
             + ' onmouseover="this.style.background=\'#fdf8f0\'"'
             + ' onmouseout="this.style.background=\'#fff\'">'
-            + 'Ver Guia <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i></button>';
+            + 'Abra <i class="ph ph-caret-down" style="font-size:14px;vertical-align:middle;"></i></button>';
         if (isFree) {
             return '<div class="guia-card" id="guia-card-' + g.id + '" style="position:relative;">'
                 + '<span class="guia-liberdade-badge">LIBERDADE</span>'

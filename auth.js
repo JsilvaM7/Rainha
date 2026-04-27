@@ -246,7 +246,7 @@ function _renderSideBarBody() {
             '<div class="lsb-section">' +
                 '<p class="lsb-label">⭐ Assinar o Círculo Rainha</p>' +
                 '<p class="lsb-desc">Acesse todos os livros, vote nos tópicos e ganhe descontos exclusivos.</p>' +
-                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 28/mês</a>' +
+                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()"><span class="clube-btn-liberdade">Liberdade</span><span class="clube-btn-label">Assinar Clube — R$ 28/mês</span></a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>';
         return;
@@ -274,7 +274,7 @@ function _renderSideBarBody() {
             '<div class="lsb-section">' +
                 '<p class="lsb-label">⭐ Torne-se Assinante</p>' +
                 '<p class="lsb-desc">Assine o Círculo Rainha e acesse todos os guias exclusivos.</p>' +
-                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()">Assinar Clube — R$ 28/mês</a>' +
+                '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" onclick="window.fecharSideBar()"><span class="clube-btn-liberdade">Liberdade</span><span class="clube-btn-label">Assinar Clube — R$ 28/mês</span></a>' +
                 '<p class="lsb-fine">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>' +
             '</div>' +
             '<div style="height:1px;background:#f0e8d4;margin:0 20px;"></div>' +
@@ -372,7 +372,7 @@ window.renderModalConteudo = function() {
                 '<button class="lsb-google-btn" style="width:100%;justify-content:center;box-sizing:border-box;" ' +
                     'onclick="if(window.toggleModal)toggleModal();setTimeout(window.abrirSideBar,300);">Entrar com Google</button>' +
                 '<div style="margin-top:16px;padding-top:16px;border-top:1px solid #f0e8d4;">' +
-                    '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn">⭐ Assinar Clube — R$ 28/mês</a>' +
+                    '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn"><span class="clube-btn-liberdade">Liberdade</span><span class="clube-btn-label">⭐ Assinar Clube — R$ 28/mês</span></a>' +
                 '</div>' +
             '</div>';
         return;
@@ -386,7 +386,7 @@ window.renderModalConteudo = function() {
                 '<p style="font-size:15px;font-weight:700;color:var(--text-dark);margin-bottom:6px;">Olá, ' + primeiroNome + '!</p>' +
                 '<p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Você está logado, mas a votação e os benefícios exclusivos são para assinantes do Clube.</p>' +
             '</div>' +
-            '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" style="display:block;text-align:center;">⭐ Assinar Clube — R$ 28/mês</a>' +
+            '<a href="' + window.CLUBE_CHECKOUT_URL + '" target="_blank" rel="noopener noreferrer" class="lsb-clube-btn" style="display:block;text-align:center;"><span class="clube-btn-liberdade">Liberdade</span><span class="clube-btn-label">⭐ Assinar Clube — R$ 28/mês</span></a>' +
             '<p style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;">✓ Acesso imediato &nbsp;·&nbsp; ✓ Cancele quando quiser</p>';
         return;
     }

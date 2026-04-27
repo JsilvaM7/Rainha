@@ -699,6 +699,25 @@ body.eng-modal-open {
     margin-top: 4px;
 }
 
+/* ── Gatilho Pavlov — palavra "Liberdade" ───────────────────────────────── */
+.modal-liberdade-trigger {
+    font-family: var(--font-logo);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 14px;
+    margin-top: 2px;
+    opacity: 0.88;
+    animation: liberdadePulse 4s ease-in-out infinite;
+}
+
+@keyframes liberdadePulse {
+    0%, 100% { opacity: 0.82; text-shadow: 0 0 8px rgba(255,255,255,0.15); }
+    50%       { opacity: 1;    text-shadow: 0 0 16px rgba(255,255,255,0.38); }
+}
+
 /* Mobile */
 @media (max-width: 520px) {
     .eng-modal-box {
@@ -842,18 +861,16 @@ body.eng-modal-open {
 /* Botão Assinar */
 .mem-clube-btn {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 3px;
     width: 100%;
-    padding: 16px 24px;
+    padding: 14px 24px 12px;
     background: linear-gradient(135deg, #4B0082 0%, #6A0DAD 50%, #4B0082 100%);
     background-size: 200% 100%;
     color: #fff;
     font-family: var(--font-logo);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -869,6 +886,28 @@ body.eng-modal-open {
     transform: translateY(-2px);
     color: #fff;
     text-decoration: none;
+}
+
+/* Spans internos dos botões Assinar Clube */
+.clube-btn-liberdade {
+    display: block;
+    font-family: var(--font-logo);
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.2;
+    animation: liberdadePulse 4s ease-in-out infinite;
+}
+
+.clube-btn-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.3;
 }
 
 /* Fine print */
@@ -2159,14 +2198,16 @@ img {
 
 /* ── Botão Assinar Clube ────────────────────────────────────────────────────── */
 .lsb-clube-btn {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     width: 100%;
-    padding: 14px;
+    padding: 12px 14px 10px;
     background: var(--sage-green);
     color: #fff;
     border-radius: 10px;
-    font-size: 15px;
-    font-weight: 700;
     text-align: center;
     text-decoration: none;
     transition: background .2s, transform .18s;

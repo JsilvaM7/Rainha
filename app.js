@@ -1403,14 +1403,17 @@ function renderAd() {
     if (ad.tipo === 'livro') {
         adBtnHtml = isSubscriber
             ? `<button onclick="window.handleBookClick(${ad.livro})" class="ad-btn ad-btn--crimson">
-                   💋 Ler no Portal →
+                   <span class="clube-btn-liberdade">Liberdade</span>
+                   <span class="clube-btn-label">💋 Ler no Portal →</span>
                </button>`
             : `<a href="${ad.link}" target="_blank" rel="noopener noreferrer" class="ad-btn ad-btn--crimson">
-                   ${ad.btnText} →
+                   <span class="clube-btn-liberdade">Liberdade</span>
+                   <span class="clube-btn-label">${ad.btnText} →</span>
                </a>`;
     } else {
         adBtnHtml = `<button onclick="renderVeuConteudo('${ad.veuKey}')" class="ad-btn ad-btn--crimson">
-               ${ad.btnText} →
+               <span class="clube-btn-liberdade">Liberdade</span>
+               <span class="clube-btn-label">${ad.btnText} →</span>
            </button>`;
     }
 

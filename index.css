@@ -1423,20 +1423,21 @@ body.eng-modal-open {
 }
 
 .ad-btn {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 11px 20px;
+    gap: 2px;
+    padding: 10px 20px 9px;
     background: #ffffff;
     color: #000000;
     border: 2px solid var(--gold);
     text-decoration: none;
     border-radius: 8px;
-    font-weight: 700;
-    font-size: 13px;
     transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
     width: 100%;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .ad-btn:hover {
@@ -2603,15 +2604,16 @@ img {
 
 /* Botão de ação — Vermelho Rubi */
 .ad-btn--crimson {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     width: 100%;
-    padding: 13px 16px;
+    padding: 11px 16px 10px;
     background: linear-gradient(135deg, #4B0082, #6A0DAD, #4B0082);
     color: #fff !important;
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
     border: none;
     border-radius: 10px;
     cursor: pointer;

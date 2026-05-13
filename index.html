@@ -29,7 +29,18 @@
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menu" onclick="toggleSidebar()">
             <span></span><span></span><span></span>
         </button>
-        <a href="#" class="logo" onclick="event.preventDefault(); loadNewsFeed();">Rainha</a>
+        <a href="#" class="logo" onclick="event.preventDefault(); loadNewsFeed();" aria-label="Rainha - Início" title="Rainha">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" style="display:block;">
+                <!-- Quadrado superior esquerdo: Branco -->
+                <rect x="1"  y="1"  width="16" height="16" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+                <!-- Quadrado superior direito: Roxo -->
+                <rect x="19" y="1"  width="16" height="16" fill="#4B0082" stroke="#000000" stroke-width="1.5"/>
+                <!-- Quadrado inferior esquerdo: Roxo -->
+                <rect x="1"  y="19" width="16" height="16" fill="#4B0082" stroke="#000000" stroke-width="1.5"/>
+                <!-- Quadrado inferior direito: Branco -->
+                <rect x="19" y="19" width="16" height="16" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+            </svg>
+        </a>
         <div class="search-container">
             <input type="text" class="search-bar" placeholder="Pesquisar por beleza, feminina, Liberdade...">
         </div>
